@@ -1,2 +1,3 @@
 # Edith-Doris_IP
-Test
+
+GitHub repo link: https://github.com/hxttm/Edith-Doris_IP.git

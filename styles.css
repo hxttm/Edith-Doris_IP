@@ -1,0 +1,63 @@
+:root{
+    --bg: #f6f2ea;
+    --text: #b8a89b;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+    margin: 0;
+    background: var(--bg);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.splash{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;        
+    background: var(--bg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    transition: opacity 300ms ease;
+    }
+
+.splash.is-hidden{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash__content{
+  width: min(420px, 86vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.splash__logo{
+    min-width: 230px;
+    max-width: 450px;
+    display: block;
+
+    padding-top: 100px;
+}
+
+.splash__title{
+    min-width: 285px;
+    max-width: 430px;
+}
+
+.splash__company{
+    min-width: 147px;
+    max-width: 150px;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}

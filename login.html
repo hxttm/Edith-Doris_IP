@@ -10,10 +10,49 @@
 <body>
   <main id="splash" class="splash" aria-label="Dreamy splash screen">
     <section class="splash__content">
-      <img class="splash__logo" src="assets/logo.png" alt="Dream logo" />
-      <img class="splash__title" src="assets/splash.png" alt="Dream with purpose" />
-      <img class="splash__company" src="assets/company.png" alt="from dreamy" />
+      <img class="splash__logo" src="assets/login/splash/logo.png" alt="Dream logo" />
+      <img class="splash__title" src="assets/login/splash/splash.png" alt="Dream with purpose" />
+      <img class="splash__company" src="assets/login/splash/company.png" alt="from dreamy" />
     </section>
+  </main>
+
+  <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
+    <section class="login">
+      <h1 class="login__heading">Select Your Study Buddy</h1>
+
+      <div class="login__buddies">
+        <button class="buddy" type="button" aria-label="Buddy 1">
+          <img src="assets/login/login/orange.png" alt="orange fox-like mystic creature" />
+        </button>
+        <button class="buddy" type="button" aria-label="Buddy 2">
+          <img src="assets/login/login/blue.jpg" alt="blue cat-like mystic creature" />
+        </button>
+      </div>
+
+      <form class="login__form">
+        <label class="field">
+          <span class="sr-only">Email: </span>
+          <input type="email" placeholder="         Type Here..." autocomplete="email" required />
+        </label>
+
+        <label class="field">
+          <span class="sr-only">Password: </span>
+          <input type="password" placeholder="         Type Here..." autocomplete="current-password" required />
+        </label>
+
+        <button class="btn" type="submit">Log in</button>
+      </form>
+
+      <p class="login__switch">
+        Don't have an account?
+        <a href="#" id="to-create">Sign Up</a>
+      </p>
+    </section>
+  </main>
+
+  <main id="screen-create" class="screen is-hidden" aria-label="Create account screen">
+    <p>Create screen goes here.</p>
+    <a href="#" id="to-login">Back to Login</a>
   </main>
 
   <script>
@@ -33,10 +72,12 @@
       show(login);
     }, 1000);
 
-    document.getElementById("to-create").addEventListener("click", () => show(create));
-    document.getElementById("to-login").addEventListener("click", () => show(login));
-  </script>
+    const toCreate = document.getElementById("to-create");
+    const toLogin = document.getElementById("to-login");
 
+    if (toCreate) toCreate.addEventListener("click", (e) => { e.preventDefault(); show(create); });
+    if (toLogin) toLogin.addEventListener("click", (e) => { e.preventDefault(); show(login); });
+  </script>
 </body>
 </html>
 

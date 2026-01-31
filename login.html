@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dreamy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main id="splash" class="splash" aria-label="Dreamy splash screen">
+    <section class="splash__content">
+      <img class="splash__logo" src="assets/logo.png" alt="Dreamy logo" />
+      <img class="splash__title" src="assets/splash.png" alt="Dream with purpose" />
+      <img class="splash__company" src="assets/company.png" alt="from dreamy" />
+    </section>
+  </main>
+
+  <div id="app">
+    /*
+  </div>
+
+  <script>
+    const splash = document.getElementById("splash");
+    const login = document.getElementById("screen-login");
+    const create = document.getElementById("screen-create");
+
+    function show(el) {
+      login.classList.add("is-hidden");
+      create.classList.add("is-hidden");
+      el.classList.remove("is-hidden");
+    }
+
+    setTimeout(() => {
+      splash.classList.add("is-hidden");
+      setTimeout(() => splash.remove(), 350);
+      show(login);
+    }, 1000);
+
+    document.getElementById("to-create").addEventListener("click", () => show(create));
+    document.getElementById("to-login").addEventListener("click", () => show(login));
+  </script>
+</body>
+</html>
+
+

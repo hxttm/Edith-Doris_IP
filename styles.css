@@ -183,6 +183,17 @@ body{
     background: #9aa0a6;
     color: #fff;
     font-weight: 600;
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.btn:hover{
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.16);
 }
 
 .login__helper{
@@ -198,4 +209,7 @@ body{
     font-weight: 600;
 }
 
-
+.select{
+    width: 400px;
+    padding-right: 30px;
+}

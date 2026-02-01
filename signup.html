@@ -10,7 +10,7 @@
 <body>
   <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
     <section class="login">
-      <img class = "select" src="assets/signup/select.png" alt="choose your dream Study Buddy" />
+      <img class = "select" src="assets/signup/select.png" alt="Choose your dream Study Buddy" />
         </button>
       <div class="login__buddies">
         <button class="buddy buddy--orange" type="button" aria-label="Buddy 1">
@@ -21,7 +21,7 @@
         </button>
       </div>
 
-  <form class="login__form">
+  <form class="login__form" id="signupForm">
     <div class="login__fields">
       <label class="field">
         <span class="field__icon" aria-hidden="true">
@@ -40,7 +40,6 @@
     <button class="btn" type="submit">Sign Up</button>
   </form>
 
-
       <p class="login__switch">
         Already have an account?
         <a href="login.html" id="go-login">Login</a>
@@ -49,13 +48,26 @@
   </main>
 
   <script>
+    const goLogin = document.getElementById("go-login");
+      if (goLogin) {
+        goLogin.addEventListener("click", () => {
+          sessionStorage.setItem("skipSplashOnce", "1");
+        });
+      }
+    
     const buddies = document.querySelectorAll(".buddy");
-
+ 
     buddies.forEach((btn) => {
       btn.addEventListener("click", () => {
         buddies.forEach((b) => b.classList.remove("is-selected"));
         btn.classList.add("is-selected");
       });
+    });
+
+    const form = document.getElementById("signupForm");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      window.location.href = "index.html";
     });
   </script>
 </body>

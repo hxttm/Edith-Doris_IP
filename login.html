@@ -18,16 +18,7 @@
 
   <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
     <section class="login">
-      <h1 class="login__heading">Select Your Study Buddy</h1>
-
-      <div class="login__buddies">
-        <button class="buddy" type="button" aria-label="Buddy 1">
-          <img src="assets/login/login/orange.png" alt="orange fox-like mystic creature" />
-        </button>
-        <button class="buddy" type="button" aria-label="Buddy 2">
-          <img src="assets/login/login/blue.jpg" alt="blue cat-like mystic creature" />
-        </button>
-      </div>
+      <img class="login__title" src="assets/login/login/logo.png" alt="Dream" />
 
   <form class="login__form">
     <div class="login__fields">
@@ -60,11 +51,11 @@
     const splash = document.getElementById("splash");
     const login = document.getElementById("screen-login");
 
-    function show(el) {
-      el.classList.remove("is-hidden");
+    function showLogin() {
+      login.classList.remove("is-hidden");
     }
 
-  const shouldSkip = sessionStorage.getItem("skipSplashOnce") === "1";
+    const shouldSkip = sessionStorage.getItem("skipSplashOnce") === "1";
 
     if (shouldSkip) {
       sessionStorage.removeItem("skipSplashOnce");
@@ -77,13 +68,7 @@
         showLogin();
       }, 1000);
     }
-
-    const toLogin = document.getElementById("to-login");
-    if (toLogin) {
-      toLogin.addEventListener("click", () => {
-        sessionStorage.setItem("skipSplash", "1");
-      });
-    }
   </script>
+
 </body>
 </html>

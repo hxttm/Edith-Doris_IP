@@ -10,14 +10,14 @@
 <body>
   <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
     <section class="login">
-      <h1 class="login__heading">Select Your Study Buddy</h1>
-
-      <div class="login__buddies">
-        <button class="buddy" type="button" aria-label="Buddy 1">
-          <img src="assets/login/login/orange.png" alt="orange fox-like mystic creature" />
+      <img class = "select" src="assets/signup/select.png" alt="choose your dream Study Buddy" />
         </button>
-        <button class="buddy" type="button" aria-label="Buddy 2">
-          <img src="assets/login/login/blue.jpg" alt="blue cat-like mystic creature" />
+      <div class="login__buddies">
+        <button class="buddy buddy--orange" type="button" aria-label="Buddy 1">
+          <img src="assets/signup/orange.png" alt="orange fox-like mystic creature" />
+        </button>
+        <button class="buddy buddy--blue" type="button" aria-label="Buddy 2">
+          <img src="assets/signup/blue.jpg" alt="blue cat-like mystic creature" />
         </button>
       </div>
 
@@ -49,12 +49,15 @@
   </main>
 
   <script>
-    const goLogin = document.getElementById("go-login");
-    document.getElementById("go-login").addEventListener("click", () => {
-      sessionStorage.setItem("skipSplashOnce", "1");
-});
-  </script>
+    const buddies = document.querySelectorAll(".buddy");
 
+    buddies.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buddies.forEach((b) => b.classList.remove("is-selected"));
+        btn.classList.add("is-selected");
+      });
+    });
+  </script>
 </body>
 </html>
 

@@ -133,11 +133,13 @@ body{
     overflow: hidden;
 }
 
-.field__icon{
-    display: grid;
-    place-items: center;
-    color: #8f847a;
-    font-size: 16px;
+.field__icon img{
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
+  opacity: .8;
+  padding-left: 10px;
 }
 
 .field input{

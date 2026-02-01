@@ -8,14 +8,6 @@
 </head>
 
 <body>
-  <main id="splash" class="splash" aria-label="Dreamy splash screen">
-    <section class="splash__content">
-      <img class="splash__logo" src="assets/login/splash/logo.png" alt="Dream logo" />
-      <img class="splash__title" src="assets/login/splash/splash.png" alt="Dream with purpose" />
-      <img class="splash__company" src="assets/login/splash/company.png" alt="from dreamy" />
-    </section>
-  </main>
-
   <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
     <section class="login">
       <h1 class="login__heading">Select Your Study Buddy</h1>
@@ -45,45 +37,25 @@
         <input type="password" placeholder="Set Password" autocomplete="current-password" required />
       </label>
     </div>
-
-    <button class="btn" type="submit">Log in</button>
+    <button class="btn" type="submit">Sign Up</button>
   </form>
 
+
       <p class="login__switch">
-        Don't have an account?
-        <a href="signup.html" id="to-create">Sign Up</a>
+        Already have an account?
+        <a href="login.html" id="go-login">Login</a>
       </p>
     </section>
   </main>
 
   <script>
-    const splash = document.getElementById("splash");
-    const login = document.getElementById("screen-login");
-
-    function show(el) {
-      el.classList.remove("is-hidden");
-    }
-
-  const shouldSkip = sessionStorage.getItem("skipSplashOnce") === "1";
-
-    if (shouldSkip) {
-      sessionStorage.removeItem("skipSplashOnce");
-      splash.remove();
-      showLogin();
-    } else {
-      setTimeout(() => {
-        splash.classList.add("is-hidden");
-        setTimeout(() => splash.remove(), 350);
-        showLogin();
-      }, 1000);
-    }
-
-    const toLogin = document.getElementById("to-login");
-    if (toLogin) {
-      toLogin.addEventListener("click", () => {
-        sessionStorage.setItem("skipSplash", "1");
-      });
-    }
+    const goLogin = document.getElementById("go-login");
+    document.getElementById("go-login").addEventListener("click", () => {
+      sessionStorage.setItem("skipSplashOnce", "1");
+});
   </script>
+
 </body>
 </html>
+
+

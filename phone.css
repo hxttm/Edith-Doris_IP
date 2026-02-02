@@ -229,7 +229,6 @@ body{
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* header */
 .dreamhome .dreamhome_top{
     display: grid;
     grid-template-columns: 1fr 120px;
@@ -283,7 +282,6 @@ body{
     clip-path: polygon(50% 0%, 85% 22%, 100% 55%, 50% 100%, 0% 55%, 15% 22%);
 }
 
-/* weekly progress */
 .dreamhome .dreamhome_weekly{
     margin-top: 12px;
     background: rgba(0,0,0,0.12);
@@ -332,7 +330,6 @@ body{
     color: rgba(255,255,255,0.90);
 }
 
-/* hero */
 .dreamhome .dreamhome_hero{
     margin-top: 12px;
     background: rgba(255,255,255,0.18);
@@ -367,7 +364,6 @@ body{
     gap: 10px;
 }
 
-/* small pills (daily spin / leaderboard) */
 .dreamhome .dreamhome_pill{
     width: 140px;
     padding: 10px 14px;
@@ -394,7 +390,6 @@ body{
     color: rgba(0,0,0,0.45);
 }
 
-/* big start button */
 .dreamhome .dreamhome_cta{
     width: 200px;
     padding: 10px;
@@ -407,7 +402,6 @@ body{
     box-shadow: 0 4px 0 rgba(0,0,0,0.12);
 }
 
-/* nav */
 .dreamhome .dreamhome_nav{
     position: absolute;
     left: 12px;
@@ -421,6 +415,7 @@ body{
     align-items: center;
     padding: 10px 8px;
     gap: 6px;
+    z-index: 50;
 }
 
 .dreamhome .dreamhome_nav_item{
@@ -435,6 +430,7 @@ body{
     justify-content: center;
     gap: 6px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .dreamhome .dreamhome_nav_item_active{
@@ -478,7 +474,6 @@ body{
     border-radius: 0;
 }
 
-/* sheet */
 .dreamhome .dreamhome_sheet{
     position: absolute;
     left: 0;
@@ -491,6 +486,7 @@ body{
     box-shadow: 0 -10px 30px rgba(0,0,0,0.18);
     transition: height 220ms ease;
     overflow: hidden;
+    z-index: 40;
 }
 
 .dreamhome .dreamhome_sheet_dragging{
@@ -574,4 +570,266 @@ body{
     background: rgba(0,0,0,0.28);
     margin-top: 5px;
     flex: 0 0 auto;
+}
+
+.dreamsettings{
+    --dreamsettings_bg: #9cc9dc;
+    --dreamsettings_panel: rgba(255,255,255,0.12);
+    --dreamsettings_card: rgba(255,255,255,0.20);
+    --dreamsettings_text: rgba(20,45,55,0.85);
+}
+
+.dreamsettings .dreamsettings_screen{
+    width: 100vw;
+    min-height: 100vh;
+    background: var(--dreamsettings_bg);
+    padding: 12px;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--dreamsettings_text);
+}
+
+.dreamsettings .dreamsettings_top{
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    background: rgba(90,150,175,0.65);
+    border-radius: 14px;
+    padding: 10px 10px;
+    box-shadow: 0 10px 16px rgba(0,0,0,0.10);
+}
+
+.dreamsettings .dreamsettings_back{
+    height: 36px;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.95);
+    font-weight: 900;
+    font-size: 22px;
+    text-decoration: none;
+    display: grid;
+    place-items: center;
+}
+
+.dreamsettings .dreamsettings_title{
+    text-align: center;
+    font-weight: 900;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.2px;
+}
+
+.dreamsettings .dreamsettings_section{
+    margin-top: 10px;
+    background: rgba(0,0,0,0.10);
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.dreamsettings .dreamsettings_section_title{
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.80);
+    margin-bottom: 8px;
+}
+
+.dreamsettings .dreamsettings_row{
+    width: 100%;
+    text-align: left;
+    padding: 10px 10px;
+    border: 0;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.16);
+    color: rgba(0,0,0,0.50);
+    font-weight: 800;
+}
+
+.dreamsettings .dreamsettings_row_toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.16);
+    margin-bottom: 8px;
+}
+
+.dreamsettings .dreamsettings_row_label{
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+}
+
+/* switch */
+.dreamsettings .dreamsettings_switch{
+    position: relative;
+    width: 44px;
+    height: 24px;
+    display: inline-block;
+}
+
+.dreamsettings .dreamsettings_switch_input{
+    display: none;
+}
+
+.dreamsettings .dreamsettings_switch_slider{
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.18);
+}
+
+.dreamsettings .dreamsettings_switch_slider::after{
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.85);
+    transition: transform 160ms ease;
+}
+
+.dreamsettings .dreamsettings_switch_input:checked + .dreamsettings_switch_slider{
+    background: rgba(20,120,140,0.35);
+}
+
+.dreamsettings .dreamsettings_switch_input:checked + .dreamsettings_switch_slider::after{
+    transform: translateX(20px);
+}
+
+.dreamsettings .dreamsettings_pin_box{
+    background: rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.dreamsettings .dreamsettings_pin_hint{
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+    margin-bottom: 8px;
+}
+
+.dreamsettings .dreamsettings_pin_row{
+    display: grid;
+    grid-template-columns: repeat(4, 46px);
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.dreamsettings .dreamsettings_pin{
+    height: 44px;
+    border-radius: 10px;
+    border: 0;
+    background: rgba(255,255,255,0.22);
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    outline: none;
+}
+
+.dreamsettings .dreamsettings_login{
+    width: 100%;
+    height: 38px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255,255,255,0.20);
+    color: rgba(255,255,255,0.88);
+    font-weight: 900;
+}
+
+.dreamsettings .dreamsettings_radio_group{
+    background: rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 10px;
+    margin-top: 8px;
+}
+
+.dreamsettings .dreamsettings_radio_title{
+    font-weight: 900;
+    color: rgba(0,0,0,0.45);
+    margin-bottom: 8px;
+}
+
+.dreamsettings .dreamsettings_radio{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 2px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+}
+
+.dreamsettings .dreamsettings_overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.dreamsettings .dreamsettings_overlay_open{
+    display: flex;
+}
+
+.dreamsettings .dreamsettings_modal{
+    width: min(360px, 92vw);
+    background: rgba(160, 205, 225, 0.96);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.20);
+}
+
+.dreamsettings .dreamsettings_modal_title{
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    color: rgba(255,255,255,0.90);
+    margin-bottom: 10px;
+}
+
+.dreamsettings .dreamsettings_modal_box{
+    background: rgba(255,255,255,0.16);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.14);
+}
+
+.dreamsettings .dreamsettings_modal_subtitle{
+    font-weight: 900;
+    color: rgba(0,0,0,0.40);
+    margin-bottom: 8px;
+}
+
+.dreamsettings .dreamsettings_radio_big{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 6px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+}
+
+.dreamsettings .dreamsettings_modal_actions{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.dreamsettings .dreamsettings_modal_btn{
+    height: 38px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(255,255,255,0.20);
+    color: rgba(255,255,255,0.90);
+    font-weight: 900;
+}
+
+.dreamsettings .dreamsettings_modal_btn_primary{
+    background: rgba(40,140,170,0.35);
 }

@@ -1,82 +1,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Dreamy</title>
-  <link rel="stylesheet" href="styles.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<title>Dreamy</title>
+	<link rel="stylesheet" href="phone.css">
+	<link rel="stylesheet" href="desktop.css" media="(min-width: 900px)">
 </head>
 
 <body>
-  <main id="splash" class="splash" aria-label="Dreamy splash screen">
-    <section class="splash__content">
-      <img class="splash__logo" src="assets/login/splash/logo.png" alt="Dream logo" />
-      <img class="splash__title" src="assets/login/splash/splash.png" alt="Dream with purpose" />
-      <img class="splash__company" src="assets/login/splash/company.png" alt="from dreamy" />
-    </section>
-  </main>
+	<main id="splash" class="splash" aria-label="Dreamy splash screen">
+		<section class="splash_content">
+			<img class="splash_logo" src="assets/login/splash/logo.png" alt="Dream logo" />
+			<img class="splash_title" src="assets/login/splash/splash.png" alt="Dream with purpose" />
+			<img class="splash_company" src="assets/login/splash/company.png" alt="from dreamy" />
+		</section>
+	</main>
 
-  <main id="screen-login" class="screen is-hidden" aria-label="Login screen">
-    <section class="login">
-      <img class="login__title" src="assets/login/login/logo.png" alt="Dream" />
+	<main id="screen-login" class="screen is-hidden" aria-label="Login screen">
+		<section class="login">
+			<img class="login_title" src="assets/login/login/logo.png" alt="Dream" />
 
-  <form class="login__form" id="login__form">
-    <div class="login__fields">
-      <label class="field">
-        <span class="field__icon" aria-hidden="true">
-          <img src="assets/login/login/env.png" alt="" />
-        </span>
-        <input type="email" placeholder="Email" autocomplete="email" required />
-      </label>
+			<form class="login_form" id="login_form">
+				<div class="login_fields">
+					<label class="field">
+						<span class="field_icon" aria-hidden="true">
+							<img src="assets/login/login/env.png" alt="" />
+						</span>
+						<input type="email" placeholder="Email" autocomplete="email" required />
+					</label>
 
-      <label class="field">
-        <span class="field__icon" aria-hidden="true">
-          <img src="assets/login/login/lock.png" alt="" />
-        </span>
-        <input type="password" placeholder="Set Password" autocomplete="current-password" required />
-      </label>
-    </div>
+					<label class="field">
+						<span class="field_icon" aria-hidden="true">
+							<img src="assets/login/login/lock.png" alt="" />
+						</span>
+						<input type="password" placeholder="Set Password" autocomplete="current-password" required />
+					</label>
+				</div>
 
-    <button class="btn" type="submit">Log in</button>
-  </form>
+				<button class="btn" type="submit">Log in</button>
+			</form>
 
-      <p class="login__switch">
-        Don't have an account?
-        <a href="signup.html" id="to-create">Sign Up</a>
-      </p>
-    </section>
-  </main>
+			<p class="login_switch">
+				Don't have an account?
+				<a href="signup.html" id="to-create">Sign Up</a>
+			</p>
+		</section>
+	</main>
 
-  <script>
-    const splash = document.getElementById("splash");
-    const login = document.getElementById("screen-login");
+	<script>
+		const splash = document.getElementById("splash");
+		const loginScreen = document.getElementById("screen-login");
+		const loginForm = document.getElementById("login_form");
 
-    const form = document.getElementById("login__form");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        window.location.href = "index.html";
-      });
-    }
+		function showLogin() {
+			loginScreen.classList.remove("is-hidden");
+		}
 
-    function showLogin() {
-      login.classList.remove("is-hidden");
-    }
+		if (loginForm) {
+			loginForm.addEventListener("submit", (e) => {
+				e.preventDefault();
+				window.location.href = "index.html";
+			});
+		}
 
-    const shouldSkip = sessionStorage.getItem("skipSplashOnce") === "1";
+		const shouldSkip = sessionStorage.getItem("skipSplashOnce") === "1";
 
-    if (shouldSkip) {
-      sessionStorage.removeItem("skipSplashOnce");
-      splash.remove();
-      showLogin();
-    } else {
-      setTimeout(() => {
-        splash.classList.add("is-hidden");
-        setTimeout(() => splash.remove(), 350);
-        showLogin();
-      }, 1000);
-    }
-  </script>
-
+		if (shouldSkip) {
+			sessionStorage.removeItem("skipSplashOnce");
+			splash.remove();
+			showLogin();
+		} else {
+			setTimeout(() => {
+				splash.classList.add("is-hidden");
+				setTimeout(() => splash.remove(), 350);
+				showLogin();
+			}, 1000);
+		}
+	</script>
 </body>
 </html>

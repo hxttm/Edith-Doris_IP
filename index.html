@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Dream — Home</title>
+        <link rel="stylesheet" href="./phone.css" />
+    </head>
+
+    <body>
+        <div class="dreamhome">
+            <main class="dreamhome_screen" aria-label="Dream Home">
+                <header class="dreamhome_top">
+                    <div class="dreamhome_hello">
+                        <div class="dreamhome_title">
+                            Hello, <span class="dreamhome_name">Edith</span>!
+                        </div>
+                    </div>
+
+                    <button class="dreamhome_gem_pill" aria-label="Gems">
+                        <span class="dreamhome_gem_icon" aria-hidden="true"></span>
+                        <span class="dreamhome_gem_count">10</span>
+                    </button>
+                </header>
+
+                <section class="dreamhome_weekly" aria-label="Weekly progress">
+                    <div class="dreamhome_weekly_title">Weekly Progress</div>
+
+                    <div class="dreamhome_weekly_row">
+                        <div class="dreamhome_weekly_day" data-hours="5">
+                            <div class="dreamhome_weekly_dow">SUN</div>
+                            <div class="dreamhome_weekly_hours">5H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="3">
+                            <div class="dreamhome_weekly_dow">MON</div>
+                            <div class="dreamhome_weekly_hours">3H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="4">
+                            <div class="dreamhome_weekly_dow">TUE</div>
+                            <div class="dreamhome_weekly_hours">4H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="7">
+                            <div class="dreamhome_weekly_dow">WED</div>
+                            <div class="dreamhome_weekly_hours">7H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="2">
+                            <div class="dreamhome_weekly_dow">THU</div>
+                            <div class="dreamhome_weekly_hours">2H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="0">
+                            <div class="dreamhome_weekly_dow">FRI</div>
+                            <div class="dreamhome_weekly_hours">0H</div>
+                        </div>
+
+                        <div class="dreamhome_weekly_day" data-hours="0">
+                            <div class="dreamhome_weekly_dow">SAT</div>
+                            <div class="dreamhome_weekly_hours">0H</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dreamhome_hero" aria-label="Focus session">
+                    <div class="dreamhome_hero_img" role="img" aria-label="Cosmic buddy artwork"></div>
+
+                    <div class="dreamhome_hero_actions">
+                        <div class="dreamhome_left_actions">
+                            <button class="dreamhome_pill">Daily spin</button>
+                            <button class="dreamhome_pill">Leaderboard</button>
+                        </div>
+
+                        <div class="dreamhome_right_actions">
+                            <div class="dreamhome_timer" aria-label="Timer">00:00:00</div>
+                            <button class="dreamhome_cta">Start Now</button>
+                        </div>
+                    </div>
+                </section>
+
+                <nav class="dreamhome_nav" aria-label="Bottom navigation">
+                    <button class="dreamhome_nav_item" aria-label="NoteVault">
+                        <span class="dreamhome_nav_icon dreamhome_nav_icon_notes" aria-hidden="true"></span>
+                        <span class="dreamhome_nav_label">Vault</span>
+                    </button>
+
+                    <button class="dreamhome_nav_item" aria-label="StudyBazaar">
+                        <span class="dreamhome_nav_icon dreamhome_nav_icon_shop" aria-hidden="true"></span>
+                        <span class="dreamhome_nav_label">Bazaar</span>
+                    </button>
+
+                    <button class="dreamhome_nav_item dreamhome_nav_item_active" aria-label="Home" aria-current="page">
+                        <span class="dreamhome_nav_icon dreamhome_nav_icon_home" aria-hidden="true"></span>
+                        <span class="dreamhome_nav_label">Home</span>
+                    </button>
+
+                    <button class="dreamhome_nav_item" aria-label="Buddy">
+                        <span class="dreamhome_nav_icon dreamhome_nav_icon_buddy" aria-hidden="true"></span>
+                        <span class="dreamhome_nav_label">Buddy</span>
+                    </button>
+
+                    <button class="dreamhome_nav_item" aria-label="Settings">
+                        <span class="dreamhome_nav_icon dreamhome_nav_icon_gear" aria-hidden="true"></span>
+                        <span class="dreamhome_nav_label">Settings</span>
+                    </button>
+                </nav>
+
+                <section class="dreamhome_sheet" id="dreamhome_quest_sheet" aria-label="Active quests" data-state="collapsed">
+                    <div class="dreamhome_sheet_grab" role="button" tabindex="0" aria-label="Drag to expand quests">
+                        <div class="dreamhome_grab_handle" aria-hidden="true"></div>
+                        <div class="dreamhome_sheet_title">Active Quests</div>
+                    </div>
+
+                    <div class="dreamhome_sheet_body" aria-hidden="true">
+                        <div class="dreamhome_quest_card">
+                            <div class="dreamhome_quest_head">
+                                <div class="dreamhome_quest_gems">10 Gems</div>
+                            </div>
+
+                            <ul class="dreamhome_quest_list">
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Complete 3 Pomodoro sessions
+                                </li>
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Take quick notes
+                                </li>
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Revise flashcards for 10 minutes
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="dreamhome_quest_card">
+                            <div class="dreamhome_quest_head">
+                                <div class="dreamhome_quest_gems">20 Gems</div>
+                            </div>
+
+                            <ul class="dreamhome_quest_list">
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Review 1 topic summary
+                                </li>
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Do 20 practice questions
+                                </li>
+                                <li class="dreamhome_quest_item">
+                                    <span class="dreamhome_dot"></span>
+                                    Teach a concept (write or record a short explanation)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script>
+            const dreamhome_weekly_tiles = document.querySelectorAll(".dreamhome_weekly_day");
+            const dreamhome_weekly_hours = Array.from(dreamhome_weekly_tiles).map((t) => Number(t.dataset.hours || 0));
+            const dreamhome_weekly_max = Math.max(1, ...dreamhome_weekly_hours);
+
+            dreamhome_weekly_tiles.forEach((tile) => {
+                const h = Number(tile.dataset.hours || 0);
+                const t = h / dreamhome_weekly_max;
+                const intensity = 0.18 + (t * 0.62);
+                tile.style.setProperty("--dreamhome_intensity", intensity.toFixed(3));
+            });
+
+            const dreamhome_sheet = document.getElementById("dreamhome_quest_sheet");
+            const dreamhome_grab = dreamhome_sheet.querySelector(".dreamhome_sheet_grab");
+            const dreamhome_body = dreamhome_sheet.querySelector(".dreamhome_sheet_body");
+
+            const dreamhome_collapsed = 76;
+            const dreamhome_expanded = 520;
+
+            let dreamhome_start_y = 0;
+            let dreamhome_start_h = dreamhome_collapsed;
+            let dreamhome_dragging = false;
+
+            function dreamhome_set_height(h) {
+                const dreamhome_clamped = Math.max(dreamhome_collapsed, Math.min(dreamhome_expanded, h));
+                dreamhome_sheet.style.setProperty("--dreamhome_sheet_h", dreamhome_clamped + "px");
+
+                const dreamhome_is_expanded = dreamhome_clamped > (dreamhome_collapsed + dreamhome_expanded) / 2;
+                dreamhome_sheet.dataset.state = dreamhome_is_expanded ? "expanded" : "collapsed";
+                dreamhome_body.setAttribute("aria-hidden", dreamhome_is_expanded ? "false" : "true");
+            }
+
+            function dreamhome_open_sheet() {
+                dreamhome_set_height(dreamhome_expanded);
+            }
+
+            function dreamhome_close_sheet() {
+                dreamhome_set_height(dreamhome_collapsed);
+            }
+
+            function dreamhome_on_down(client_y) {
+                dreamhome_dragging = true;
+                dreamhome_sheet.classList.add("dreamhome_sheet_dragging");
+                dreamhome_start_y = client_y;
+
+                const dreamhome_css_h = getComputedStyle(dreamhome_sheet).getPropertyValue("--dreamhome_sheet_h");
+                dreamhome_start_h = parseFloat(dreamhome_css_h) || dreamhome_collapsed;
+            }
+
+            function dreamhome_on_move(client_y) {
+                if (!dreamhome_dragging) return;
+
+                const dreamhome_dy = dreamhome_start_y - client_y;
+                dreamhome_set_height(dreamhome_start_h + dreamhome_dy);
+            }
+
+            function dreamhome_on_up() {
+                if (!dreamhome_dragging) return;
+
+                dreamhome_dragging = false;
+                dreamhome_sheet.classList.remove("dreamhome_sheet_dragging");
+
+                const dreamhome_css_h = getComputedStyle(dreamhome_sheet).getPropertyValue("--dreamhome_sheet_h");
+                const dreamhome_h = parseFloat(dreamhome_css_h) || dreamhome_collapsed;
+
+                const dreamhome_should_open = dreamhome_h > (dreamhome_collapsed + dreamhome_expanded) / 2;
+                dreamhome_should_open ? dreamhome_open_sheet() : dreamhome_close_sheet();
+            }
+
+            dreamhome_grab.addEventListener("mousedown", (e) => dreamhome_on_down(e.clientY));
+            window.addEventListener("mousemove", (e) => dreamhome_on_move(e.clientY));
+            window.addEventListener("mouseup", dreamhome_on_up);
+
+            dreamhome_grab.addEventListener(
+                "touchstart",
+                (e) => dreamhome_on_down(e.touches[0].clientY),
+                { passive: true }
+            );
+            window.addEventListener(
+                "touchmove",
+                (e) => dreamhome_on_move(e.touches[0].clientY),
+                { passive: true }
+            );
+            window.addEventListener("touchend", dreamhome_on_up);
+
+            dreamhome_grab.addEventListener("click", () => {
+                dreamhome_sheet.dataset.state === "expanded" ? dreamhome_close_sheet() : dreamhome_open_sheet();
+            });
+
+            dreamhome_grab.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    dreamhome_sheet.dataset.state === "expanded" ? dreamhome_close_sheet() : dreamhome_open_sheet();
+                }
+            });
+
+            dreamhome_set_height(dreamhome_collapsed);
+        </script>
+    </body>
+</html>

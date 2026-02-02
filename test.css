@@ -1,18 +1,3 @@
-.login__buddies{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 0 auto 16px;
-}
-
-.login__title{
-    min-width: 285px;
-    max-width: 430px;
-
-    padding-right: 76px;
-    padding-bottom: 40px;
-}
-
 .buddy{
     border: 0;
     padding: 0;

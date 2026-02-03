@@ -50,6 +50,19 @@
 	</main>
 
 	<script>
+		            const signup_orange_btn = document.getElementById("signup_orange_btn");
+            const signup_blue_btn = document.getElementById("signup_blue_btn");
+
+            signup_orange_btn.addEventListener("click", () => {
+                localStorage.setItem("dream_buddy", "orange");
+                window.location.href = "./index.html";
+            });
+
+            signup_blue_btn.addEventListener("click", () => {
+                localStorage.setItem("dream_buddy", "blue");
+                window.location.href = "./index.html";
+            });
+
 		const goLogin = document.getElementById("go-login");
 		if (goLogin) {
 			goLogin.addEventListener("click", () => {

@@ -68,7 +68,7 @@
 
                 <section class="dreamhome_hero" aria-label="Focus session">
                     <div class="dreamhome_hero_img_wrap">
-                        <img class="dreamhome_hero_img" src="assets/home/blue.jpg" alt="Study buddy " />
+                <img id="dreamhome_hero_img" class="dreamhome_hero_img" src="assets/home/blue.jpg" alt="Study buddy" />
                     </div>
 
                     <div class="dreamhome_hero_actions">
@@ -165,6 +165,18 @@
         </div>
 
         <script>
+            const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
+            const dreamhome_root = document.querySelector(".dreamhome");
+            const dreamhome_img = document.getElementById("dreamhome_hero_img");
+
+            if (dream_buddy === "orange") {
+                dreamhome_root.classList.add("dreamhome_theme_orange");
+                if (dreamhome_img) dreamhome_img.src = "assets/home/orange.jpg";
+            } else {
+                dreamhome_root.classList.remove("dreamhome_theme_orange");
+                if (dreamhome_img) dreamhome_img.src = "assets/home/blue.jpg";
+            }
+
             const dreamhome_weekly_tiles = document.querySelectorAll(".dreamhome_weekly_day");
             const dreamhome_weekly_hours = Array.from(dreamhome_weekly_tiles).map((t) => Number(t.dataset.hours || 0));
             const dreamhome_weekly_max = Math.max(1, ...dreamhome_weekly_hours);
@@ -262,5 +274,6 @@
 
             dreamhome_set_height(dreamhome_collapsed);
         </script>
+
     </body>
 </html>

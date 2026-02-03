@@ -213,10 +213,27 @@ body{
     --dreamhome_bg: #90bccb;
     --dreamhome_text: #0b2a35;
 
+    --dreamhome_panel: rgba(90, 150, 175, 0.75);
+    --dreamhome_panel_2: rgba(90, 150, 175, 0.55);
+
+    --dreamhome_weekly_bg: rgba(0,0,0,0.12);
+    --dreamhome_weekly_tile_rgb: 30, 92, 115;
+
+    --dreamhome_card: rgba(255,255,255,0.18);
+
+    --dreamhome_accent: rgba(120, 190, 215, 0.45);
+    --dreamhome_accent_border: rgba(0,0,0,0.35);
+
+    --dreamhome_nav_bg: rgba(0,0,0,0.18);
+
+    --dreamhome_sheet_bg: rgba(80,135,156,0.95);
+    --dreamhome_quest_card_bg: rgba(201,225,238,0.92);
+
     --dreamhome_nav_h: 84px;
     --dreamhome_radius: 18px;
     --dreamhome_sheet_h: 76px;
 }
+
 
 .dreamhome .dreamhome_screen{
     width: 100vw;
@@ -238,7 +255,7 @@ body{
     overflow: hidden;
 }
 .dreamhome .dreamhome_top_left{
-    background: rgba(90, 150, 175, 0.75);
+    background: var(--dreamhome_panel);
     padding: 18px 16px;
     display: flex;
     align-items: center;
@@ -246,7 +263,7 @@ body{
 }
 
 .dreamhome .dreamhome_top_right{
-    background: rgba(90, 150, 175, 0.55);
+    background: var(--dreamhome_panel_2);
     padding: 12px;
     display: flex;
     align-items: center;
@@ -284,7 +301,7 @@ body{
 
 .dreamhome .dreamhome_weekly{
     margin-top: 12px;
-    background: rgba(0,0,0,0.12);
+    background: var(--dreamhome_weekly_bg);
     border-radius: 14px;
     padding: 12px;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
@@ -308,7 +325,7 @@ body{
     --dreamhome_intensity: 0.2;
     height: 80px;
     border-radius: 14px;
-    background: rgba(30,92,115, var(--dreamhome_intensity));
+    background: rgba(var(--dreamhome_weekly_tile_rgb), var(--dreamhome_intensity));
     border: 2px solid rgba(0,0,0,0.25);
     box-shadow: 0 8px 0 rgba(0,0,0,0.18);
     display: flex;
@@ -332,7 +349,7 @@ body{
 
 .dreamhome .dreamhome_hero{
     margin-top: 12px;
-    background: rgba(255,255,255,0.18);
+    background: var(--dreamhome_card);
     border-radius: 16px;
     padding: 12px;
 }
@@ -368,8 +385,8 @@ body{
     width: 140px;
     padding: 10px 14px;
     border-radius: 999px;
-    border: 2px solid rgba(0,0,0,0.35);
-    background: rgba(120, 190, 215, 0.45);
+    border: 2px solid var(--dreamhome_accent_border);
+    background: var(--dreamhome_accent);
     color: rgba(255,255,255,0.92);
     font-weight: 600;
     font-size: 18px;
@@ -394,8 +411,8 @@ body{
     width: 200px;
     padding: 10px;
     border-radius: 999px;
-    border: 2px solid rgba(0,0,0,0.35);
-    background: rgba(120, 190, 215, 0.45);
+    border: 2px solid var(--dreamhome_accent_border);
+    background: var(--dreamhome_accent);
     color: rgba(255,255,255,0.92);
     font-weight: 600;
     font-size: 18px;
@@ -408,7 +425,7 @@ body{
     right: 12px;
     bottom: 12px;
     height: var(--dreamhome_nav_h);
-    background: rgba(0,0,0,0.18);
+    background: var(--dreamhome_nav_bg);
     border-radius: 16px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -480,7 +497,7 @@ body{
     right: 0;
     bottom: calc(var(--dreamhome_nav_h) + 20px);
     height: var(--dreamhome_sheet_h);
-    background: rgba(80,135,156,0.95);
+    background: var(--dreamhome_sheet_bg);
     border-top-left-radius: 18px;
     border-top-right-radius: 18px;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.18);
@@ -525,7 +542,7 @@ body{
 }
 
 .dreamhome .dreamhome_quest_card{
-    background: rgba(201,225,238,0.92);
+    background: var(--dreamhome_quest_card_bg);
     border-radius: 14px;
     padding: 12px 12px 10px;
     color: #12323e;
@@ -571,6 +588,29 @@ body{
     margin-top: 5px;
     flex: 0 0 auto;
 }
+
+.dreamhome.dreamhome_theme_orange{
+    --dreamhome_bg: #f18a2a;
+
+    --dreamhome_panel: rgba(210, 120, 55, 0.72);
+    --dreamhome_panel_2: rgba(210, 120, 55, 0.52);
+
+    --dreamhome_weekly_bg: rgba(0,0,0,0.12);
+    --dreamhome_weekly_tile_rgb: 135, 58, 18;
+
+    --dreamhome_card: rgba(255,255,255,0.14);
+
+    --dreamhome_accent: rgba(255, 210, 165, 0.26);
+    --dreamhome_accent_border: rgba(95, 40, 12, 0.45);
+
+    --dreamhome_nav_bg: rgba(0,0,0,0.14);
+
+    --dreamhome_sheet_bg: rgba(205, 110, 45, 0.95);
+    --dreamhome_quest_card_bg: rgba(255, 228, 206, 0.92);
+
+    --dreamhome_text: #3a1a08;
+}
+
 
 .dreamsettings{
     --dreamsettings_bg: #9cc9dc;
@@ -833,3 +873,4 @@ body{
 .dreamsettings .dreamsettings_modal_btn_primary{
     background: rgba(40,140,170,0.35);
 }
+

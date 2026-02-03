@@ -14,10 +14,10 @@
 			<img class="select" src="assets/signup/select.png" alt="Choose your dream Study Buddy" />
 
 			<div class="signup_buddies">
-				<button class="buddy buddy--orange" type="button" aria-label="Buddy 1">
+				<button class="buddy buddy--orange" type="button" data-buddy="orange">
 					<img src="assets/signup/orange.png" alt="orange fox-like mystic creature" />
 				</button>
-				<button class="buddy buddy--blue" type="button" aria-label="Buddy 2">
+				<button class="buddy buddy--blue" type="button" data-buddy="blue">
 					<img src="assets/signup/blue.jpg" alt="blue cat-like mystic creature" />
 				</button>
 			</div>
@@ -50,41 +50,49 @@
 	</main>
 
 	<script>
-		            const signup_orange_btn = document.getElementById("signup_orange_btn");
-            const signup_blue_btn = document.getElementById("signup_blue_btn");
+        const buddies = document.querySelectorAll(".buddy");
 
-            signup_orange_btn.addEventListener("click", () => {
-                localStorage.setItem("dream_buddy", "orange");
-                window.location.href = "./index.html";
+        function set_buddy(theme) {
+            localStorage.setItem("dream_buddy", theme);
+
+            buddies.forEach((btn) => {
+                btn.classList.toggle("is-selected", btn.dataset.buddy === theme);
             });
+        }
 
-            signup_blue_btn.addEventListener("click", () => {
-                localStorage.setItem("dream_buddy", "blue");
-                window.location.href = "./index.html";
+        buddies.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                set_buddy(btn.dataset.buddy);
             });
+        });
 
-		const goLogin = document.getElementById("go-login");
-		if (goLogin) {
-			goLogin.addEventListener("click", () => {
-				sessionStorage.setItem("skipSplashOnce", "1");
-			});
-		}
+        const saved = localStorage.getItem("dream_buddy");
+        if (saved === "orange" || saved === "blue") {
+            set_buddy(saved);
+        }
 
-		const buddies = document.querySelectorAll(".buddy");
-		buddies.forEach((btn) => {
-			btn.addEventListener("click", () => {
-				const theme = btn.classList.contains("buddy--orange") ? "orange" : "blue";
-				sessionStorage.setItem("theme", theme);
-			});
-		});
+        const goLogin = document.getElementById("go-login");
+        if (goLogin) {
+            goLogin.addEventListener("click", () => {
+                sessionStorage.setItem("skipSplashOnce", "1");
+            });
+        }
 
-		const form = document.getElementById("signupForm");
-		if (form) {
-			form.addEventListener("submit", (e) => {
-				e.preventDefault();
-				window.location.href = "index.html";
-			});
-		}
+        const form = document.getElementById("signupForm");
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                if (!localStorage.getItem("dream_buddy")) {
+                    set_buddy("blue");
+                }
+
+                window.location.href = "index.html";
+            });
+        }
 	</script>
+
+
 </body>
 </html>

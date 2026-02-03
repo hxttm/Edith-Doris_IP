@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Dream — Home</title>
-        <link rel="stylesheet" href="./phone.css" />
+        <link rel="stylesheet" href="phone.css" />
     </head>
 
     <body>
@@ -68,7 +68,7 @@
 
                 <section class="dreamhome_hero" aria-label="Focus session">
                     <div class="dreamhome_hero_img_wrap">
-                <img id="dreamhome_hero_img" class="dreamhome_hero_img" src="assets/home/blue.jpg" alt="Study buddy" />
+                        <img id="dreamhome_hero_img" class="dreamhome_hero_img" src="assets/home/blue.jpg" alt="Study buddy" />
                     </div>
 
                     <div class="dreamhome_hero_actions">
@@ -169,12 +169,12 @@
             const dreamhome_root = document.querySelector(".dreamhome");
             const dreamhome_img = document.getElementById("dreamhome_hero_img");
 
-            if (dream_buddy === "orange") {
-                dreamhome_root.classList.add("dreamhome_theme_orange");
-                if (dreamhome_img) dreamhome_img.src = "assets/home/orange.jpg";
-            } else {
-                dreamhome_root.classList.remove("dreamhome_theme_orange");
-                if (dreamhome_img) dreamhome_img.src = "assets/home/blue.jpg";
+            dreamhome_root.classList.toggle("dreamhome_theme_orange", dream_buddy === "orange");
+
+            if (dreamhome_img) {
+                dreamhome_img.src = (dream_buddy === "orange")
+                    ? "assets/home/orange.png"
+                    : "assets/home/blue.jpg";
             }
 
             const dreamhome_weekly_tiles = document.querySelectorAll(".dreamhome_weekly_day");

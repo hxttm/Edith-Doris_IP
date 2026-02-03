@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream — Account</title>
+  <link rel="stylesheet" href="phone.css" />
+</head>
+
+<body>
+  <div class="dreamaccount" id="dreamaccount_root">
+    <main class="dreamaccount_screen" aria-label="Account">
+      <header class="dreamaccount_top">
+        <a class="dreamaccount_back" href="./settings.html" aria-label="Back">‹</a>
+        <div class="dreamaccount_title">Account</div>
+        <div class="dreamaccount_top_spacer"></div>
+      </header>
+
+      <section class="dreamaccount_list" aria-label="Account options">
+        <button class="dreamaccount_row" type="button" data-open="modal-password-old">
+          <span>Change Password</span>
+          <span class="dreamaccount_chev" aria-hidden="true">›</span>
+        </button>
+
+        <button class="dreamaccount_row" type="button" data-open="modal-edu">
+          <span>Educational Level</span>
+          <span class="dreamaccount_chev" aria-hidden="true">›</span>
+        </button>
+
+        <button class="dreamaccount_row" type="button" data-open="modal-delete" >
+            <span>Delete Account</span>
+            <span class="dreamaccount_chev" aria-hidden="true">›</span>
+        </button>
+      </section>
+    </main>
+
+<div class="dreammodal" id="modal-password-old" role="dialog" aria-modal="true" aria-label="Old password" aria-hidden="true">
+  <div class="dreammodal_panel dreammodal_panel_popup" role="document">
+    <button class="dreammodal_x" type="button" data-close aria-label="Close">×</button>
+
+    <div class="dreampopup_label">Enter Your Old Password:</div>
+
+    <div class="dreampopup_pin_row" data-pin-row="old">
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="Old password digit 1" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="Old password digit 2" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="Old password digit 3" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="Old password digit 4" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="Old password digit 5" />
+    </div>
+
+    <div class="dreampopup_actions_center">
+      <button class="dreampopup_btn" type="button" id="btnOldPwdEnter">Enter</button>
+    </div>
+  </div>
+</div>
+
+<div class="dreammodal" id="modal-password-new" role="dialog" aria-modal="true" aria-label="New password" aria-hidden="true">
+  <div class="dreammodal_panel dreammodal_panel_popup" role="document">
+    <button class="dreammodal_x" type="button" data-close aria-label="Close">×</button>
+
+    <div class="dreampopup_label">Enter Your New Password:</div>
+
+    <div class="dreampopup_pin_row" data-pin-row="new">
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="New password digit 1" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="New password digit 2" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="New password digit 3" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="New password digit 4" />
+      <input class="dreampopup_pin" inputmode="numeric" maxlength="1" aria-label="New password digit 5" />
+    </div>
+
+    <div class="dreampopup_actions_center">
+      <button class="dreampopup_btn" type="button" id="btnNewPwdChange">Change</button>
+    </div>
+  </div>
+</div>
+
+<div class="dreammodal" id="modal-consent" role="dialog" aria-modal="true" aria-label="Parental approval" aria-hidden="true">
+  <div class="dreammodal_panel dreammodal_panel_popup" role="document">
+    <button class="dreammodal_x" type="button" data-close aria-label="Close">×</button>
+
+    <div class="dreampopup_label">Approval required for:</div>
+
+    <div class="dreampopup_radio_group" role="radiogroup" aria-label="Approval required for">
+      <label class="dreampopup_radio">
+        <input type="radio" name="consent" value="notes" checked />
+        <span>Sell, buy notes</span>
+      </label>
+      <label class="dreampopup_radio">
+        <input type="radio" name="consent" value="chat" />
+        <span>Chat</span>
+      </label>
+      <label class="dreampopup_radio">
+        <input type="radio" name="consent" value="friends" />
+        <span>Adding friends</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="dreammodal" id="modal-edu" role="dialog" aria-modal="true" aria-label="Educational level" aria-hidden="true">
+  <div class="dreammodal_panel dreammodal_panel_popup" role="document">
+    <button class="dreammodal_x" type="button" data-close aria-label="Close">×</button>
+
+    <div class="dreampopup_radio_group" role="radiogroup" aria-label="Educational level">
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="Primary" checked /> <span>Primary</span></label>
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="Secondary" /> <span>Secondary</span></label>
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="Polytechnic" /> <span>Polytechnic</span></label>
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="Junior College" /> <span>Junior College</span></label>
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="University" /> <span>University</span></label>
+      <label class="dreampopup_radio"><input type="radio" name="edu" value="Others" /> <span>Others</span></label>
+    </div>
+  </div>
+</div>
+
+<div class="dreammodal" id="modal-delete" role="dialog" aria-modal="true" aria-label="Delete account" aria-hidden="true">
+  <div class="dreammodal_panel dreammodal_panel_popup dreammodal_panel_confirm" role="document">
+    <button class="dreammodal_x" type="button" data-close aria-label="Close">×</button>
+
+    <div class="dreampopup_confirm_title">Permanently delete account?</div>
+    <div class="dreampopup_confirm_sub">This action cannot be undone.</div>
+
+    <div class="dreampopup_actions">
+      <button class="dreampopup_btn_small" type="button" data-close>Cancel</button>
+      <button class="dreampopup_btn_small dreampopup_btn_small_primary" type="button" id="btnDeleteConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+
+    <div class="dreammodal" id="modal-edu" role="dialog" aria-modal="true" aria-label="Educational Level" aria-hidden="true">
+      <div class="dreammodal_panel" role="document">
+        <div class="dreammodal_header">
+          <div class="dreammodal_title">Educational Level</div>
+          <button class="dreammodal_close" type="button" data-close aria-label="Close">×</button>
+        </div>
+
+        <form class="dreammodal_body" id="formEdu">
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="Primary" checked /> <span>Primary</span></label>
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="Secondary" /> <span>Secondary</span></label>
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="Polytechnic" /> <span>Polytechnic</span></label>
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="Junior College" /> <span>Junior College</span></label>
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="University" /> <span>University</span></label>
+          <label class="dreammodal_radio"><input type="radio" name="edu" value="Others" /> <span>Others</span></label>
+
+          <div class="dreammodal_actions">
+            <button class="dreammodal_btn" type="button" data-close>Cancel</button>
+            <button class="dreammodal_btn dreammodal_btn_primary" type="submit">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dreammodal" id="modal-delete" role="dialog" aria-modal="true" aria-label="Delete Account" aria-hidden="true">
+      <div class="dreammodal_panel" role="document">
+        <div class="dreammodal_header">
+          <div class="dreammodal_title">Delete Account</div>
+          <button class="dreammodal_close" type="button" data-close aria-label="Close">×</button>
+     </div>
+
+        <div class="dreammodal_body">
+          <div class="dreammodal_text_title">Permanently delete account?</div>
+          <div class="dreammodal_text_sub">This action cannot be undone.</div>
+
+          <div class="dreammodal_actions">
+            <button class="dreammodal_btn" type="button" data-close>Cancel</button>
+            <button class="dreammodal_btn dreammodal_btn_primary dreammodal_btn_danger" type="button" id="btnDeleteConfirm">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function closeAnyOpenModal() {
+    const open = document.querySelector(".dreammodal.dreammodal_open");
+    if (open) closeModal(open);
+    }
+
+    function openModal(modalId, triggerEl) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    closeAnyOpenModal();
+
+    lastTrigger = triggerEl || null;
+    modal.classList.add("dreammodal_open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    (getFocusable(modal)[0] || modal).focus?.();
+    }
+
+    const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
+    document.getElementById("dreamaccount_root")
+      ?.classList.toggle("dreamaccount_theme_orange", dream_buddy === "orange");
+
+    let lastTrigger = null;
+
+    function getFocusable(root) {
+      return Array.from(root.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(el => !el.hasAttribute("disabled"));
+    }
+
+    function openModal(modalId, triggerEl) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+      lastTrigger = triggerEl || null;
+      modal.classList.add("dreammodal_open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      (getFocusable(modal)[0] || modal).focus?.();
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove("dreammodal_open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastTrigger) lastTrigger.focus();
+      lastTrigger = null;
+    }
+
+    document.querySelectorAll("[data-open]").forEach(btn => {
+      btn.addEventListener("click", () => openModal(btn.dataset.open, btn));
+    });
+
+    document.querySelectorAll(".dreammodal [data-close]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const modal = btn.closest(".dreammodal");
+        if (modal) closeModal(modal);
+      });
+    });
+
+    document.querySelectorAll(".dreammodal").forEach(modal => {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal(modal);
+      });
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const open = document.querySelector(".dreammodal.dreammodal_open");
+      if (open) closeModal(open);
+    });
+
+    document.getElementById("formChangePassword")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      closeModal(document.getElementById("modal-password"));
+    });
+
+    document.getElementById("formConsent")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      closeModal(document.getElementById("modal-consent"));
+    });
+
+    document.getElementById("formEdu")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const picked = document.querySelector('input[name="edu"]:checked')?.value;
+      if (picked) localStorage.setItem("dream_edu", picked);
+      closeModal(document.getElementById("modal-edu"));
+    });
+
+    document.getElementById("btnDeleteConfirm")?.addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "./login.html";
+    });
+
+     function wirePinRow(rowEl) {
+        const inputs = Array.from(rowEl.querySelectorAll(".dreampopup_pin"));
+
+        inputs.forEach((input, idx) => {
+        input.addEventListener("input", () => {
+            input.value = (input.value || "").replace(/[^0-9]/g, "").slice(0, 1);
+
+            if (input.value && idx < inputs.length - 1) {
+            inputs[idx + 1].focus();
+            }
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !input.value && idx > 0) {
+            inputs[idx - 1].focus();
+            }
+        });
+        });
+    }
+
+    document.querySelectorAll("[data-pin-row]").forEach(wirePinRow);
+
+    const btnOldPwdEnter = document.getElementById("btnOldPwdEnter");
+    btnOldPwdEnter?.addEventListener("click", () => {
+        const oldModal = document.getElementById("modal-password-old");
+        if (oldModal) closeModal(oldModal);
+        openModal("modal-password-new", btnOldPwdEnter);
+    });
+
+    const btnNewPwdChange = document.getElementById("btnNewPwdChange");
+    btnNewPwdChange?.addEventListener("click", () => {
+        const newModal = document.getElementById("modal-password-new");
+        if (newModal) closeModal(newModal);
+    });
+  </script>
+</body>
+</html>

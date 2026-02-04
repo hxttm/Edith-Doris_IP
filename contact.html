@@ -20,33 +20,41 @@
         <div class="ui_field"><input class="ui_input" placeholder="Username" /></div>
         <div class="ui_field"><input class="ui_input" placeholder="Email" /></div>
         <div class="ui_field"><textarea class="ui_textarea" placeholder="Message"></textarea></div>
-        <div class="ui_field"><input class="ui_input" placeholder="Attach a file (Optional)" /></div>
+        <div class="ui_field">
+          <input type="file" id="fileAttach" class="ui_input" placeholder="Attach a file (Optional)" accept="*/*" />
+          <div id="filePreview" class="file-preview" style="display:none;">
+            <span class="file-icon">📎</span>
+            <span id="fileName"></span>
+            <button type="button" class="file-remove" onclick="clearFile()">✕</button>
+          </div>
+        </div>
+
         <div class="center_btn"><button class="ui_btn" type="button">Send</button></div>
       </form>
     </main>
-
-    <nav class="ui_nav" aria-label="Bottom navigation">
-      <a class="ui_nav_item" href="./notes-market.html" aria-label="Vault">
-        <span class="ui_nav_icon ui_nav_icon_notes" aria-hidden="true"></span>
-        <span class="ui_nav_label">Vault</span>
-      </a>
-      <a class="ui_nav_item" href="./sell.html" aria-label="Bazaar">
-        <span class="ui_nav_icon ui_nav_icon_shop" aria-hidden="true"></span>
-        <span class="ui_nav_label">Bazaar</span>
-      </a>
-      <a class="ui_nav_item" href="./home.html" aria-label="Home">
-        <span class="ui_nav_icon ui_nav_icon_home" aria-hidden="true"></span>
-        <span class="ui_nav_label">Home</span>
-      </a>
-      <a class="ui_nav_item" href="./buddy.html" aria-label="Buddy">
-        <span class="ui_nav_icon ui_nav_icon_buddy" aria-hidden="true"></span>
-        <span class="ui_nav_label">Buddy</span>
-      </a>
-      <a class="ui_nav_item ui_nav_item_active" href="./settings.html" aria-label="Settings" aria-current="page">
-        <span class="ui_nav_icon ui_nav_icon_gear" aria-hidden="true"></span>
-        <span class="ui_nav_label">Settings</span>
-      </a>
-    </nav>
   </div>
+
+  <nav class="ui_nav" aria-label="Bottom navigation">
+      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+          <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+        </a>
+
+      <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+          <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+          <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+          <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+          <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+        </a>
+  </nav>
+
 </body>
 </html>

@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <div class="dreamhome">
+        <div class="dreampage dreamhome has-nav blue" id="pageRoot">
             <main class="dreamhome_screen" aria-label="Dream Home">
             <header class="dreamhome_top">
                 <div class="dreamhome_top_left">
@@ -78,38 +78,34 @@
                         </div>
 
                         <div class="dreamhome_right_actions">
-                            <div class="dreamhome_timer" aria-label="Timer">00:00:00</div>
-                            <button class="dreamhome_cta">Start Now</button>
+                            <div id="homeTimer" class="dreamhome_timer" aria-label="Timer">00:00:00</div>
+                            <button id="homeTimerBtn" class="dreamhome_cta">Start Now</button>
                         </div>
                     </div>
                 </section>
 
-                <nav class="dreamhome_nav" aria-label="Bottom navigation">
-                    <button class="dreamhome_nav_item" aria-label="NoteVault">
-                        <span class="dreamhome_nav_icon dreamhome_nav_icon_notes" aria-hidden="true"></span>
-                        <span class="dreamhome_nav_label">Vault</span>
-                    </button>
+                <nav class="ui_nav" aria-label="Bottom navigation">
+                    <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+                        <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+                    </a>
 
-                    <button class="dreamhome_nav_item" aria-label="StudyBazaar">
-                        <span class="dreamhome_nav_icon dreamhome_nav_icon_shop" aria-hidden="true"></span>
-                        <span class="dreamhome_nav_label">Bazaar</span>
-                    </button>
+                    <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+                        <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+                    </a>
 
-                    <button class="dreamhome_nav_item dreamhome_nav_item_active" aria-label="Home" aria-current="page">
-                        <span class="dreamhome_nav_icon dreamhome_nav_icon_home" aria-hidden="true"></span>
-                        <span class="dreamhome_nav_label">Home</span>
-                    </button>
+                    <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+                        <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+                    </a>
 
-                    <button class="dreamhome_nav_item" aria-label="Buddy">
-                        <span class="dreamhome_nav_icon dreamhome_nav_icon_buddy" aria-hidden="true"></span>
-                        <span class="dreamhome_nav_label">Buddy</span>
-                    </button>
+                    <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+                        <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+                    </a>
 
-                    <a class="dreamhome_nav_item" href="settings.html" aria-label="Settings">
-                        <span class="dreamhome_nav_icon dreamhome_nav_icon_gear" aria-hidden="true"></span>
-                        <span class="dreamhome_nav_label">Settings</span>
+                    <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+                        <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
                     </a>
                 </nav>
+
 
                 <section class="dreamhome_sheet" id="dreamhome_quest_sheet" aria-label="Active quests" data-state="collapsed">
                     <div class="dreamhome_sheet_grab" role="button" tabindex="0" aria-label="Drag to expand quests">
@@ -166,10 +162,11 @@
 
         <script>
             const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
-            const dreamhome_root = document.querySelector(".dreamhome");
             const dreamhome_img = document.getElementById("dreamhome_hero_img");
 
-            dreamhome_root.classList.toggle("dreamhome_theme_orange", dream_buddy === "orange");
+            const root = document.getElementById("pageRoot");
+            root?.classList.toggle("orange", dream_buddy === "orange");
+            root?.classList.toggle("blue", dream_buddy !== "orange");
 
             if (dreamhome_img) {
                 dreamhome_img.src = (dream_buddy === "orange")

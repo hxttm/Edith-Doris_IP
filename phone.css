@@ -1,19 +1,81 @@
 :root{
-	--bg: #f5f5f5;
-	--card: transparent;
-	--text: #6b6b6b;
-	--muted: #9aa0a6;
-	--border: #6f6f6f;
-	--field-bg: #f5f5f5;
-	--btn: #9aa0a6;
-	--btn-text: #ffffff;
+    --bg: #f5f5f5;
+    --text: #6b6b6b;
+    --muted: #9aa0a6;
 
-	--safe-top: env(safe-area-inset-top, 0px);
-	--safe-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+
+    --danger:#d04a4a;
+    --radius-xl:16px;
+    --shadow-top: 0 10px 18px rgba(0,0,0,.16);
+
+    --topbar-bg: #79b2c9;
+    --topbar-fg: rgba(255,255,255,.92);
+
+    --nav-bg: #79b2c9;
+    --nav-item-bg: rgba(255,255,255,.24);
+    --nav-item-bg-active: rgba(255,255,255,.40);
 }
 
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
+.blue{
+    --bg:#cfe9f4;
+    --text:#12324a;
+    --muted:rgba(18,50,74,.65);
+
+    --topbar-bg:rgba(120,175,205,.92);
+    --topbar-fg:#ffffff;
+
+    --nav-bg: rgba(120,175,205,.92);
+    --nav-item-bg: rgba(255,255,255,.24);
+    --nav-item-bg-active: rgba(255,255,255,.40);
+    --nav_h: 84px;
+    --radius: 18px;
+    --sheet_h: 76px;
+
+    --overlay-bg: rgba(0,0,0,.35);
+    --modal-bg: rgba(160,205,225,.96);
+    --modal-text: rgba(255,255,255,.90);
+    --modal-border: rgba(0,0,0,.14);
+    --dreamhome_accent: rgba(120, 190, 215, 0.45);
+    --dreamhome_accent_border: rgba(0,0,0,0.35);
+
+    --title: #FFF7E7;
+    --subtitle: #497383; 
+
+    --panel: rgba(90, 150, 175, 0.75);
+
+
+}
+
+.orange{
+    --bg:#ffb27b;
+    --text:#ffffff;
+    --muted:rgba(255,255,255,.86);
+
+    --topbar-bg:#f07f2a;
+    --topbar-fg:#ffffff;
+
+    --nav-bg: rgba(240,127,42,.92);
+    --nav-item-bg: rgba(255,255,255,.22);
+    --nav-item-bg-active: rgba(255,255,255,.36);
+
+    --overlay-bg: rgba(0,0,0,.35);
+    --modal-bg: rgba(207,112,46,.96);
+    --modal-text: rgba(255,255,255,.92);
+    --modal-border: rgba(0,0,0,.14);
+}
+
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
+
+body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
 
 body{
 	margin: 0;
@@ -195,11 +257,11 @@ body{
 
 .buddy--blue:hover,
 .buddy--blue.is-selected{
-  box-shadow:
-    0 0 0 4px rgba(160, 210, 255, 1),
-    0 0 18px 6px rgba(110, 180, 255, .75),
-    0 0 42px 14px rgba(90, 150, 255, .35);
-  transform: translateY(-2px);
+    box-shadow:
+        0 0 0 4px rgba(160, 210, 255, 1),
+        0 0 18px 6px rgba(110, 180, 255, .75),
+        0 0 42px 14px rgba(90, 150, 255, .35);
+    transform: translateY(-2px);
 }
 
 .buddy img{
@@ -217,29 +279,116 @@ body{
     outline: none;
 }
 
+
+.ui_top{
+    display:grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items:center;
+
+    background: var(--topbar-bg);
+    border-radius: 14px;
+    padding: 10px 10px;
+    box-shadow: 0 10px 16px rgba(0,0,0,0.10);
+}
+
+.ui_back, .ui_action{
+    height:36px;
+    border:0;
+    border-radius:10px;
+
+    background: rgba(255,255,255,.18);
+    color: var(--topbar-fg);
+
+    font-weight:900;
+    font-size:22px;
+    text-decoration:none;
+
+    display:grid;
+    place-items:center;
+}
+
+.ui_title{
+    text-align:center;
+    font-weight:900;
+    color: var(--topbar-fg);
+    letter-spacing:.2px;
+}
+
+.ui_top_spacer{ width:44px; height:1px; }
+
+.ui_nav{
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + var(--safe-bottom));
+    height: 78px;
+
+    background: var(--nav-bg);
+    border-radius: 16px;
+
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items:center;
+
+    padding: 10px 8px;
+    gap: 6px;
+    z-index: 50;
+}
+
+.ui_nav_item{
+    height: 60px;
+    border: 0;
+    border-radius: 12px;
+
+    background: var(--nav-item-bg);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+}
+
+.ui_nav_item_active{
+    background: var(--nav-item-bg-active);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+}
+
+.ui_nav_icon{
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    display:block;
+    opacity: .92;
+}
+
+.ui_nav_item_active .ui_nav_icon{
+    opacity: 1;
+}
+
+
 .dreamhome{
+    /*
     --dreamhome_bg: #90bccb;
     --dreamhome_text: #0b2a35;
 
     --dreamhome_panel: rgba(90, 150, 175, 0.75);
     --dreamhome_panel_2: rgba(90, 150, 175, 0.55);
-
+*/
     --dreamhome_weekly_bg: rgba(0,0,0,0.12);
     --dreamhome_weekly_tile_rgb: 30, 92, 115;
-
     --dreamhome_card: rgba(255,255,255,0.18);
-
+/*
     --dreamhome_accent: rgba(120, 190, 215, 0.45);
     --dreamhome_accent_border: rgba(0,0,0,0.35);
-
+*/
     --dreamhome_nav_bg: rgba(0,0,0,0.18);
-
     --dreamhome_sheet_bg: rgba(80,135,156,0.95);
     --dreamhome_quest_card_bg: rgba(201,225,238,0.92);
 
+    /*
     --dreamhome_nav_h: 84px;
     --dreamhome_radius: 18px;
-    --dreamhome_sheet_h: 76px;
+    --dreamhome_sheet_h: 76px;*/
 }
 
 .dreamhome .dreamhome_screen{
@@ -251,90 +400,6 @@ body{
     padding: 14px 14px calc(var(--dreamhome_nav_h) + 18px);
     color: var(--dreamhome_text);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-.dreampage{
-  --ui_top_bg: #79B2C9;
-  --ui_top_text: #FFFFFFEB;
-  --ui_top_btn_bg: #FFFFFF2E;
-
-  --ui_nav_bg: #79B2C9;
-  --ui_nav_item_bg: #FFFFFF24;
-  --ui_nav_item_bg_active: #FFFFFF40;
-}
-
-/* Orange override */
-.dreampage.dreampage_theme_orange{
-  --ui_top_bg: #E58A2E;
-  --ui_nav_bg: #E58A2E;
-}
-
-/* Shared top bar look */
-.dreampage .ui_top{
-  display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  align-items: center;
-  background: var(--ui_top_bg);
-  border-radius: 14px;
-  padding: 10px 10px;
-  box-shadow: 0 10px 16px #0000001A;
-}
-
-.dreampage .ui_back{
-  height: 36px;
-  border: 0;
-  border-radius: 10px;
-  background: var(--ui_top_btn_bg);
-  color: var(--ui_top_text);
-  font-weight: 900;
-  font-size: 22px;
-  text-decoration: none;
-  display: grid;
-  place-items: center;
-}
-
-.dreampage .ui_title{
-  text-align: center;
-  font-weight: 900;
-  color: var(--ui_top_text);
-  letter-spacing: 0.2px;
-}
-
-/* Shared bottom nav look */
-.dreampage .ui_nav{
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  height: 78px;
-  background: var(--ui_nav_bg);
-  border-radius: 16px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  padding: 10px 8px;
-  gap: 6px;
-  z-index: 50;
-}
-
-.dreampage .ui_nav_item{
-  height: 60px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--ui_nav_item_bg);
-  color: var(--ui_top_text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.dreampage .ui_nav_item_active{
-  background: var(--ui_nav_item_bg_active);
-  box-shadow: inset 0 0 0 1px #FFFFFF29;
 }
 
 
@@ -539,78 +604,6 @@ body{
     box-shadow: 0 4px 0 rgba(0,0,0,0.12);
 }
 
-.dreamhome .dreamhome_nav{
-    position: absolute;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    height: var(--dreamhome_nav_h);
-    background: var(--dreamhome_nav_bg);
-    border-radius: 16px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    align-items: center;
-    padding: 10px 8px;
-    gap: 6px;
-    z-index: 50;
-}
-
-.dreamhome .dreamhome_nav_item{
-    height: 60px;
-    border: 0;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.14);
-    color: rgba(255,255,255,0.92);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.dreamhome .dreamhome_nav_item_active{
-    background: rgba(255,255,255,0.25);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.16);
-}
-
-.dreamhome .dreamhome_nav_label{
-    font-size: 11px;
-    line-height: 1;
-}
-
-.dreamhome .dreamhome_nav_icon{
-    width: 18px;
-    height: 18px;
-    display: block;
-    background: rgba(255,255,255,0.92);
-    opacity: 0.92;
-    border-radius: 4px;
-}
-
-.dreamhome .dreamhome_nav_icon_home{
-    clip-path: polygon(50% 0%, 92% 35%, 92% 100%, 62% 100%, 62% 65%, 38% 65%, 38% 100%, 8% 100%, 8% 35%);
-}
-
-.dreamhome .dreamhome_nav_icon_notes{
-    clip-path: polygon(12% 0%, 82% 0%, 88% 10%, 88% 100%, 12% 100%);
-}
-
-.dreamhome .dreamhome_nav_icon_shop{
-    clip-path: polygon(20% 30%, 80% 30%, 92% 100%, 8% 100%);
-}
-
-.dreamhome .dreamhome_nav_icon_buddy{
-    border-radius: 999px;
-    clip-path: none;
-}
-
-.dreamhome .dreamhome_nav_icon_gear{
-    clip-path: polygon(50% 0%, 62% 10%, 78% 8%, 80% 24%, 96% 34%, 88% 50%, 96% 66%, 80% 76%, 78% 92%, 62% 90%, 50% 100%, 38% 90%, 22% 92%, 20% 76%, 4% 66%, 12% 50%, 4% 34%, 20% 24%, 22% 8%, 38% 10%);
-    border-radius: 0;
-}
-
 .dreamhome .dreamhome_sheet{
     position: absolute;
     left: 0;
@@ -796,36 +789,6 @@ body{
     padding: 12px;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--dreamsettings_text);
-}
-
-.dreamsettings .dreamsettings_top{
-    display: grid;
-    grid-template-columns: 44px 1fr 44px;
-    align-items: center;
-    background: var(--dreamsettings_top_bg);
-    border-radius: 14px;
-    padding: 10px 10px;
-    box-shadow: 0 10px 16px rgba(0,0,0,0.10);
-}
-
-.dreamsettings .dreamsettings_back{
-    height: 36px;
-    border: 0;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.18);
-    color: rgba(255,255,255,0.95);
-    font-weight: 900;
-    font-size: 22px;
-    text-decoration: none;
-    display: grid;
-    place-items: center;
-}
-
-.dreamsettings .dreamsettings_title{
-    text-align: center;
-    font-weight: 900;
-    color: rgba(255,255,255,0.92);
-    letter-spacing: 0.2px;
 }
 
 .dreamsettings .dreamsettings_section{
@@ -1071,8 +1034,8 @@ body{
 }
 
 .dreamaccount{
-    --bg: #bfe3ee;
-    --top: #79b2c9;
+    --bg: #9CC9DC;
+    --top: #6FADC4;
     --row: #86bdd3;
     --rowBorder: rgba(255,255,255,.45);
     --textWhite: #ffffff;
@@ -1091,247 +1054,144 @@ body{
   background: var(--bg);
 }
 
-.dreamaccount{
-  min-height: 100vh;
-  background: var(--bg);
-}
-
 .dreamaccount_screen{
   min-height: 100vh;
-  background: var(--bg);
-}
-
-.dreamaccount_top{
-  height: 78px;
-  background: var(--top);
-  color: var(--textWhite);
-  display: grid;
-  grid-template-columns: 64px 1fr 64px;
-  align-items: center;
-  padding: 12px 12px 10px;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-  box-shadow: 0 2px 0 rgba(255,255,255,.28) inset;
-}
-
-.dreamaccount_title{
-  text-align:center;
-  font-size: 22px;
-  font-weight: 750;
-  letter-spacing: .2px;
-}
-
-.dreamaccount_top_spacer{ width: 64px; height: 1px; }
-
-.dreamaccount_back{
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  color: var(--textWhite);
-  font-size: 30px;
-  line-height: 1;
-  border-radius: 10px;
-  background: rgba(255,255,255,.12);
-  box-shadow: 0 1px 0 rgba(255,255,255,.20) inset;
+  background: transparent;
+  padding: 12px;
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 .dreamaccount_list{
-  padding: 14px 14px 0;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.10); 
 }
 
 .dreamaccount_row{
   width: 100%;
-  height: 48px;
-  margin: 10px 0;
-  padding: 0 14px;
-  border-radius: 10px;
-  border: 1px solid var(--rowBorder);
-  background: var(--row);
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  color: var(--textDark);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.35) inset,
-    0 2px 0 rgba(0,0,0,.06);
-  cursor: pointer;
+  height: auto;
+  margin: 0 0 8px;
+  padding: 10px 10px;
+
+  border: 0;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.16);
+  color: rgba(0,0,0,0.50);
+
+  box-shadow: none;
 }
 
 .dreamaccount_row span:first-child{
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
-  opacity: .92;
+  opacity: 1;
 }
 
 .dreamaccount_chev{
-  font-size: 22px;
-  color: rgba(255,255,255,.85);
-  transform: translateY(-1px);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.85;
+  color: rgba(0,0,0,0.50);
 }
 
 .dreamaccount_row_disabled{
   opacity: .65;
-  cursor: not-allowed;
 }
 
 .dreamaccount_row:active{
-  transform: translateY(1px);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.30) inset,
-    0 1px 0 rgba(0,0,0,.05);
+  transform: none;
 }
 
-.dreammodal{
+.ui_overlay {
   position: fixed;
   inset: 0;
-  display: none;              
-  background: rgba(0,0,0,.35);
-  padding: 18px;
   z-index: 999;
-}
-
-.dreammodal.dreammodal_open{
   display: grid;
   place-items: center;
+  padding: 18px;
+  color: 
 }
 
-.dreammodal_panel{
-  width: min(320px, 100%);
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.25);
-  padding: 16px;
+.ui_overlay[hidden] { display: none; }
+
+.ui_overlay_backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 18, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.ui_overlay_card {
   position: relative;
-}
+  width: min(92vw, 420px);
+  max-height: min(70vh, 520px);
+  overflow: auto;
 
-.dreammodal_x, .dreammodal_close{
-  position:absolute;
-  top: 10px;
-  right: 10px;
-  width: 34px;
-  height: 34px;
-  border: 0;
-  border-radius: 10px;
-  background: rgba(0,0,0,.06);
-  cursor: pointer;
-  font-size: 20px;
-}
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.25);
 
-.dreampopup_label{
-  margin-top: 8px;
-  margin-bottom: 12px;
-  font-weight: 600;
-  color: #234b5a;
-}
-
-.dreampopup_pin_row{
-  display:flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 10px 0 14px;
-}
-
-.dreampopup_pin{
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: #f6fbfd;
-  text-align:center;
-  font-size: 18px;
+  transform: translateY(10px) scale(0.98);
+  opacity: 0;
+  transition: transform 180ms ease, opacity 180ms ease;
   outline: none;
 }
 
-.dreampopup_pin:focus{
-  border-color: rgba(104, 151, 170, 0.9);
-  box-shadow: 0 0 0 3px rgba(121,178,201,.25);
+/* When overlay is shown (no [hidden]) animate card in */
+.ui_overlay:not([hidden]) .ui_overlay_card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
-.dreampopup_actions_center{
-  display:flex;
-  justify-content: center;
-}
-
-.dreampopup_btn{
-  border: 0;
-  border-radius: 12px;
-  padding: 10px 16px;
-  background: var(--top);
-  color: white;
-  font-weight: 750;
-  cursor: pointer;
-}
-
-#modal-edu .dreammodal_panel_popup,
-#modal-delete .dreammodal_panel_popup{
-  width: min(340px, 100%);
-  border-radius: 10px;
-  padding: 14px 14px 16px;
-  background: var(--popupBlue,#8BC8DF );
-  border: 2px solid rgba(0,0,0,.12);
-  box-shadow: 0 10px 24px rgba(0,0,0,.25);
-  background-image: linear-gradient(to bottom, rgba(255,255,255,.18), rgba(255,255,255,0));
-}
-
-#modal-edu .dreampopup_radio_group{
-  margin-top: 6px;
-  padding: 6px 6px 2px;
-}
-
-#modal-edu .dreampopup_radio{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  padding: 6px 4px;
-  color: #497383;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-#modal-edu input[type="radio"],
-#modal-consent input[type="radio"]{
-  width: 20px;
-  height: 20px;
-  accent-color: #6FADC4
-}
-
-#modal-delete .dreampopup_confirm_title{
-  margin-top: 6px;
-  font-size: 17px;
-  font-weight: 650;
-  color: #497383;
-  text-align:center;
-  text-shadow: 0 1px 0 rgba(0,0,0,.18);
-}
-
-#modal-delete .dreampopup_confirm_sub{
-  margin: 8px 8px 0;
-  font-size: 15.5px;
-  font-weight: 600;
-  color: rgba(255, 38, 0, 0.92);
-  text-align:center;
-}
-
-#modal-delete .dreampopup_actions{
-  display:flex;
+.ui_overlay_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  justify-content:center;
-  margin-top: 12px;
+  padding: 14px 14px 8px;
 }
 
-#modal-delete .dreampopup_btn_small{
-    border: 2px solid rgba(0,0,0,.18);
-    background: #6FADC4;
-    color: #fff;
-    font-weight: 450;
-    border-radius: 999px; 
-    padding: 8px 16px;
-    min-width: 96px;
-    box-shadow: 0 2px 0 rgba(255,255,255,.18) inset, 0 2px 0 rgba(0,0,0,.08);
+.ui_overlay_title {
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: 0.2px;
 }
 
-#modal-delete .dreampopup_btn_small_primary{
-  background: #6FADC4;
+.ui_overlay_close {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 0;
+  background: rgba(0,0,0,0.06);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ui_overlay_body {
+  padding: 10px 14px 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.ui_choice {
+  width: 100%;
+  text-align: left;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.8);
+}
+
+.ui_choice:active { transform: scale(0.99); }
+
+.ui_primary {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 0;
 }

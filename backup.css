@@ -1,16 +1,6 @@
-:root{
-	--bg: #f5f5f5;
-	--card: transparent;
-	--text: #6b6b6b;
-	--muted: #9aa0a6;
-	--border: #6f6f6f;
-	--field-bg: #f5f5f5;
-	--btn: #9aa0a6;
-	--btn-text: #ffffff;
 
-	--safe-top: env(safe-area-inset-top, 0px);
-	--safe-bottom: env(safe-area-inset-bottom, 0px);
-}
+
+
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
@@ -217,6 +207,16 @@ body{
     outline: none;
 }
 
+
+
+
+
+
+
+
+
+
+
 .dreamhome{
     --dreamhome_bg: #90bccb;
     --dreamhome_text: #0b2a35;
@@ -242,7 +242,6 @@ body{
     --dreamhome_sheet_h: 76px;
 }
 
-
 .dreamhome .dreamhome_screen{
     width: 100vw;
     min-height: 100vh;
@@ -253,6 +252,120 @@ body{
     color: var(--dreamhome_text);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
+
+.dreampage{
+  --ui_top_bg: #79B2C9;
+  --ui_top_text: #FFFFFFEB;
+  --ui_top_btn_bg: #FFFFFF2E;
+
+  --ui_nav_bg: #79B2C9;
+  --ui_nav_item_bg: #FFFFFF24;
+  --ui_nav_item_bg_active: #FFFFFF40;
+}
+
+/* Orange override */
+.dreampage.dreampage_theme_orange{
+  --ui_top_bg: #E58A2E;
+  --ui_nav_bg: #E58A2E;
+}
+
+/* Shared top bar look */
+.dreampage .ui_top{
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  background: var(--ui_top_bg);
+  border-radius: 14px;
+  padding: 10px 10px;
+  box-shadow: 0 10px 16px #0000001A;
+}
+
+.dreampage .ui_back{
+  height: 36px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ui_top_btn_bg);
+  color: var(--ui_top_text);
+  font-weight: 900;
+  font-size: 22px;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+}
+
+.dreampage .ui_title{
+  text-align: center;
+  font-weight: 900;
+  color: var(--ui_top_text);
+  letter-spacing: 0.2px;
+}
+
+/* Shared bottom nav look */
+.dreampage .ui_nav{
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 78px;
+  background: var(--ui_nav_bg);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  padding: 10px 8px;
+  gap: 6px;
+  z-index: 50;
+}
+
+.dreampage .ui_nav_item{
+  height: 60px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ui_nav_item_bg);
+  color: var(--ui_top_text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dreampage .ui_nav_item_active{
+  background: var(--ui_nav_item_bg_active);
+  box-shadow: inset 0 0 0 1px #FFFFFF29;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .dreamhome .dreamhome_top{
     display: grid;
@@ -1222,401 +1335,4 @@ body{
 
 #modal-delete .dreampopup_btn_small_primary{
   background: #6FADC4;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   Dream UI — Collated CSS
-   (Blue default + Orange theme)
-   ========================= */
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:#bfe3ee;
-}
-
-/* ===== Page wrapper + themes (no :root) ===== */
-.dreampage{
-  position: relative;
-  min-height: 100vh;
-
-  /* base tokens (blue) */
-  --ui_bg: #bfe3ee;
-
-  --ui_top_bg: #79B2C9;
-  --ui_top_text: #FFFFFFEB;
-  --ui_top_btn_bg: #FFFFFF2E;
-
-  --ui_nav_bg: #79B2C9;
-  --ui_nav_item_bg: #FFFFFF24;
-  --ui_nav_item_bg_active: #FFFFFF40;
-
-  --ui_card_bg: rgba(255,255,255,0.18);
-  --ui_card_text: rgba(20,45,55,0.88);
-
-  --ui_field_bg: rgba(255,255,255,0.18);
-  --ui_field_text: rgba(20,45,55,0.90);
-
-  --ui_shadow: #0000001A;
-
-  background: var(--ui_bg);
-}
-
-/* orange override */
-.dreampage.dreampage_theme_orange{
-  --ui_top_bg: #E58A2E;
-  --ui_nav_bg: #E58A2E;
-}
-
-/* Content spacing when nav exists */
-.dreampage_has_nav .ui_screen{
-  padding-bottom: 96px;
-}
-
-/* ===== Reusable top bar ===== */
-.ui_top{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  align-items: center;
-  background: var(--ui_top_bg);
-  border-radius: 14px;
-  padding: 10px 10px;
-  box-shadow: 0 10px 16px var(--ui_shadow);
-}
-
-.ui_back{
-  height: 36px;
-  width: 36px;
-  border: 0;
-  border-radius: 10px;
-  background: var(--ui_top_btn_bg);
-  color: var(--ui_top_text);
-  font-weight: 900;
-  font-size: 22px;
-  text-decoration: none;
-  display: grid;
-  place-items: center;
-}
-
-.ui_title{
-  text-align: center;
-  font-weight: 900;
-  color: var(--ui_top_text);
-  letter-spacing: .2px;
-  font-size: 13px;
-}
-
-.ui_top_spacer{ width:44px; height:1px; }
-
-/* ===== Screen base ===== */
-.ui_screen{
-  min-height: 100vh;
-}
-
-.ui_section{
-  padding: 12px 14px;
-}
-
-.ui_section_title{
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: .6px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.75);
-  margin: 10px 0 8px;
-}
-
-.ui_card{
-  background: var(--ui_card_bg);
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: 0 6px 12px var(--ui_shadow);
-  color: var(--ui_card_text);
-}
-
-.ui_row{
-  width: 100%;
-  padding: 10px 10px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--ui_card_bg);
-  color: var(--ui_card_text);
-  font-weight: 800;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  text-decoration:none;
-}
-
-/* no underline on any link-row */
-.ui_row:link,.ui_row:visited,.ui_row:hover,.ui_row:active{
-  color: var(--ui_card_text);
-  text-decoration:none;
-}
-
-.ui_chev{
-  color: rgba(255,255,255,.85);
-  font-size: 20px;
-  font-weight: 900;
-}
-
-/* ===== Bottom nav ===== */
-.ui_nav{
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  height: 78px;
-  background: var(--ui_nav_bg);
-  border-radius: 16px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: center;
-  padding: 10px 8px;
-  gap: 6px;
-  z-index: 50;
-  box-shadow: 0 10px 16px var(--ui_shadow);
-}
-
-.ui_nav_item{
-  height: 60px;
-  border: 0;
-  border-radius: 12px;
-  background: var(--ui_nav_item_bg);
-  color: var(--ui_top_text);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap: 6px;
-  cursor:pointer;
-  text-decoration:none;
-}
-
-.ui_nav_item_active{
-  background: var(--ui_nav_item_bg_active);
-  box-shadow: inset 0 0 0 1px #FFFFFF29;
-}
-
-.ui_nav_label{ font-size: 11px; line-height:1; }
-.ui_nav_icon{
-  width: 18px;
-  height: 18px;
-  display:block;
-  background: var(--ui_top_text);
-  opacity:.92;
-  border-radius:4px;
-}
-
-.ui_nav_icon_home{
-  clip-path: polygon(50% 0%, 92% 35%, 92% 100%, 62% 100%, 62% 65%, 38% 65%, 38% 100%, 8% 100%, 8% 35%);
-}
-.ui_nav_icon_notes{ clip-path: polygon(12% 0%, 82% 0%, 88% 10%, 88% 100%, 12% 100%); }
-.ui_nav_icon_shop{ clip-path: polygon(20% 30%, 80% 30%, 92% 100%, 8% 100%); }
-.ui_nav_icon_buddy{ border-radius:999px; clip-path:none; }
-.ui_nav_icon_gear{
-  clip-path: polygon(50% 0%, 62% 10%, 78% 8%, 80% 24%, 96% 34%, 88% 50%, 96% 66%, 80% 76%, 78% 92%, 62% 90%, 50% 100%, 38% 90%, 22% 92%, 20% 76%, 4% 66%, 12% 50%, 4% 34%, 20% 24%, 22% 8%, 38% 10%);
-  border-radius:0;
-}
-
-/* ===== Forms (Sell / Contact) ===== */
-.ui_form{ padding: 12px 14px; }
-.ui_field{ margin: 10px 0; }
-
-.ui_input, .ui_textarea, .ui_select{
-  width: 100%;
-  border: 0;
-  border-radius: 10px;
-  padding: 10px 10px;
-  background: var(--ui_field_bg);
-  color: var(--ui_field_text);
-  outline:none;
-}
-
-.ui_textarea{ min-height: 90px; resize:none; }
-
-.ui_btn{
-  border: 0;
-  border-radius: 999px;
-  padding: 10px 16px;
-  font-weight: 900;
-  background: rgba(255,255,255,0.22);
-  color: rgba(255,255,255,0.92);
-  cursor:pointer;
-}
-
-/* ===== Notes grid (Notes market / Your notes) ===== */
-.notes_grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.note_card{
-  background: var(--ui_card_bg);
-  border-radius: 12px;
-  padding: 10px;
-  box-shadow: 0 6px 12px var(--ui_shadow);
-}
-
-.note_thumb{
-  height: 70px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.65);
-}
-
-.note_title{
-  margin-top: 8px;
-  font-weight: 900;
-  font-size: 12px;
-  color: rgba(20,45,55,0.85);
-}
-
-.note_meta{
-  margin-top: 4px;
-  font-size: 11px;
-  color: rgba(20,45,55,0.60);
-}
-
-/* ===== Focus timer (Focus modes) ===== */
-.focus_timer{
-  margin-top: 18px;
-  text-align:center;
-  font-weight: 900;
-  font-size: 18px;
-  color: rgba(255,255,255,0.92);
-}
-
-.focus_img{
-  width: 100%;
-  border-radius: 14px;
-  margin-top: 12px;
-  background: rgba(255,255,255,0.18);
-  overflow:hidden;
-}
-
-.focus_img img{
-  width:100%;
-  display:block;
-}
-
-.center_btn{
-  display:flex;
-  justify-content:center;
-  margin-top: 14px;
-}
-
-/* ===== Daily Spin (simple wheel) ===== */
-.spin_wheel{
-  width: 220px;
-  height: 220px;
-  margin: 16px auto 10px;
-  border-radius: 999px;
-  background:
-    conic-gradient(
-      #ffffffcc 0 45deg,
-      #ffffff99 45deg 90deg,
-      #ffffffcc 90deg 135deg,
-      #ffffff99 135deg 180deg,
-      #ffffffcc 180deg 225deg,
-      #ffffff99 225deg 270deg,
-      #ffffffcc 270deg 315deg,
-      #ffffff99 315deg 360deg
-    );
-  border: 10px solid rgba(255,255,255,0.25);
-  box-shadow: 0 10px 16px var(--ui_shadow);
-  position: relative;
-}
-
-.spin_pointer{
-  width: 0; height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 18px solid rgba(255,255,255,0.95);
-  margin: 0 auto;
-}
-
-/* ===== Leaderboard ===== */
-.lb_list{ display:flex; flex-direction:column; gap: 8px; }
-.lb_row{
-  background: var(--ui_card_bg);
-  border-radius: 12px;
-  padding: 10px;
-  display:grid;
-  grid-template-columns: 26px 1fr 70px;
-  align-items:center;
-  gap: 10px;
-}
-.lb_rank{
-  height: 22px; width:22px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.22);
-  color: rgba(20,45,55,0.85);
-  display:grid; place-items:center;
-  font-weight: 900;
-  font-size: 12px;
-}
-.lb_name{ font-weight: 900; color: rgba(20,45,55,0.85); font-size: 12px; }
-.lb_score{
-  justify-self:end;
-  background: rgba(255,255,255,0.22);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-weight: 900;
-  font-size: 11px;
-  color: rgba(20,45,55,0.75);
 }

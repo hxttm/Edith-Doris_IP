@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Dream — Settings</title>
-    <link rel="stylesheet" href="./phone.css" />
+    <link rel="stylesheet" href="phone.css" />
   </head>
 
   <body>
-    <div class="dreampage dreamsettings" id="pageRoot">
+    <div class="dreampage dreamsettings has-nav" id="pageRoot">
       <main class="dreamsettings_screen" aria-label="Settings">
-        <header class="dreamsettings_top ui_top">
-          <a class="dreamsettings_back ui_back" href="./index.html" aria-label="Back">‹</a>
-          <div class="dreamsettings_title ui_title">Settings</div>
-          <div class="dreamsettings_top_spacer"></div>
+        <header class="ui_top">
+          <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
+          <div class="ui_title">Settings</div>
+          <div class="ui_top_spacer" aria-hidden="true"></div>
         </header>
 
         <section class="dreamsettings_section">
@@ -191,6 +191,7 @@
             </div>
           </div>
         </div>
+
       </main>
     </div>
 
@@ -234,9 +235,11 @@
         });
       });
 
-      const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
-      document.getElementById("pageRoot")
-        ?.classList.toggle("dreampage_theme_orange", dream_buddy === "orange");
+      // theme
+      const buddy = localStorage.getItem("dream_buddy") || "blue";
+      const root = document.getElementById("pageRoot");
+      root?.classList.toggle("orange", buddy === "orange");
+      root?.classList.toggle("blue", buddy !== "orange");
     </script>
   </body>
 </html>

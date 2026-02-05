@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dream — Settings</title>
+    <link rel="stylesheet" href="phone.css" />
+  </head>
+
+  <body>
+    <div class="dreampage dreamsettings has-nav" id="pageRoot">
+      <main class="dreamsettings_screen" aria-label="Settings">
+        <header class="ui_top">
+          <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
+          <div class="ui_title">Settings</div>
+          <div class="ui_top_spacer" aria-hidden="true"></div>
+        </header>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Profile</div>
+
+          <a class="dreamsettings_row dreamsettings_row_link" href="./account.html" aria-label="My Account">
+            <span>My Account</span>
+            <span class="dreamsettings_chev" aria-hidden="true">›</span>
+          </a>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Audio</div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Sound</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Vibrations</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Notifications</div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Invites</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Kids Filter</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Screen Time</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Gameplay</div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Auto-play</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Accessibility</div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Reduce Motion</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Family Mode</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Parental Consent</div>
+
+          <div class="dreamsettings_pin_box">
+            <div class="dreamsettings_pin_hint">Enter Pin Code</div>
+
+            <div class="dreamsettings_pin_row">
+              <input class="dreamsettings_pin" inputmode="numeric" maxlength="1" aria-label="PIN digit 1" />
+              <input class="dreamsettings_pin" inputmode="numeric" maxlength="1" aria-label="PIN digit 2" />
+              <input class="dreamsettings_pin" inputmode="numeric" maxlength="1" aria-label="PIN digit 3" />
+              <input class="dreamsettings_pin" inputmode="numeric" maxlength="1" aria-label="PIN digit 4" />
+            </div>
+
+            <button class="dreamsettings_login" id="dreamsettings_login_btn" type="button">Log in</button>
+          </div>
+        </section>
+
+        <section class="dreamsettings_section">
+          <div class="dreamsettings_section_title">Privacy</div>
+
+          <div class="dreamsettings_row_toggle">
+            <div class="dreamsettings_row_label">Leaderboard participation</div>
+            <label class="dreamsettings_switch">
+              <input class="dreamsettings_switch_input" type="checkbox" checked />
+              <span class="dreamsettings_switch_slider"></span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_radio_group">
+            <div class="dreamsettings_radio_title">Message:</div>
+            <label class="dreamsettings_radio">
+              <input type="radio" name="msg" checked />
+              <span>Everyone</span>
+            </label>
+            <label class="dreamsettings_radio">
+              <input type="radio" name="msg" />
+              <span>Friends only</span>
+            </label>
+          </div>
+
+          <div class="dreamsettings_radio_group">
+            <div class="dreamsettings_radio_title">Study Statistic Visibility:</div>
+            <label class="dreamsettings_radio">
+              <input type="radio" name="vis" checked />
+              <span>Everyone</span>
+            </label>
+            <label class="dreamsettings_radio">
+              <input type="radio" name="vis" />
+              <span>Friends only</span>
+            </label>
+            <label class="dreamsettings_radio">
+              <input type="radio" name="vis" />
+              <span>Only you</span>
+            </label>
+          </div>
+        </section>
+
+        <div class="dreamsettings_overlay" id="dreamsettings_overlay" aria-hidden="true">
+          <div class="dreamsettings_modal" role="dialog" aria-label="Parental Consent" aria-modal="true">
+            <div class="dreamsettings_modal_title">Parental Consent</div>
+
+            <div class="dreamsettings_modal_box">
+              <div class="dreamsettings_modal_subtitle">Approval required for:</div>
+
+              <label class="dreamsettings_radio_big">
+                <input type="radio" name="consent" checked />
+                <span>Sell, buy notes</span>
+              </label>
+
+              <label class="dreamsettings_radio_big">
+                <input type="radio" name="consent" />
+                <span>Chat</span>
+              </label>
+
+              <label class="dreamsettings_radio_big">
+                <input type="radio" name="consent" />
+                <span>Adding friends</span>
+              </label>
+            </div>
+
+            <div class="dreamsettings_modal_actions">
+              <button class="dreamsettings_modal_btn" id="dreamsettings_close" type="button">Close</button>
+              <button class="dreamsettings_modal_btn dreamsettings_modal_btn_primary" type="button">Confirm</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <script>
+      const dreamsettings_login_btn = document.getElementById("dreamsettings_login_btn");
+      const dreamsettings_overlay = document.getElementById("dreamsettings_overlay");
+      const dreamsettings_close = document.getElementById("dreamsettings_close");
+      const dreamsettings_pins = Array.from(document.querySelectorAll(".dreamsettings_pin"));
+
+      function dreamsettings_open_overlay() {
+        dreamsettings_overlay?.classList.add("dreamsettings_overlay_open");
+        dreamsettings_overlay?.setAttribute("aria-hidden", "false");
+      }
+
+      function dreamsettings_close_overlay() {
+        dreamsettings_overlay?.classList.remove("dreamsettings_overlay_open");
+        dreamsettings_overlay?.setAttribute("aria-hidden", "true");
+      }
+
+      dreamsettings_login_btn?.addEventListener("click", () => {
+        const pin = dreamsettings_pins.map(i => (i.value || "")).join("");
+        if (pin.length === 4) dreamsettings_open_overlay();
+        else dreamsettings_pins[0]?.focus();
+      });
+
+      dreamsettings_close?.addEventListener("click", dreamsettings_close_overlay);
+
+      dreamsettings_overlay?.addEventListener("click", (e) => {
+        if (e.target === dreamsettings_overlay) dreamsettings_close_overlay();
+      });
+
+      dreamsettings_pins.forEach((input, idx) => {
+        input.addEventListener("input", () => {
+          input.value = (input.value || "").replace(/[^0-9]/g, "").slice(0, 1);
+          if (input.value && idx < dreamsettings_pins.length - 1) dreamsettings_pins[idx + 1].focus();
+        });
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !input.value && idx > 0) dreamsettings_pins[idx - 1].focus();
+          if (e.key === "Escape") dreamsettings_close_overlay();
+        });
+      });
+
+      // theme
+      const buddy = localStorage.getItem("dream_buddy") || "blue";
+      const root = document.getElementById("pageRoot");
+      root?.classList.toggle("orange", buddy === "orange");
+      root?.classList.toggle("blue", buddy !== "orange");
+    </script>
+  </body>
+</html>

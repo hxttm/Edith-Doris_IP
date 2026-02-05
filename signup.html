@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+	<title>Dreamy</title>
+	<link rel="stylesheet" href="phone.css">
+	<link rel="stylesheet" href="desktop.css" media="(min-width: 900px)">
+</head>
+
+<body>
+	<main id="screen-login" class="screen" aria-label="Sign up screen">
+		<section class="login">
+			<img class="select" src="assets/signup/select.png" alt="Choose your dream Study Buddy" />
+
+			<div class="signup_buddies">
+				<button class="buddy buddy--orange" type="button" data-buddy="orange">
+					<img src="assets/signup/orange.png" alt="orange fox-like mystic creature" />
+				</button>
+				<button class="buddy buddy--blue" type="button" data-buddy="blue">
+					<img src="assets/signup/blue.jpg" alt="blue cat-like mystic creature" />
+				</button>
+			</div>
+
+			<form class="login_form" id="signupForm">
+				<div class="login_fields">
+					<label class="field">
+						<span class="field_icon" aria-hidden="true">
+							<img src="assets/login/login/env.png" alt="" />
+						</span>
+						<input type="email" placeholder="Email" autocomplete="email" required />
+					</label>
+
+					<label class="field">
+						<span class="field_icon" aria-hidden="true">
+							<img src="assets/login/login/lock.png" alt="" />
+						</span>
+						<input type="password" placeholder="Set Password" autocomplete="current-password" required />
+					</label>
+				</div>
+
+				<button class="btn" type="submit">Sign Up</button>
+			</form>
+
+			<p class="login_switch">
+				Already have an account?
+				<a href="login.html" id="go-login">Login</a>
+			</p>
+		</section>
+	</main>
+
+	<script>
+        const buddies = document.querySelectorAll(".buddy");
+
+        function set_buddy(theme) {
+            localStorage.setItem("dream_buddy", theme);
+
+            buddies.forEach((btn) => {
+                btn.classList.toggle("is-selected", btn.dataset.buddy === theme);
+            });
+        }
+
+        buddies.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                set_buddy(btn.dataset.buddy);
+            });
+        });
+
+        const saved = localStorage.getItem("dream_buddy");
+        if (saved === "orange" || saved === "blue") {
+            set_buddy(saved);
+        }
+
+        const goLogin = document.getElementById("go-login");
+        if (goLogin) {
+            goLogin.addEventListener("click", () => {
+                sessionStorage.setItem("skipSplashOnce", "1");
+            });
+        }
+
+        const form = document.getElementById("signupForm");
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                if (!localStorage.getItem("dream_buddy")) {
+                    set_buddy("blue");
+                }
+
+                window.location.href = "index.html";
+            });
+        }
+	</script>
+
+
+</body>
+</html>

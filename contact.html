@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream — Contact Us</title>
+  <link rel="stylesheet" href="./phone.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="dreampage dreampage_has_nav" id="pageRoot">
+    <main class="ui_screen" aria-label="Contact Us">
+      <header class="ui_top">
+        <a class="ui_back" href="./settings.html" aria-label="Back">‹</a>
+        <div class="ui_title">Contact Us</div>
+        <div class="ui_top_spacer"></div>
+      </header>
+
+      <form class="ui_form" aria-label="Contact form">
+        <div class="ui_field"><input class="ui_input" placeholder="Username" /></div>
+        <div class="ui_field"><input class="ui_input" placeholder="Email" /></div>
+        <div class="ui_field"><textarea class="ui_textarea" placeholder="Message"></textarea></div>
+        <div class="ui_field">
+          <input type="file" id="fileAttach" class="ui_input" placeholder="Attach a file (Optional)" accept="*/*" />
+          <div id="filePreview" class="file-preview" style="display:none;">
+            <span class="file-icon">📎</span>
+            <span id="fileName"></span>
+            <button type="button" class="file-remove" onclick="clearFile()">✕</button>
+          </div>
+        </div>
+
+        <div class="center_btn"><button class="ui_btn" type="button">Send</button></div>
+      </form>
+    </main>
+  </div>
+
+  <nav class="ui_nav" aria-label="Bottom navigation">
+      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+          <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+        </a>
+
+      <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+          <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+          <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+          <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+          <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+        </a>
+  </nav>
+
+</body>
+</html>

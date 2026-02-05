@@ -998,7 +998,7 @@ body{
 .dreamaccount_row{
     width: 100%;
     height: auto;
-    margin: 0 0 8px;
+    margin: 8px;
     padding: 10px 10px;
 
     border: 0;
@@ -1141,7 +1141,7 @@ body{
 
 .ui_form{
   margin-top:14px;
-  background: rgba(0,0,0,0.08);
+  background: var(--panel);
   border-radius:16px;
   padding:14px;
   box-shadow:0 10px 18px rgba(0,0,0,0.10);
@@ -1183,8 +1183,8 @@ body{
   padding:10px 14px;
   border-radius:999px;
   border:2px solid var(--accent_border);
-  background:#a6bdc3;
-  color: #497383;
+  background:var(--light);
+  color: var(--dark);
   font-weight:800;
   cursor:pointer;
   box-shadow:0 4px 0 rgba(0,0,0,0.12);

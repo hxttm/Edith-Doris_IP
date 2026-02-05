@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./phone.css" />
   <script src="./app.js" defer></script>
 </head>
+
 <body>
   <div class="dreampage dreampage_has_nav" id="pageRoot">
     <main class="ui_screen" aria-label="Sell">
@@ -27,34 +28,34 @@
     </main>
 
     <nav class="ui_nav" aria-label="Bottom navigation">
-      <a class="ui_nav_item" href="./notes-market.html" aria-label="Vault">
-        <span class="ui_nav_icon ui_nav_icon_notes" aria-hidden="true"></span>
-        <span class="ui_nav_label">Vault</span>
+      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+        <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
       </a>
-      <a class="ui_nav_item ui_nav_item_active" href="./sell.html" aria-label="Bazaar" aria-current="page">
-        <span class="ui_nav_icon ui_nav_icon_shop" aria-hidden="true"></span>
-        <span class="ui_nav_label">Bazaar</span>
+
+      <a class="ui_nav_item ui_nav_item_active" href="./market.html" aria-label="Notes market" aria-current="page">
+        <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
       </a>
-      <a class="ui_nav_item" href="./home.html" aria-label="Home">
-        <span class="ui_nav_icon ui_nav_icon_home" aria-hidden="true"></span>
-        <span class="ui_nav_label">Home</span>
+
+      <a class="ui_nav_item" href="./index.html" aria-label="Home">
+        <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
       </a>
-      <a class="ui_nav_item" href="./buddy.html" aria-label="Buddy">
-        <span class="ui_nav_icon ui_nav_icon_buddy" aria-hidden="true"></span>
-        <span class="ui_nav_label">Buddy</span>
+
+      <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+        <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
       </a>
+
       <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
-        <span class="ui_nav_icon ui_nav_icon_gear" aria-hidden="true"></span>
-        <span class="ui_nav_label">Settings</span>
+        <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
       </a>
     </nav>
   </div>
 
   <script>
-		const splash = document.getElementById("splash");
-		const loginScreen = document.getElementById("screen-login");
-		const loginForm = document.getElementById("login_form");
+      const buddy = localStorage.getItem("dream_buddy") || "blue";
+      const root = document.getElementById("pageRoot");
+      root?.classList.toggle("orange", buddy === "orange");
+      root?.classList.toggle("blue", buddy !== "orange");
   </script>
-  
+
 </body>
 </html>

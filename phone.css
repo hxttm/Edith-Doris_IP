@@ -1321,3 +1321,35 @@ body{
   font-size:14px;
 }
 .file-remove:hover{ background:rgba(0,0,0,0.3); }
+
+.notes_grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.note_card{
+  background: var(--ui_card_bg);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 6px 12px var(--ui_shadow);
+}
+
+.note_thumb{
+  height: 200px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.65);
+}
+
+.note_title{
+  margin-top: 8px;
+  font-weight: 900;
+  font-size: 12px;
+  color: rgba(20,45,55,0.85);
+}
+
+.note_meta{
+  margin-top: 4px;
+  font-size: 11px;
+  color: rgba(20,45,55,0.60);
+}

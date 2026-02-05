@@ -971,19 +971,6 @@ body{
     background: var(--topbar-bg);
 }
 
-/*
-.dreamaccount{
-    --bg: #9CC9DC;
-    --top: #020202;
-    --row: #86bdd3;
-    --rowBorder: rgba(255,255,255,.45);
-    --textWhite: #ffffff;
-    --textDark: #2d5f73;
-    --shadow: rgba(0,0,0,.10);
-
-    min-height: 100vh;
-    background: var(--bg);
-}*/
 
 *{ box-sizing: border-box; }
 html,body{ height:100%; }
@@ -1259,4 +1246,75 @@ body{
   margin-top: 4px;
   font-size: 11px;
   color: rgba(20,45,55,0.60);
+}
+
+.note_title { 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  margin-bottom: 8px; 
+}
+
+.note_price_rating {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 16px; 
+}
+
+.note_price { 
+  font-size: 1.25rem; 
+  font-weight: bold; 
+  color: var(--text); 
+}
+
+.note_stars { 
+  color: #ffffff; 
+}
+
+.note_seller { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin-bottom: 16px; 
+}
+
+.seller_avatar { 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; 
+  background: #ddd;
+ }
+
+.seller_name { 
+  font-weight: 500; 
+}
+
+.seller_rating { 
+  font-size: 0.9rem; 
+  color: #666; 
+}
+
+.note_description { 
+  color: #666; 
+  margin-bottom: 24px; 
+  line-height: 1.4; 
+}
+
+.buy_button { 
+  display: block; 
+  background: var(--topbar-bg); 
+  color: white; 
+  text-align: center; 
+  padding: 10px; 
+  border-radius: 8px; 
+  font-weight: bold; 
+  text-decoration: none; 
+  margin-bottom: 8px; 
+}
+
+.note_sales { 
+  text-align: center; 
+  color: var(--light); 
+  font-size: 0.9rem; 
+  font-weight: bolder; 
 }

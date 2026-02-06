@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chem Proj Group 2 — Dream</title>
+  <link rel="stylesheet" href="./phone.css" />
+</head>
+
+<body>
+  <div class="dreampage dreampage_has_nav" id="pageRoot">
+    <main class="ui_screen" aria-label="Group chat">
+      <header class="ui_top">
+        <a class="ui_back" href="./chat.html" aria-label="Back">‹</a>
+        <div class="ui_title">Chem Proj Group 2</div>
+        <div class="ui_top_spacer" aria-hidden="true"></div>
+      </header>
+
+      <section class="gc_thread" aria-label="Messages">
+        <div class="gc_divider">Today</div>
+
+        <div class="gc_msg gc_left">
+          <img class="gc_avatar" src="./assets/avatars/doris.png" alt="" />
+          <div class="gc_bubble">
+            <div class="gc_name">Doris</div>
+            <div class="gc_text">its okay, let's do better</div>
+            <div class="gc_time">1:12 PM</div>
+          </div>
+        </div>
+
+        <div class="gc_msg gc_left">
+          <img class="gc_avatar" src="./assets/avatars/purple.png" alt="" />
+          <div class="gc_bubble">
+            <div class="gc_name">Edith</div>
+            <div class="gc_text">Let’s target to study for 3 hours</div>
+            <div class="gc_time">1:18 PM</div>
+          </div>
+        </div>
+
+        <div class="gc_msg gc_right">
+          <div class="gc_bubble">
+            <div class="gc_text">Ok! I’ll do the enzyme kinetics slides.</div>
+            <div class="gc_time">1:20 PM</div>
+          </div>
+        </div>
+
+        <div class="gc_msg gc_left">
+          <img class="gc_avatar" src="./assets/avatars/green.png" alt="" />
+          <div class="gc_bubble">
+            <div class="gc_name">Kway Jo</div>
+            <div class="gc_text">good luck for our test!</div>
+            <div class="gc_time">1:22 PM</div>
+          </div>
+        </div>
+
+        <div class="gc_bottom_spacer" aria-hidden="true"></div>
+      </section>
+
+      <form class="gc_inputbar" aria-label="Send message">
+        <input class="message_input" type="text" placeholder="Message..." aria-label="Message" />
+        <button class="send_btn" type="submit" aria-label="Send">→</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    const buddy = localStorage.getItem("dream_buddy") || "blue";
+    document.body.classList.toggle("orange", buddy === "orange");
+    document.body.classList.toggle("blue", buddy !== "orange");
+
+    document.querySelector(".ui_back")?.addEventListener("click", (e) => {
+      if (history.length > 1) { e.preventDefault(); history.back(); }
+    });
+
+    document.querySelector(".gc_inputbar")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = document.querySelector(".gc_inputbar .message_input");
+      if (!input?.value.trim()) return;
+      console.log("Send:", input.value);
+      input.value = "";
+    });
+  </script>
+</body>
+</html>

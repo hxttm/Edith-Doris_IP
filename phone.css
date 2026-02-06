@@ -1137,6 +1137,9 @@ body{
   padding:14px 14px calc(var(--nav_h, 84px) + 18px);
   color: var(--dark, var(--text));
   font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .ui_form{
@@ -1441,7 +1444,7 @@ body{
 
 .chat_footer {
   position: fixed;
-  bottom: 72px; /* Above bottom nav */
+  bottom: 72px; 
   left: 0;
   right: 0;
   padding: 16px 20px;
@@ -1459,7 +1462,7 @@ body{
   border-radius: 24px;
   outline: none;
   font-size: 1rem;
-  background: #fafafa;
+  background: var(--light);
 }
 
 .message_input:focus {
@@ -1491,4 +1494,89 @@ body{
 
 .ui_section.tab_panel {
   padding-bottom: 100px; 
+}
+
+.gc_thread{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom:120px;
+
+  overflow-y: auto;
+}
+
+.gc_divider{
+  margin: 10px auto 14px;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--light);
+  background: rgba(0,0,0,0.05);
+}
+
+.gc_msg{
+  display: flex;
+  gap: 10px;
+  padding: 6px 20px;
+  align-items: flex-end;
+}
+
+.gc_left{ justify-content: flex-start; }
+.gc_right{ justify-content: flex-end; }
+
+.gc_avatar{
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  object-fit: cover; 
+  flex-shrink: 0;
+}
+
+.gc_bubble{
+  max-width: 78%;
+  border-radius: 16px;
+  background: var(--nav-item-bg);
+  padding: 10px 12px;
+}
+
+.gc_right .gc_bubble{
+  background: var(--light);
+}
+
+.gc_name{
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+
+.gc_text{
+  font-size: 0.95rem;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.gc_time{
+  margin-top: 6px;
+  font-size: 0.5rem;
+  color: rgba(0,0,0,0.45);
+  text-align: right;
+}
+
+.gc_inputbar{
+  position: fixed;
+  left: 0; right: 0;
+  bottom: 0; 
+  padding: 14px 20px;
+  background: var(--nav-bg);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.gc_bottom_spacer{
+  height: 110px;
 }

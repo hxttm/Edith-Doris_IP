@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream — Leaderboard</title>
+  <link rel="stylesheet" href="./phone.css" />
+</head>
+<body>
+  <div class="dreampage dreampage_has_nav" id="pageRoot">
+    <main class="ui_screen" aria-label="Leaderboard">
+      <header class="ui_top">
+        <a class="ui_back" href="./home.html" aria-label="Back">‹</a>
+        <div class="ui_title">Leaderboard</div>
+        <div class="ui_top_spacer"></div>
+      </header>
+
+      <section class="ui_section">
+        <div class="ui_section_title">Singapore (Central)</div>
+        <div class="lb_list">
+          <div class="lb_row"><div class="lb_rank">1</div><div class="lb_name">Jayden</div><div class="lb_score">999</div></div>
+          <div class="lb_row"><div class="lb_rank">2</div><div class="lb_name">Doris</div><div class="lb_score">870</div></div>
+          <div class="lb_row"><div class="lb_rank">3</div><div class="lb_name">Kway Jo</div><div class="lb_score">740</div></div>
+          <div class="lb_row"><div class="lb_rank">4</div><div class="lb_name">Edith</div><div class="lb_score">690</div></div>
+          <div class="lb_row"><div class="lb_rank">5</div><div class="lb_name">Priscilla</div><div class="lb_score">640</div></div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="ui_nav" aria-label="Bottom navigation">
+        <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+        <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+        <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+        <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+        <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+        </a>
+
+        <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+        <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+        </a>
+    </nav>
+  </div>
+  <script>
+    const buddy = localStorage.getItem("dream_buddy") || "blue";
+    document.body.classList.toggle("orange", buddy === "orange");
+    document.body.classList.toggle("blue", buddy !== "orange");
+  </script>
+
+</body>
+</html>

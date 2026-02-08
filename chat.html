@@ -21,8 +21,9 @@
         <button class="ui_tab" type="button" data-tab="buddies" role="tab" aria-selected="false">Study Buddies</button>
       </div>
 
+      <!-- Chats panel -->
       <section class="ui_section tab_panel active" data-tab-panel="chats">
-        <a href="#" class="chat_item" data-chat="study-baddies">
+        <a href="./gc.html" class="chat_item" data-chat="study-baddies">
           <img class="chat_avatar" src="./assets/avatars/orange.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Study Baddies</div>
@@ -32,7 +33,7 @@
           <div class="chat_time">2m</div>
         </a>
 
-        <a href="#" class="chat_item" data-chat="chem-proj">
+        <a href="./gc.html" class="chat_item" data-chat="chem-proj">
           <img class="chat_avatar" src="./assets/avatars/blue.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Chem Proj Group 2</div>
@@ -42,7 +43,7 @@
           <div class="chat_time">1h</div>
         </a>
 
-        <a href="#" class="chat_item" data-chat="academic-weapons">
+        <a href="./gc.html" class="chat_item" data-chat="academic-weapons">
           <img class="chat_avatar" src="./assets/avatars/purple.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Academic Weapons</div>
@@ -52,7 +53,7 @@
           <div class="chat_time">3h</div>
         </a>
 
-        <a href="#" class="chat_item" data-chat="chem">
+        <a href="./gc.html" class="chat_item" data-chat="chem">
           <img class="chat_avatar" src="./assets/avatars/green.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Chem CA1</div>
@@ -63,8 +64,9 @@
         </a>
       </section>
 
+      <!-- Buddies panel -->
       <section class="ui_section tab_panel" data-tab-panel="buddies">
-        <div class="chat_item buddy_item">
+        <a href="./gc.html" class="chat_item buddy_item">
           <img class="chat_avatar" src="./assets/avatars/Jayden.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Jayden</div>
@@ -75,9 +77,9 @@
             <div class="chat_meta">2h for study</div>
           </div>
           <div class="chat_time">2m</div>
-        </div>
+        </a>
 
-        <div class="chat_item buddy_item">
+        <a href="./gc.html" class="chat_item buddy_item">
           <img class="chat_avatar" src="./assets/avatars/doris.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Doris</div>
@@ -88,9 +90,9 @@
             <div class="chat_meta">with 5 hours today</div>
           </div>
           <div class="chat_time">1h</div>
-        </div>
+        </a>
 
-        <div class="chat_item buddy_item">
+        <a href="./gc.html" class="chat_item buddy_item">
           <img class="chat_avatar" src="./assets/avatars/Jayden.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Jayden</div>
@@ -101,9 +103,9 @@
             <div class="chat_meta">good job studying 5 hours</div>
           </div>
           <div class="chat_time">3h</div>
-        </div>
+        </a>
 
-        <div class="chat_item buddy_item">
+        <a href="./gc.html" class="chat_item buddy_item">
           <img class="chat_avatar" src="./assets/avatars/kway.png" alt="" />
           <div class="chat_info">
             <div class="chat_name">Kway Jo</div>
@@ -113,9 +115,8 @@
             </div>
           </div>
           <div class="chat_time">5h</div>
-        </div>
+        </a>
       </section>
-
     </main>
 
     <nav class="ui_nav" aria-label="Bottom navigation">
@@ -155,14 +156,6 @@
           p.classList.toggle("active", p.dataset.tabPanel === target);
         });
       });
-    });
-
-    document.querySelector(".send_btn")?.addEventListener("click", () => {
-      const input = document.querySelector(".message_input");
-      if (input?.value.trim()) {
-        console.log("Send:", input.value);
-        input.value = "";
-      }
     });
 
     document.querySelector(".ui_back")?.addEventListener("click", (e) => {

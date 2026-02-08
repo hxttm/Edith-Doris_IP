@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dream — Calendar</title>
+  <link rel="stylesheet" href="./phone.css" />
+</head>
+<body>
+  <div class="dreampage dreampage_has_nav" id="pageRoot">
+    <main class="ui_screen" aria-label="Calendar">
+      <header class="ui_top">
+        <a class="ui_back" href="./home.html" aria-label="Back">‹</a>
+        <div class="ui_title">Calendar</div>
+        <div class="ui_top_spacer" aria-hidden="true"></div>
+      </header>
+
+      <section class="ui_section cal_card" aria-label="Calendar month">
+        <div class="cal_month" id="calMonth">February 2026</div>
+        <div class="cal_grid" id="calGrid" role="grid" aria-label="Month view"></div>
+      </section>
+
+      <section class="ui_section today_card" aria-label="Day details">
+        <div class="today_title" id="dayTitle">Today</div>
+
+        <div class="today_row">
+          <div class="today_date" id="todayDate">—</div>
+          <div class="today_chip" id="todayCount">0h 00m</div>
+        </div>
+
+        <div class="today_list" id="todayList" aria-label="Subjects"></div>
+      </section>
+    </main>
+
+    <nav class="ui_nav" aria-label="Bottom navigation">
+      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+        <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+        <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+      </a>
+      <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+        <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+        <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+        <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const buddy = localStorage.getItem("dream_buddy") || "blue";
+    document.body.classList.toggle("orange", buddy === "orange");
+    document.body.classList.toggle("blue", buddy !== "orange");
+
+    const monthLabel = document.getElementById("calMonth");
+    const grid = document.getElementById("calGrid");
+
+    const dayTitleEl = document.getElementById("dayTitle");
+    const todayDateEl = document.getElementById("todayDate");
+    const todayCountEl = document.getElementById("todayCount");
+    const todayListEl = document.getElementById("todayList");
+
+    const year = 2026;
+    const month = 1; 
+    const weekday = ["sun","mon","tue","wed","thu","fri","sat"];
+
+    const LS_KEY = "dream_study_by_day"; 
+
+    function pad2(n){ return String(n).padStart(2,"0"); }
+    function toKey(y,m,d){ return `${y}-${pad2(m+1)}-${pad2(d)}`; }
+    function dateKeyFromDate(d){ return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`; }
+
+    const TODAY_KEY = dateKeyFromDate(new Date());
+    let selectedKey = TODAY_KEY;
+
+    function daysInMonth(y, m){ return new Date(y, m + 1, 0).getDate(); }
+    function firstDayIndex(y, m){ return new Date(y, m, 1).getDay(); }
+
+    function loadDB(){
+      try { return JSON.parse(localStorage.getItem(LS_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveDB(db){
+      localStorage.setItem(LS_KEY, JSON.stringify(db));
+    }
+
+    function formatPrettyFromKey(key){
+      const [y, mm, dd] = key.split("-").map(Number);
+      const dt = new Date(y, mm - 1, dd);
+      return dt.toLocaleDateString(undefined, { weekday:"short", day:"numeric", month:"short", year:"numeric" });
+    }
+
+    function formatMinutes(mins){
+      const h = Math.floor(mins / 60);
+      const m = mins % 60;
+      return `${h}h ${pad2(m)}m`;
+    }
+
+    function seedExampleData(){
+      const db = loadDB();
+      const demo = {
+        "2026-02-05": { totalMinutes: 155, subjects: [{name:"Math", minutes:70},{name:"Computing", minutes:85}] },
+        "2026-02-06": { totalMinutes: 78, subjects: [{name:"Literature", minutes:35},{name:"Math", minutes:43}] },
+        [TODAY_KEY]:  { totalMinutes: 388, subjects: [{name:"Math", minutes:130},{name:"Literature", minutes:65},{name:"Computing", minutes:193}] },
+      };
+      for (const k in demo) if (!db[k]) db[k] = demo[k];
+      saveDB(db);
+    }
+
+    function renderStudyForDay(key){
+      const db = loadDB();
+      const entry = db[key] || { subjects: [], totalMinutes: 0 };
+
+      const isToday = key === TODAY_KEY;
+      if (dayTitleEl) dayTitleEl.textContent = isToday ? "Today" : "Selected Day";
+      if (todayDateEl) todayDateEl.textContent = formatPrettyFromKey(key);
+      if (todayCountEl) todayCountEl.textContent = formatMinutes(entry.totalMinutes || 0);
+
+      if (!todayListEl) return;
+      todayListEl.innerHTML = "";
+
+      if (!entry.subjects || entry.subjects.length === 0){
+        const empty = document.createElement("div"); 
+        empty.className = "today_item muted";
+        empty.textContent = "No study logged.";
+        todayListEl.appendChild(empty);
+        return;
+      }
+
+      for (const s of entry.subjects){
+        const row = document.createElement("div");
+        row.className = "today_subject";
+
+        const left = document.createElement("span");
+        left.className = "today_subject_name";
+        left.textContent = s.name;
+
+        const right = document.createElement("span");
+        right.className = "today_subject_time";
+        right.textContent = formatMinutes(s.minutes);
+
+        row.appendChild(left);
+        row.appendChild(right);
+        todayListEl.appendChild(row);
+      }
+    }
+
+    function renderCalendar(){
+      const monthName = new Date(year, month, 1).toLocaleString(undefined, { month:"long" });
+      monthLabel.textContent = `${monthName} ${year}`;
+      grid.innerHTML = "";
+
+      for (const w of weekday){
+        const head = document.createElement("div");
+        head.className = "cal_cell cal_cell_head";
+        head.textContent = w;
+        grid.appendChild(head);
+      }
+
+      const blanks = firstDayIndex(year, month);
+      for (let i=0;i<blanks;i++){
+        const blank = document.createElement("div");
+        blank.className = "cal_cell cal_cell_blank";
+        blank.setAttribute("aria-hidden","true");
+        grid.appendChild(blank);
+      }
+
+      const total = daysInMonth(year, month);
+      for (let d=1; d<=total; d++){
+        const key = toKey(year, month, d);
+
+        const el = document.createElement("button");
+        el.type = "button";
+        el.className = "cal_cell";
+        el.textContent = d;
+
+        el.dataset.date = key;
+
+        if (key === TODAY_KEY) el.classList.add("cal_cell_today");
+
+        if (key === selectedKey) el.classList.add("cal_cell_selected");
+
+        el.addEventListener("click", () => { 
+          selectedKey = key;
+
+          document.querySelectorAll(".cal_cell_selected")
+            .forEach(n => n.classList.remove("cal_cell_selected"));
+
+          el.classList.add("cal_cell_selected");
+          renderStudyForDay(key);
+        });
+
+        grid.appendChild(el);
+      }
+    }
+
+    seedExampleData();
+    selectedKey = TODAY_KEY;
+    renderCalendar();
+    renderStudyForDay(TODAY_KEY);
+  </script>
+</body>
+</html>

@@ -3,10 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-<<<<<<< HEAD
   <title>Dream — Your Notes</title>
   <link rel="stylesheet" href="./phone.css" />
-
 </head>
 
 <body>
@@ -16,24 +14,10 @@
         <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
         <div class="ui_title">Your Notes</div>
         <div class="ui_top_spacer" aria-hidden="true"></div>
-=======
-  <title>Dream — your notes</title>
-  <link rel="stylesheet" href="./phone.css" />
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <div class="dreampage dreampage_has_nav" id="pageRoot">
-    <main class="ui_screen" aria-label="Notes Market">
-      <header class="ui_top">
-        <a class="ui_back" href="#" aria-label="Back">‹</a>
-        <div class="ui_title">Your Notes</div>
-        <div class="ui_top_spacer"></div>
->>>>>>> e29b672435e43fed11eada57f73ecba991bd1538
       </header>
 
       <section class="ui_section">
         <div class="notes_grid">
-<<<<<<< HEAD
           <a class="note_card" href="./pdf-viewer.html?file=assets/notes/week1.pdf" aria-label="Open Week 1 PDF">
             <div class="note_thumb"></div>
             <div class="note_title">Week 1</div>
@@ -52,30 +36,10 @@
             <div class="note_meta">PDF</div>
           </a>
         </div>
-=======
-
-    <a class="note_card" href="./pdf-viewer.html?file=assets/notes/week1.pdf" aria-label="Open Week 1 PDF">
-        <div class="note_thumb"></div>
-        <div class="note_title">Week 1</div>
-    </a>
-
-    <a class="note_card" href="./pdf-viewer.html?file=assets/notes/week2.pdf" aria-label="Open Week 2 PDF">
-        <div class="note_thumb"></div>
-        <div class="note_title">Week 2</div>
-    </a>
-
-    <a class="note_card" href="./pdf-viewer.html?file=assets/notes/week3.pdf" aria-label="Open Week 2 PDF">
-        <div class="note_thumb"></div>
-        <div class="note_title">Week 3</div>
-    </a>
-</div>
-
->>>>>>> e29b672435e43fed11eada57f73ecba991bd1538
       </section>
     </main>
 
     <nav class="ui_nav" aria-label="Bottom navigation">
-<<<<<<< HEAD
       <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
         <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
       </a>
@@ -99,10 +63,10 @@
   </div>
 
   <script>
-      const buddy = localStorage.getItem("dream_buddy") || "blue";
-      const root = document.getElementById("pageRoot");
-      root?.classList.toggle("orange", buddy === "orange");
-      root?.classList.toggle("blue", buddy !== "orange");
+    const buddy = localStorage.getItem("dream_buddy") || "blue";
+    const root = document.getElementById("pageRoot");
+    root?.classList.toggle("orange", buddy === "orange");
+    root?.classList.toggle("blue", buddy !== "orange");
 
     document.querySelector(".ui_back").addEventListener("click", (e) => {
       if (history.length > 1) {
@@ -111,34 +75,5 @@
       }
     });
   </script>
-=======
-        <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
-            <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
-            </a>
-
-        <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
-            <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
-            </a>
-
-        <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
-          <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
-        </a>
-
-        <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
-          <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
-        </a>
-
-        <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
-          <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
-        </a>
-    </nav>
-
-    <script>
-    document.querySelector(".ui_back").addEventListener("click", (e) => {
-        e.preventDefault();
-        history.back();
-    });
-    </script>
->>>>>>> e29b672435e43fed11eada57f73ecba991bd1538
 </body>
 </html>

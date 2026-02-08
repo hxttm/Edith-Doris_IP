@@ -25,7 +25,7 @@
           </div>
         </header>
 
-        <section class="dreamhome_weekly" aria-label="Weekly progress">
+        <section class="dreamhome_weekly" onclick="window.location.href='./calendar.html'" style="cursor:pointer;">
           <div class="dreamhome_weekly_title">Weekly Progress</div>
 
           <div class="dreamhome_weekly_row">
@@ -33,32 +33,26 @@
               <div class="dreamhome_weekly_dow">SUN</div>
               <div class="dreamhome_weekly_hours">5H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="3">
               <div class="dreamhome_weekly_dow">MON</div>
               <div class="dreamhome_weekly_hours">3H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="4">
               <div class="dreamhome_weekly_dow">TUE</div>
               <div class="dreamhome_weekly_hours">4H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="7">
               <div class="dreamhome_weekly_dow">WED</div>
               <div class="dreamhome_weekly_hours">7H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="2">
               <div class="dreamhome_weekly_dow">THU</div>
               <div class="dreamhome_weekly_hours">2H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="0">
               <div class="dreamhome_weekly_dow">FRI</div>
               <div class="dreamhome_weekly_hours">0H</div>
             </div>
-
             <div class="dreamhome_weekly_day" data-hours="0">
               <div class="dreamhome_weekly_dow">SAT</div>
               <div class="dreamhome_weekly_hours">0H</div>
@@ -73,18 +67,28 @@
               class="dreamhome_hero_img"
               src="assets/home/blue.jpg"
               alt="Study buddy"
+              onclick="window.location.href='./buddy.html'"
+              style="cursor:pointer;"
             />
           </div>
 
           <div class="dreamhome_hero_actions">
-            <div class="dreamhome_left_actions">
-              <button type="button" class="dreamhome_pill">Daily Spin</button>
-              <button type="button" class="dreamhome_pill">Leaderboard</button>
-            </div>
+            <div id="homeTimer" class="dreamhome_timer" aria-label="Timer">00:00:00</div>
 
-            <div class="dreamhome_right_actions">
-              <div id="homeTimer" class="dreamhome_timer" aria-label="Timer">00:00:00</div>
-              <button type="button" id="homeTimerBtn" class="dreamhome_cta">Start Now</button>
+            <button type="button" id="homeTimerBtn" class="dreamhome_cta" onclick="window.location.href='./focus.html'">
+              Start Now
+            </button>
+            <button type="button" class="dreamhome_cta dreamhome_cta_secondary" onclick="window.location.href='./notes.html'">
+              Your Notes
+            </button>
+
+            <div class="dreamhome_quick_row">
+              <button type="button" class="dreamhome_pill" onclick="window.location.href='./leaderboard.html'">
+                Leaderboard
+              </button>
+              <button type="button" class="dreamhome_pill" onclick="window.location.href='./dailyspin.html'">
+                Daily spin
+              </button>
             </div>
           </div>
         </section>
@@ -93,19 +97,15 @@
           <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
             <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
           </a>
-
           <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
             <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
           </a>
-
           <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
             <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
           </a>
-
           <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
             <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
           </a>
-
           <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
             <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
           </a>
@@ -125,9 +125,8 @@
           <div class="dreamhome_sheet_body" aria-hidden="true">
             <div class="dreamhome_quest_card">
               <div class="dreamhome_quest_head">
-                <div class="dreamhome_quest_gems">10 Gems</div>
+                <div class="dreamhome_quest_gems">Fill Health Bar</div>
               </div>
-
               <ul class="dreamhome_quest_list">
                 <li class="dreamhome_quest_item">
                   <span class="dreamhome_dot"></span>
@@ -146,9 +145,8 @@
 
             <div class="dreamhome_quest_card">
               <div class="dreamhome_quest_head">
-                <div class="dreamhome_quest_gems">20 Gems</div>
+                <div class="dreamhome_quest_gems">10 Gems</div>
               </div>
-
               <ul class="dreamhome_quest_list">
                 <li class="dreamhome_quest_item">
                   <span class="dreamhome_dot"></span>
@@ -177,6 +175,10 @@
       root?.classList.toggle("orange", dream_buddy === "orange");
       root?.classList.toggle("blue", dream_buddy !== "orange");
 
+      const nav = performance.getEntriesByType?.("navigation")?.[0];
+      if (nav && nav.type === "reload") {
+        sessionStorage.removeItem("dreamTotalFocusTime"); // resets to 00 on refresh
+      }
       if (dreamhome_img) {
         dreamhome_img.src = (dream_buddy === "orange")
           ? "assets/home/orange.png"
@@ -266,37 +268,19 @@
 
       setHeight(collapsed);
 
-      // Timer
-      const timerEl = document.getElementById("homeTimer");
-      const btn = document.getElementById("homeTimerBtn");
-
-      if (timerEl && btn) {
-        let running = false;
-        let startMs = 0;
-        let accMs = 0;
-
-        function fmt(ms) {
-          const s = Math.floor(ms / 1000);
-          const hh = String(Math.floor(s / 3600)).padStart(2, "0");
-          const mm = String(Math.floor((s % 3600) / 60)).padStart(2, "0");
-          const ss = String(s % 60).padStart(2, "0");
-          return `${hh}:${mm}:${ss}`;
-        }
-
-        btn.addEventListener("click", () => {
-          running = !running;
-          btn.textContent = running ? "End Session" : "Start Now";
-          if (running) startMs = Date.now();
-          else accMs += (Date.now() - startMs);
-        });
-
-        function tick() {
-          const total = accMs + (running ? (Date.now() - startMs) : 0);
-          timerEl.textContent = fmt(total);
-          requestAnimationFrame(tick);
-        }
-        tick();
+    const timerEl = document.getElementById("homeTimer");
+    if (timerEl) {
+      function updateHomeTimer() {
+        const totalSeconds = Number(localStorage.getItem("dreamTotalFocusTime") || 0);
+        const h = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+        const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+        const s = String(totalSeconds % 60).padStart(2, "0");
+        timerEl.textContent = `${h}:${m}:${s}`;
       }
+      
+      updateHomeTimer();
+      setInterval(updateHomeTimer, 1000);
+    }
     </script>
   </body>
 </html>

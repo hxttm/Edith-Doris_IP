@@ -17,10 +17,10 @@
 
       <form class="ui_form" aria-label="Contact form">
         <div class="ui_field"><input class="ui_input" placeholder="Username" /></div>
-        <div class="ui_field"><input class="ui_input" placeholder="Email" /></div>
+        <div class="ui_field"><input class="ui_input" placeholder="Email" type="email" /></div>
         <div class="ui_field"><textarea class="ui_textarea" placeholder="Message"></textarea></div>
         <div class="ui_field">
-          <input type="file" id="fileAttach" class="ui_input" placeholder="Attach a file (Optional)" accept="*/*" />
+          <input type="file" id="fileAttach" class="ui_input" accept="*/*" />
           <div id="filePreview" class="file-preview" style="display:none;">
             <span class="file-icon">📎</span>
             <span id="fileName"></span>
@@ -28,32 +28,31 @@
           </div>
         </div>
 
-        <div class="center_btn"><button class="ui_btn" type="button">Send</button></div>
+        <div class="center_btn">
+          <button class="ui_cta" type="submit">Send</button>
+        </div>
       </form>
     </main>
+
+    <nav class="ui_nav" aria-label="Bottom navigation">
+      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
+        <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
+        <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+      </a>
+      <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
+        <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+        <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+      </a>
+      <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+        <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+      </a>
+    </nav>
   </div>
 
-  <nav class="ui_nav" aria-label="Bottom navigation">
-      <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
-          <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
-        </a>
-
-      <a class="ui_nav_item" href="./market.html" aria-label="Notes market">
-          <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
-        </a>
-
-        <a class="ui_nav_item ui_nav_item_active" href="./index.html" aria-label="Home" aria-current="page">
-          <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
-        </a>
-
-        <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
-          <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
-        </a>
-
-        <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
-          <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
-        </a>
-  </nav>
   <script>
     const buddy = localStorage.getItem("dream_buddy") || "blue";
     document.body.classList.toggle("orange", buddy === "orange");
@@ -66,6 +65,41 @@
       }
     });
 
+    const fileInput = document.getElementById('fileAttach');
+    const filePreview = document.getElementById('filePreview');
+    const fileName = document.getElementById('fileName');
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files[0]) {
+        fileName.textContent = e.target.files[0].name;
+        filePreview.style.display = 'flex';
+      }
+    });
+
+    function clearFile() {
+      fileInput.value = '';
+      filePreview.style.display = 'none';
+    }
+
+    document.querySelector('form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const popup = document.createElement('div');
+      popup.className = 'contact_popup';
+      popup.innerHTML = `
+        <div class="popup_content">
+          <div>✨ Message sent!</div>
+          <div>We will contact you soon.</div>
+        </div>
+      `;
+      
+      document.body.appendChild(popup);
+      
+      setTimeout(() => popup.remove(), 3000);
+      
+      e.target.reset();
+      clearFile();
+    });
   </script>
 </body>
 </html>

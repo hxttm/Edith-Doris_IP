@@ -17,16 +17,15 @@
 
       <div class="particles active" id="particles"></div>
 
-        <div class="timer-display" id="timerDisplay">00:00:00</div>
+      <div class="timer-display" id="timerDisplay">00:00:00</div>
 
-        <div class="pet-container">
-          <img src="./assets/focus/blue.jpg" alt="Focus Pet" class="pet-image active" id="petImage" />
-        </div>
+      <div class="pet-container">
+        <img src="./assets/focus/blue.jpg" alt="Focus Pet" class="pet-image active" id="petImage" />
+      </div>
 
-        <div class="action-buttons">
-          <button class="btn btn-notes" id="notesBtn" type="button">Your Notes</button>
-          <button class="btn btn-end" id="endBtn" type="button">End Session</button>
-        </div>
+      <div class="action-buttons">
+        <button class="btn btn-notes" id="notesBtn" type="button">Your Notes</button>
+        <button class="btn btn-end" id="endBtn" type="button">End Session</button>
       </div>
     </main>
   </div>
@@ -38,80 +37,88 @@
     root?.classList.toggle("blue", buddy !== "orange");
 
     class FocusTimer {
-    constructor() {
-        this.time = 0;
+      constructor() {
+        const savedStart = sessionStorage.getItem("focusStartTime");
+        this.startTime = savedStart ? parseInt(savedStart) : Date.now();  // Resume or new
+        sessionStorage.setItem("focusStartTime", this.startTime.toString());
         this.interval = null;
         this.timerDisplay = document.getElementById("timerDisplay");
         this.particles = document.getElementById("particles");
 
         this.bindEvents();
         this.createParticles();
+        this.updateDisplay();
         this.start();
-    }
+      }
 
-    bindEvents() {
+      bindEvents() {
         document.getElementById("endBtn")?.addEventListener("click", () => this.endSession());
-        document.getElementById('notesBtn').addEventListener('click', () => this.openNotes());
-    }
+        document.getElementById('notesBtn')?.addEventListener('click', () => this.openNotes());
+      }
 
-    start() {
+      start() {
         if (this.interval) return;
         document.body.classList.add("timer-running");
         this.interval = setInterval(() => {
-        this.time++;
-        this.updateDisplay();
+          this.updateDisplay();
         }, 1000);
-    }
+      }
 
-    stop() {
-        document.body.classList.remove("timer-running");
-        clearInterval(this.interval);
-        this.interval = null;
-    }
-
-    updateDisplay() {
-        const h = String(Math.floor(this.time / 3600)).padStart(2, "0");
-        const m = String(Math.floor((this.time % 3600) / 60)).padStart(2, "0");
-        const s = String(this.time % 60).padStart(2, "0");
+      updateDisplay() {
+        const elapsed = Math.floor((Date.now() - this.startTime) / 1000);
+        const h = String(Math.floor(elapsed / 3600)).padStart(2, "0");
+        const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, "0");
+        const s = String(elapsed % 60).padStart(2, "0");
         this.timerDisplay.textContent = `${h}:${m}:${s}`;
-    }
+      }
 
-    endSession() {
-    if (!confirm(`End session after ${this.formatTime(this.time)}?`)) return;
-    window.location.href = "./index.html";
-    }
+      endSession() {
+        if (!confirm(`End session after ${this.formatTime(Math.floor((Date.now() - this.startTime) / 1000))}?`)) return;
+        
+        const sessionSeconds = Math.floor((Date.now() - this.startTime) / 1000);
+        const prevTotal = Number(localStorage.getItem("dreamTotalFocusTime") || 0);
+        const newTotal = prevTotal + sessionSeconds;
+        
+        while (localStorage.getItem("dreamTotalFocusTime") !== newTotal.toString()) {
+          localStorage.setItem("dreamTotalFocusTime", newTotal.toString());
+        }
+        
+        sessionStorage.removeItem("focusStartTime");
+        setTimeout(() => window.location.href = "./index.html", 50);
+      }
 
-    openNotes() {
-    window.location.href = "./notes.html";
-    }
 
-    Notes() {
-        const notes = prompt("Quick notes for this sessioopenn:") || "";
-        console.log("Session notes:", notes, "Time:", this.formatTime(this.time));
-    }
 
-    formatTime(seconds) {
+      formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
         const secs = seconds % 60;
         return `${mins}m ${secs}s`;
-    }
+      }
 
-    createParticles() {
+      openNotes() {
+        sessionStorage.setItem("fromFocus", "true");
+        window.location.href = "./notes.html";
+      }
+
+      createParticles() {
         if (!this.particles) return;
         this.particles.innerHTML = "";
         for (let i = 0; i < 50; i++) {
-        const particle = document.createElement("div");
-        particle.className = "particle";
-        particle.style.left = Math.random() * 100 + "%";
-        particle.style.animationDelay = Math.random() * 6 + "s";
-        particle.style.animationDuration = (Math.random() * 3 + 4) + "s";
-        this.particles.appendChild(particle);
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 6 + "s";
+          particle.style.animationDuration = (Math.random() * 3 + 4) + "s";
+          this.particles.appendChild(particle);
         }
+      }
     }
-    }
+
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem("focusTime", new FocusTimer().time.toString());
+    });
 
     new FocusTimer();
-
   </script>
 </body>
-
+</html>

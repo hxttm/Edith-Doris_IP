@@ -16,6 +16,7 @@
       </header>
 
       <section class="spin_area" aria-label="Spin wheel area">
+        <div class="baseText" id="spinLeft">1 Spin Left</div>
         <div class="pointer" aria-hidden="true"></div>
 
         <div class="wheelWrap">
@@ -24,13 +25,19 @@
               <span class="center" aria-hidden="true">SPIN!</span>
             </button>
 
-            <div class="base" aria-hidden="true">
-              <div class="baseText" id="spinLeft">1 Spin Left</div>
-            </div>
+            <div class="base" aria-hidden="true"></div>
           </div>
         </div>
       </section>
     </main>
+
+    <div class="spinPopup" id="spinPopup" hidden>
+      <div class="spinPopup_card">
+        <h3>You got 🎉</h3>
+        <p id="rewardText"></p>
+        <button id="closePopup">OK</button>
+      </div>
+    </div>
 
     <nav class="ui_nav" aria-label="Bottom navigation">
       <a class="ui_nav_item" href="./buddy.html" aria-label="Customising avatar">
@@ -59,8 +66,8 @@
     const buddy = localStorage.getItem("dream_buddy") || "blue";
     const root = document.getElementById("pageRoot");
     root.classList.toggle("orange", buddy === "orange");
-    root.classList.toggle("blue", buddy !== "orange"); 
-    
+    root.classList.toggle("blue", buddy !== "orange");
+
     document.querySelector(".ui_back")?.addEventListener("click", (e) => {
       if (history.length > 1) {
         e.preventDefault();
@@ -70,31 +77,56 @@
 
     const wheel = document.getElementById("wheel");
     const spinLeftEl = document.getElementById("spinLeft");
+    const spinPopup = document.getElementById("spinPopup");
+    const rewardText = document.getElementById("rewardText");
+    const closePopup = document.getElementById("closePopup");
+
+    const rewards = [
+      "1 hour focus session",
+      "20 min focus session",
+      "Study your newest chapter",
+      "Earn 1 Gem",
+      "2 hour focus session",
+      "Earn 10 Gems"
+    ];
 
     let spinsLeft = 1;
     let currentRotation = 0;
+    let isSpinning = false;
 
-    function updateSpinLeft(){
-      spinLeftEl.textContent = spinsLeft > 0 ? `${spinsLeft} Spin Left` : "0 Spin Left";
+    function updateSpinLeft() {
+      spinLeftEl.textContent =
+        spinsLeft > 0 ? `${spinsLeft} Spin Left` : "0 Spin Left";
     }
+
     updateSpinLeft();
 
     wheel.addEventListener("click", () => {
-      if (spinsLeft <= 0) return;
+      if (spinsLeft <= 0 || isSpinning) return;
 
+      isSpinning = true;
       spinsLeft -= 1;
       updateSpinLeft();
 
-      const slices = 6;
+      const slices = rewards.length;
       const step = 360 / slices;
       const chosen = Math.floor(Math.random() * slices);
       const extraTurns = 6 * 360;
 
-      const target = extraTurns + (360 - (chosen * step + step / 2));
-      currentRotation += target;
+      const target =
+        extraTurns + (360 - (chosen * step + step / 2));
 
+      currentRotation += target;
       wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+      setTimeout(() => {
+        rewardText.textContent = rewards[chosen];
+        spinPopup.hidden = false;
+        isSpinning = false;
+      }, 2800);
+    });
+
+    closePopup.addEventListener("click", () => {
+      spinPopup.hidden = true;
     });
   </script>
-</body>
-</html>

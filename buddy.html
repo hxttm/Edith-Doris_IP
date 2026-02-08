@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dream — Study Buddy</title>
+    <link rel="stylesheet" href="phone.css" />
+  </head>
+
+  <body>
+    <div class="dreampage dreampage_has_nav" id="pageRoot">
+      <main class="ui_screen" aria-label="Study Buddy">
+        <!-- Top Bar -->
+        <header class="ui_top">
+          <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
+          <div class="ui_title">Study Buddy</div>
+          <div class="ui_top_spacer" aria-hidden="true"></div>
+        </header>
+
+        <!-- Quick Links -->
+        <div class="buddy_links" aria-label="Quick links">
+          <a class="buddy_link" href="./leaderboard.html">Leaderboard</a>
+          <a class="buddy_link" href="./dailyspin.html">Daily Spin</a>
+        </div>
+
+        <!-- Viewer + Health Bar (TIGHT GAP) -->
+        <div class="buddy_viewer_wrap">
+          <div class="buddy_viewer">
+            <iframe 
+              title="Baby White Rhino Static Pose Triangulated."
+              src="https://sketchfab.com/models/b7af77eceaf84d21936131da30a3b8b2/embed"
+              frameborder="0" 
+              allowfullscreen 
+              mozallowfullscreen="true" 
+              webkitallowfullscreen="true" 
+              allow="autoplay; fullscreen; xr-spatial-tracking" 
+              xr-spatial-tracking 
+              execution-while-out-of-viewport 
+              execution-while-not-rendered 
+              web-share 
+              width="100%" 
+              height="100%"
+              style="border-radius: inherit; pointer-events: auto;">
+            </iframe>
+          </div>
+
+          <div class="buddy_hpbar" aria-label="Health bar" >
+            <div class="buddy_hpbar_fill" id="hpFill" style="width: 72%;"></div>
+          </div>
+        </div>
+
+        <!-- Quests -->
+        <section class="buddy_questcard" aria-label="Fill health bar quests">
+          <div class="buddy_questcard_title">Fill Health Bar</div>
+          <ul class="buddy_quest_list">
+            <li class="buddy_quest_item">
+              <span class="buddy_quest_dot"></span>Complete 3 Pomodoro sessions
+            </li>
+            <li class="buddy_quest_item">
+              <span class="buddy_quest_dot"></span>Take quick notes
+            </li>
+            <li class="buddy_quest_item">
+              <span class="buddy_quest_dot"></span>Revise flashcards for 10 minutes
+            </li>
+          </ul>
+        </section>
+
+        <!-- Bottom Nav -->
+        <nav class="ui_nav" aria-label="Bottom navigation">
+          <a class="ui_nav_item ui_nav_item_active" href="./buddy.html" aria-label="Buddy" aria-current="page">
+            <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
+          </a>
+          <a class="ui_nav_item" href="./market.html" aria-label="Market">
+            <img class="ui_nav_icon" src="./assets/nav/market.png" alt="" />
+          </a>
+          <a class="ui_nav_item" href="./index.html" aria-label="Home">
+            <img class="ui_nav_icon" src="./assets/nav/home.png" alt="" />
+          </a>
+          <a class="ui_nav_item" href="./chat.html" aria-label="Chat">
+            <img class="ui_nav_icon" src="./assets/nav/chat.png" alt="" />
+          </a>
+          <a class="ui_nav_item" href="./settings.html" aria-label="Settings">
+            <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
+          </a>
+        </nav>
+      </main>
+    </div>
+
+    <script>
+      // Theme toggle
+      const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
+      const root = document.getElementById("pageRoot");
+      root?.classList.toggle("orange", dream_buddy === "orange");
+      root?.classList.toggle("blue", dream_buddy !== "orange");
+
+      // HP bar animation
+      const hp = document.getElementById("hpFill");
+      if (hp) {
+        const target = hp.style.width || "72%";
+        hp.style.width = "0%";
+        requestAnimationFrame(() => (hp.style.width = target));
+      }
+    </script>
+  </body>
+</html>

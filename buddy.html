@@ -10,20 +10,17 @@
   <body>
     <div class="dreampage dreampage_has_nav" id="pageRoot">
       <main class="ui_screen" aria-label="Study Buddy">
-        <!-- Top Bar -->
         <header class="ui_top">
           <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
           <div class="ui_title">Study Buddy</div>
           <div class="ui_top_spacer" aria-hidden="true"></div>
         </header>
 
-        <!-- Quick Links -->
         <div class="buddy_links" aria-label="Quick links">
           <a class="buddy_link" href="./leaderboard.html">Leaderboard</a>
           <a class="buddy_link" href="./dailyspin.html">Daily Spin</a>
         </div>
 
-        <!-- Viewer + Health Bar (TIGHT GAP) -->
         <div class="buddy_viewer_wrap">
           <div class="buddy_viewer">
             <iframe 
@@ -49,7 +46,6 @@
           </div>
         </div>
 
-        <!-- Quests -->
         <section class="buddy_questcard" aria-label="Fill health bar quests">
           <div class="buddy_questcard_title">Fill Health Bar</div>
           <ul class="buddy_quest_list">
@@ -65,7 +61,6 @@
           </ul>
         </section>
 
-        <!-- Bottom Nav -->
         <nav class="ui_nav" aria-label="Bottom navigation">
           <a class="ui_nav_item ui_nav_item_active" href="./buddy.html" aria-label="Buddy" aria-current="page">
             <img class="ui_nav_icon" src="./assets/nav/avatar.png" alt="" />
@@ -87,13 +82,11 @@
     </div>
 
     <script>
-      // Theme toggle
       const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
       const root = document.getElementById("pageRoot");
       root?.classList.toggle("orange", dream_buddy === "orange");
       root?.classList.toggle("blue", dream_buddy !== "orange");
 
-      // HP bar animation
       const hp = document.getElementById("hpFill");
       if (hp) {
         const target = hp.style.width || "72%";

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dream — Contact Us</title>
   <link rel="stylesheet" href="./phone.css" />
-  <script src="./app.js" defer></script>
 </head>
 <body>
   <div class="dreampage dreampage_has_nav" id="pageRoot">
@@ -55,6 +54,18 @@
           <img class="ui_nav_icon" src="./assets/nav/settings.png" alt="" />
         </a>
   </nav>
+  <script>
+    const buddy = localStorage.getItem("dream_buddy") || "blue";
+    document.body.classList.toggle("orange", buddy === "orange");
+    document.body.classList.toggle("blue", buddy !== "orange");
 
+    document.querySelector(".ui_back")?.addEventListener("click", (e) => {
+      if (history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    });
+
+  </script>
 </body>
 </html>

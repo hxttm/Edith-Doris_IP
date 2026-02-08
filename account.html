@@ -63,6 +63,13 @@
       root?.classList.toggle("orange", buddy === "orange");
       root?.classList.toggle("blue", buddy !== "orange");
 
+      document.querySelector(".ui_back")?.addEventListener("click", (e) => {
+        if (history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      });
+
       const overlayHTML = `
         <div class="ui_overlay" id="overlayEdu" hidden>
           <div class="ui_overlay_backdrop" data-close="overlayEdu" aria-hidden="true"></div>

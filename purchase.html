@@ -74,6 +74,13 @@
       const root = document.getElementById("pageRoot");
       root?.classList.toggle("orange", buddy === "orange");
       root?.classList.toggle("blue", buddy !== "orange");
+      
+      document.querySelector(".ui_back")?.addEventListener("click", (e) => {
+        if (history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      });
 
     document.querySelector(".ui_back").addEventListener("click", (e) => {
       if (history.length > 1) {

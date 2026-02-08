@@ -201,6 +201,13 @@
       const dreamsettings_close = document.getElementById("dreamsettings_close");
       const dreamsettings_pins = Array.from(document.querySelectorAll(".dreamsettings_pin"));
 
+      document.querySelector(".ui_back")?.addEventListener("click", (e) => {
+        if (history.length > 1) {
+          e.preventDefault();
+          history.back();
+        }
+      });
+
       function dreamsettings_open_overlay() {
         dreamsettings_overlay?.classList.add("dreamsettings_overlay_open");
         dreamsettings_overlay?.setAttribute("aria-hidden", "false");

@@ -208,7 +208,7 @@ body{
   width:78%;
   height:30px;
   border-radius:999px;
-  background: #ADB5BD;
+  background: #ADB5BD important!;
   color: #fff ;
   font-weight:700;
   font-size:16px;
@@ -287,7 +287,6 @@ body{
     0 0 42px 14px rgba(90,150,255,.35);
   transform: translateY(-2px);
 }
-
 
 .ui_top{
   display:grid;
@@ -1485,7 +1484,6 @@ body{
   text-align: center !important;
 }
 
-/* Hover/active states */
 .focus-back-btn:hover {
   background: rgba(255,255,255,0.3) !important;
   transform: translateY(-1px) !important;
@@ -2628,3 +2626,38 @@ body{
     90% { opacity: 1; }
     100% { transform: translateY(-100px) scale(1); opacity: 0; }
 }
+
+@media (min-width: 1024px) {
+  .ui_nav {
+    flex-direction: column !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    height: auto;
+    justify-content: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+
+  .ui_nav_item {
+    width: 100%;
+  }
+
+  .dreamhome_screen {
+    margin-left: 80px;
+    padding-bottom: 0;
+  }
+
+  .dreamhome_weekly_row {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    display: grid !important;
+    gap: var(--spacing-md);
+  }
+
+  .dreamhome_sheet {
+    max-height: 60vh;
+  }
+}
+

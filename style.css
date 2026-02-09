@@ -473,7 +473,7 @@ body.auth-bg{
   grid-template-columns: 1fr 120px;
   gap:0;
   margin-top:6px;
-  border-radius:12px;
+  border-radius:12px!important;
   overflow:hidden;
 }
 .dreamhome .dreamhome_top_left{
@@ -731,6 +731,165 @@ body.auth-bg{
   margin-top:5px;
   flex:0 0 auto;
 }
+
+.ui_nav_desktop{ display:none; }
+
+@media (min-width: 1014px){
+
+  .dreamhome .dreamhome_screen{
+    width: 100%;
+    min-height: none;
+    margin: 0;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    grid-template-areas:
+      "top top"
+      "weekly actions"
+      "hero quests";
+    gap: 14px;
+    align-items: start;
+  }
+
+  .dreamhome .dreamhome_top{
+    grid-area: top;
+
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 18px;
+
+    background: var(--dreamhome_panel);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 16px rgba(0,0,0,0.10);
+    padding: 10px 14px;
+  }
+
+  .dreamhome .dreamhome_title{ font-size: 34px; }
+
+  .dreamhome .dreamhome_top_left,
+  .dreamhome .dreamhome_top_right{
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .ui_nav_desktop{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: flex-end;
+    padding-right: 6px;
+  }
+  .ui_nav_desktop_link{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 650;
+    color: rgba(0,0,0,0.55);
+  }
+  .ui_nav_desktop_active{ color: rgba(0,0,0,0.90); }
+
+  .dreamhome .dreamhome_gem_pill{
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.22);
+  }
+
+  .ui_nav{ display:none; }
+
+  .dreamhome .dreamhome_weekly{
+    grid-area: weekly;
+    margin-top: 0;
+    min-height: 300px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  }
+
+  .dreamhome .dreamhome_weekly_row{
+    grid-template-columns: repeat(7, minmax(48px, 1fr));
+  }
+
+  .dreamhome .dreamhome_weekly_day{
+    height: 200px;
+    gap: 14px;
+  }
+
+
+  .dreamhome .dreamhome_weekly_dow{ font-size: 30px; }
+  .dreamhome .dreamhome_weekly_hours{ font-size: 30px; }
+  .dreamhome .dreamhome_hero{
+    grid-area: actions;
+    margin-top: 0;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 16px;
+    align-items: start;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  }
+
+  .dreamhome .dreamhome_hero_img_wrap{
+    height: 320px;
+  }
+
+  .dreamhome .dreamhome_hero_actions{
+    margin-top: 0;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .dreamhome .dreamhome_timer{ font-size: 44px; }
+
+  .dreamhome .dreamhome_cta,
+  .dreamhome .dreamhome_cta_secondary{
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .dreamhome .dreamhome_quick_row{
+    max-width: none;
+    padding: 0;
+    gap: 12px;
+  }
+
+  .dreamhome .dreamhome_pill{
+    min-width: 0;
+    max-width: none;
+  }
+
+  .dreamhome .dreamhome_sheet{
+    grid-area: quests;
+
+    position: static;
+    height: auto;
+    border-radius: 16px;
+    margin-top: 0;
+    backdrop-filter: blur(0);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  }
+
+  .dreamhome .dreamhome_sheet_grab{ cursor: default; }
+  .dreamhome .dreamhome_grab_handle{ display:none; }
+  .dreamhome .dreamhome_sheet_body{ padding: 14px; }
+
+  .dreamhome .dreamhome_sheet_title{ font-size: 20px; }
+
+ 
+  .dreamhome .dreamhome_hero_img_wrap{ display:none; }
+
+  .dreamhome .dreamhome_screen::before{
+    content: "";
+    grid-area: hero;
+    border-radius: 16px;
+    background: url("assets/home/blue.jpg") center / cover no-repeat;
+    min-height: 420px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  }
+}
+
+
 
 .ui_overlay{
   position:fixed;

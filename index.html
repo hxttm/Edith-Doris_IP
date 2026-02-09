@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dream — Home</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,6 +16,13 @@
               Hello, <span class="dreamhome_name">Edith</span>!
             </div>
           </div>
+          <nav class="ui_nav_desktop" aria-label="Top navigation">
+            <a class="ui_nav_desktop_link ui_nav_desktop_active" href="./index.html" aria-current="page">home</a>
+            <a class="ui_nav_desktop_link" href="./chat.html">chat</a>
+            <a class="ui_nav_desktop_link" href="./notes.html">notes</a>
+            <a class="ui_nav_desktop_link" href="./buddy.html">buddy</a>
+            <a class="ui_nav_desktop_link" href="./settings.html">settings</a>
+          </nav>
 
           <div class="dreamhome_top_right">
             <button type="button" class="dreamhome_gem_pill" aria-label="Gems">
@@ -24,6 +31,7 @@
             </button>
           </div>
         </header>
+
 
         <section class="dreamhome_weekly" onclick="window.location.href='./calendar.html'" style="cursor:pointer;">
           <div class="dreamhome_weekly_title">Weekly Progress</div>
@@ -177,7 +185,7 @@
 
       const nav = performance.getEntriesByType?.("navigation")?.[0];
       if (nav && nav.type === "reload") {
-        sessionStorage.removeItem("dreamTotalFocusTime"); // resets to 00 on refresh
+        sessionStorage.removeItem("dreamTotalFocusTime"); 
       }
       if (dreamhome_img) {
         dreamhome_img.src = (dream_buddy === "orange")

@@ -10,107 +10,182 @@
 <body>
   <div class="dreampage dreampage_has_nav" id="pageRoot">
     <main class="ui_screen" aria-label="Chat">
+
+      <header class="app_top" aria-label="Top bar">
+        <div class="app_top_left">
+          <div class="app_title">Chat</div>
+        </div>
+
+        <nav class="app_nav" aria-label="Top navigation">
+          <a class="app_nav_link" href="./index.html">home</a>
+          <a class="app_nav_link app_nav_active" href="./chat.html" aria-current="page">chat</a>
+          <a class="app_nav_link" href="./notes.html">notes</a>
+          <a class="app_nav_link" href="./buddy.html">buddy</a>
+          <a class="app_nav_link" href="./settings.html">settings</a>
+        </nav>
+
+        <div class="app_top_right">
+          <button type="button" class="app_gem_pill" aria-label="Gems">
+            <img class="app_gem_icon" src="assets/diamond.png" alt="" />
+            <span class="app_gem_count">10</span>
+          </button>
+        </div>
+      </header>
+
       <header class="ui_top">
         <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
         <div class="ui_title">Chat</div>
         <div class="ui_top_spacer" aria-hidden="true"></div>
       </header>
 
-      <div class="ui_tabs" role="tablist" aria-label="Chat sections">
-        <button class="ui_tab ui_tab_active" type="button" data-tab="chats" role="tab" aria-selected="true">Chats</button>
-        <button class="ui_tab" type="button" data-tab="buddies" role="tab" aria-selected="false">Study Buddies</button>
+      <div class="chat_layout">
+        <div class="chat_left">
+          <div class="ui_tabs" role="tablist" aria-label="Chat sections">
+            <button class="ui_tab ui_tab_active" type="button" data-tab="chats" role="tab" aria-selected="true">Chats</button>
+            <button class="ui_tab" type="button" data-tab="buddies" role="tab" aria-selected="false">Study Buddies</button>
+          </div>
+
+          <section class="ui_section tab_panel active" data-tab-panel="chats">
+            <a href="./gc.html"
+               class="chat_item"
+               data-chat="study-baddies"
+               data-title="Study Baddies"
+               data-sub="Jayden"
+            >
+              <img class="chat_avatar" src="./assets/pfp/j.webp" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Study Baddies</div>
+                <div class="chat_user">Jayden</div>
+                <div class="chat_preview">good job for studying 5 hours</div>
+              </div>
+              <div class="chat_time">2m</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item"
+               data-chat="chem-proj"
+               data-title="Chem Proj Group 2"
+               data-sub="Doris"
+            >
+              <img class="chat_avatar" src="./assets/pfp/d.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Chem Proj Group 2</div>
+                <div class="chat_user">Doris</div>
+                <div class="chat_preview">its okay, let's do better</div>
+              </div>
+              <div class="chat_time">1h</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item"
+               data-chat="academic-weapons"
+               data-title="Academic Weapons"
+               data-sub="Edith"
+            >
+              <img class="chat_avatar" src="./assets/pfp/e.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Academic Weapons</div>
+                <div class="chat_user">Edith</div>
+                <div class="chat_preview">Let's target to study for 3 hours</div>
+              </div>
+              <div class="chat_time">3h</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item"
+               data-chat="chem"
+               data-title="Chem CA1"
+               data-sub="Kway Jo"
+            >
+              <img class="chat_avatar" src="./assets/pfp/kj.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Chem CA1</div>
+                <div class="chat_user">Kway Jo</div>
+                <div class="chat_preview">good luck for our test!</div>
+              </div>
+              <div class="chat_time">5h</div>
+            </a>
+          </section>
+
+          <section class="ui_section tab_panel" data-tab-panel="buddies">
+            <a href="./gc.html"
+               class="chat_item buddy_item"
+               data-chat="buddy-jayden"
+               data-title="Jayden"
+               data-sub="Study Buddy"
+            >
+              <img class="chat_avatar" src="./assets/pfp/j.webp" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Jayden</div>
+                <div class="chat_user">Your UI UX is so cool!</div>
+                <div class="chat_study">Studied for 5h today</div>
+              </div>
+              <div class="chat_time">5h</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item buddy_item"
+               data-chat="buddy-doris"
+               data-title="Doris"
+               data-sub="Study Buddy"
+            >
+              <img class="chat_avatar" src="./assets/pfp/d.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Doris</div>
+                <div class="chat_user">yippee</div>
+                <div class="chat_study">Studied for 7h today</div>
+              </div>
+              <div class="chat_time">5h</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item buddy_item"
+               data-chat="buddy-edith"
+               data-title="Edith"
+               data-sub="Study Buddy"
+            >
+              <img class="chat_avatar" src="./assets/pfp/e.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Edith</div>
+                <div class="chat_user">Good Luck!</div>
+                <div class="chat_study">Studied for 7h today</div>
+              </div>
+              <div class="chat_time">1h</div>
+            </a>
+
+            <a href="./gc.html"
+               class="chat_item buddy_item"
+               data-chat="buddy-kwayjo"
+               data-title="Kway Jo"
+               data-sub="Study Buddy"
+            >
+              <img class="chat_avatar" src="./assets/pfp/kj.jpg" alt="" />
+              <div class="chat_info">
+                <div class="chat_name">Kway Jo</div>
+                <div class="chat_user">Your UI UX is so cool!</div>
+                <div class="chat_study">Studied for 5h today</div>
+              </div>
+              <div class="chat_time">5h</div>
+            </a>
+          </section>
+        </div>
+
+        <aside class="chat_right" aria-label="Chat conversation">
+          <div class="gc_shell" id="gcShell">
+            <header class="gc_topbar">
+              <div class="gc_title" id="gcTitle">Select a chat</div>
+              <div class="gc_sub" id="gcSub">Messages will appear here.</div>
+            </header>
+
+            <section class="gc_thread gc_thread_preview" id="gcThread" aria-label="Messages"></section>
+
+            <form class="gc_inputbar gc_inputbar_preview" id="gcForm" aria-label="Send message">
+              <input class="message_input" id="gcInput" type="text" placeholder="Message..." aria-label="Message" />
+              <button class="send_btn" type="submit" aria-label="Send">→</button>
+            </form>
+          </div>
+        </aside>
       </div>
-
-      <section class="ui_section tab_panel active" data-tab-panel="chats">
-        <a href="./gc.html" class="chat_item" data-chat="study-baddies">
-          <img class="chat_avatar" src="./assets/pfp/j.webp" alt="" />  <!-- Study Baddies: Jayden -->
-          <div class="chat_info">
-            <div class="chat_name">Study Baddies</div>
-            <div class="chat_user">Jayden</div>
-            <div class="chat_preview">good job for studying 5 hours</div>
-          </div>
-          <div class="chat_time">2m</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item" data-chat="chem-proj">
-          <img class="chat_avatar" src="./assets/pfp/d.jpg" alt="" />    <!-- Chem Proj: Doris -->
-          <div class="chat_info">
-            <div class="chat_name">Chem Proj Group 2</div>
-            <div class="chat_user">Doris</div>
-            <div class="chat_preview">its okay, let's do better</div>
-          </div>
-          <div class="chat_time">1h</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item" data-chat="academic-weapons">
-          <img class="chat_avatar" src="./assets/pfp/e.jpg" alt="" />    <!-- Academic Weapons: Edith -->
-          <div class="chat_info">
-            <div class="chat_name">Academic Weapons</div>
-            <div class="chat_user">Edith</div>
-            <div class="chat_preview">Let's target to study for 3 hours</div>
-          </div>
-          <div class="chat_time">3h</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item" data-chat="chem">
-          <img class="chat_avatar" src="./assets/pfp/kj.jpg" alt="" />   <!-- Chem CA1: Kway Jo -->
-          <div class="chat_info">
-            <div class="chat_name">Chem CA1</div>
-            <div class="chat_user">Kway Jo</div>
-            <div class="chat_preview">good luck for our test!</div>
-          </div>
-          <div class="chat_time">5h</div>
-        </a>
-      </section>
-
-      <section class="ui_section tab_panel" data-tab-panel="buddies">
-        <a href="./gc.html" class="chat_item buddy_item">
-          <img class="chat_avatar" src="./assets/pfp/j.webp" alt="" />   <!-- Jayden -->
-          <div class="chat_info">
-            <div class="chat_name">Jayden</div>
-            <div class="chat_user">Your UI UX is so cool!</div>
-            <div class="chat_study">Studied for 5h today</div>
-          </div>
-          <div class="chat_time">5h</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item buddy_item">
-          <img class="chat_avatar" src="./assets/pfp/d.jpg" alt="" />   <!-- Jayden -->
-          <div class="chat_info">
-            <div class="chat_name">Doris</div>
-            <div class="chat_user">yippee</div>
-            <div class="chat_study">Studied for 7h today</div>
-          </div>
-          <div class="chat_time">5h</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item buddy_item">
-          <img class="chat_avatar" src="./assets/pfp/e.jpg" alt="" />
-          <div class="chat_info">
-            <div class="chat_name">Edith</div>
-            <div class="chat_user">Good Luck!</div>
-            <div class="chat_study">Studied for 7h today</div>
-          </div>
-          <div class="chat_time">1h</div>
-        </a>
-
-        <a href="./gc.html" class="chat_item buddy_item">
-          <img class="chat_avatar" src="./assets/pfp/kj.jpg" alt="" />   <!-- Jayden -->
-          <div class="chat_info">
-            <div class="chat_name">Kway Jo</div>
-            <div class="chat_user">Your UI UX is so cool!</div>
-            <div class="chat_study">Studied for 5h today</div>
-          </div>
-          <div class="chat_time">5h</div>
-        </a>
-
-
-
-      </section>
-    </main>
-  </div>
-
-      </section>
     </main>
 
     <nav class="ui_nav" aria-label="Bottom navigation">
@@ -157,6 +232,122 @@
         e.preventDefault();
         history.back();
       }
+    });
+
+    const isDesktop = () => window.matchMedia("(min-width: 1014px)").matches;
+
+    const CHAT_DB = {
+      "chem-proj": [
+        { side:"left",  name:"Doris",  text:"its okay, let's do better", time:"1:12 PM" },
+        { side:"left",  name:"Edith",  text:"Let’s target to study for 3 hours", time:"1:18 PM" },
+        { side:"right", name:"You",    text:"Ok! I’ll do the enzyme kinetics slides.", time:"1:20 PM" },
+        { side:"left",  name:"Kway Jo",text:"good luck for our test!", time:"1:22 PM" },
+      ],
+      "study-baddies": [
+        { side:"left", name:"Jayden", text:"good job for studying 5 hours", time:"2:02 PM" },
+        { side:"right", name:"You", text:"thanks 😭", time:"2:03 PM" },
+      ],
+      "academic-weapons": [
+        { side:"left", name:"Edith", text:"Let's target to study for 3 hours", time:"11:10 AM" },
+        { side:"right", name:"You", text:"deal", time:"11:12 AM" },
+      ],
+      "chem": [
+        { side:"left", name:"Kway Jo", text:"good luck for our test!", time:"9:30 AM" },
+        { side:"right", name:"You", text:"you too!", time:"9:31 AM" },
+      ],
+      "buddy-jayden": [{ side:"left", name:"Jayden", text:"Your UI UX is so cool!", time:"today" }],
+      "buddy-doris":  [{ side:"left", name:"Doris", text:"yippee", time:"today" }],
+      "buddy-edith":  [{ side:"left", name:"Edith", text:"Good Luck!", time:"today" }],
+      "buddy-kwayjo": [{ side:"left", name:"Kway Jo", text:"Your UI UX is so cool!", time:"today" }],
+    };
+
+    const gcTitle = document.getElementById("gcTitle");
+    const gcSub = document.getElementById("gcSub");
+    const gcThread = document.getElementById("gcThread");
+    const gcForm = document.getElementById("gcForm");
+    const gcInput = document.getElementById("gcInput");
+
+    let currentChatId = null;
+
+    function renderChat(chatId, title, sub){
+      currentChatId = chatId;
+
+      if (gcTitle) gcTitle.textContent = title || "Chat";
+      if (gcSub) gcSub.textContent = sub || "";
+
+      if (!gcThread) return;
+      gcThread.innerHTML = "";
+
+      const msgs = CHAT_DB[chatId] || [];
+      if (!msgs.length){
+        const empty = document.createElement("div");
+        empty.className = "gc_empty";
+        empty.textContent = "No messages yet.";
+        gcThread.appendChild(empty);
+        return;
+      }
+
+      msgs.forEach(m => {
+        const row = document.createElement("div");
+        row.className = `gc_msg ${m.side === "right" ? "gc_right" : "gc_left"}`;
+
+        const bubble = document.createElement("div");
+        bubble.className = "gc_bubble";
+
+        if (m.side !== "right"){
+          const name = document.createElement("div");
+          name.className = "gc_name";
+          name.textContent = m.name || "";
+          bubble.appendChild(name);
+        }
+
+        const text = document.createElement("div");
+        text.className = "gc_text";
+        text.textContent = m.text || "";
+        bubble.appendChild(text);
+
+        const time = document.createElement("div");
+        time.className = "gc_time";
+        time.textContent = m.time || "";
+        bubble.appendChild(time);
+
+        row.appendChild(bubble);
+        gcThread.appendChild(row);
+      });
+
+      gcThread.scrollTop = gcThread.scrollHeight;
+    }
+
+    document.querySelectorAll(".chat_item[data-chat]").forEach(item => {
+      item.addEventListener("click", (e) => {
+        if (!isDesktop()) return;     
+        e.preventDefault();          
+
+        document.querySelectorAll(".chat_item.chat_item_active")
+          .forEach(n => n.classList.remove("chat_item_active"));
+        item.classList.add("chat_item_active");
+
+        renderChat(
+          item.dataset.chat,
+          item.dataset.title || item.querySelector(".chat_name")?.textContent,
+          item.dataset.sub || item.querySelector(".chat_user")?.textContent
+        );
+      });
+    });
+
+
+    gcForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!isDesktop()) return;
+
+      const value = (gcInput?.value || "").trim();
+      if (!value || !currentChatId) return;
+
+      CHAT_DB[currentChatId] = CHAT_DB[currentChatId] || [];
+      CHAT_DB[currentChatId].push({ side:"right", name:"You", text:value, time:"now" });
+
+      gcInput.value = "";
+      renderChat(currentChatId, gcTitle?.textContent, gcSub?.textContent);
     });
   </script>
 </body>

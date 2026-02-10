@@ -2025,26 +2025,104 @@ body{
   display: flex;
   align-items: center;
   gap: 2px;
-  font-size:-vv    clamp(13px, 2.5vw, 14px); 
+  font-size: clamp(13px, 2.5vw, 14px); 
   font-weight: 400;
-  color: var(--text-secondary, rgba(0,0,0,0.65)); 
+  color: var(--text-secondary, rgba(0,0,0,0.65));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px; 
+  max-width: 220px;
 }
+.cal_card{ grid-area: cal; margin-top: 0; }
+.today_card{ grid-area: quests; margin-top: 0; }
+
+@media (min-width: 1014px){
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  .chat_layout{
+    display:grid;
+    grid-template-columns: 44% 56%;
+    gap: 14px;
+    min-height: 0; 
+  }
+
+  .chat_left,
+  .chat_right{
+    min-height: 0;
+  }
+
+  .chat_left{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+
+  .ui_tabs{
+    margin-top: 0 !important;
+  }
+
+  .tab_panel{
+    margin-top: 0 !important;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .chat_preview_panel{
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.10);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 20px;
+  }
+
+  .chat_preview_title{
+    font-size: 26px;
+    font-weight: 950;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 8px;
+  }
+
+  .chat_preview_hint{
+    font-size: 16px;
+    font-weight: 650;
+    color: rgba(0,0,0,0.55);
+    max-width: 320px;
+  }
+}
+
 
 .chat_study {
   display: flex;
   align-items: center;
   gap: 2px;
-  font: size 9px;
+  font-size: 12px;
   font-weight: 400;
-  color: var(--text-secondary, rgba(0,0,0,0.65)); 
+  color: var(--text-secondary, rgba(0,0,0,0.65));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px; 
+  max-width: 220px;
 }
 
 .status_icon {
@@ -2124,6 +2202,143 @@ body{
 .send_btn:active {
   transform: scale(0.95);
 }
+.chat_right{ display:none; }
+
+@media (min-width: 1014px){
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  .chat_layout{
+    display:grid;
+    grid-template-columns: 44% 56%;
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .chat_left{ min-height:0; display:flex; flex-direction:column; }
+  .tab_panel{ min-height:0; overflow:auto; }
+
+  .chat_right{
+    display:block;
+    min-height:0;
+  }
+
+  .chat_item_active{
+    background: rgba(255,255,255,0.10);
+    outline: 2px solid rgba(255,255,255,0.25);
+    outline-offset: -2px;
+  }
+
+  .gc_shell{
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    border: 1px solid rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.08);
+
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+
+  .gc_topbar{
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+  }
+  .gc_title{
+    font-weight: 950;
+    font-size: 20px;
+    color: rgba(255,255,255,0.92);
+  }
+  .gc_sub{
+    margin-top: 2px;
+    font-weight: 650;
+    font-size: 13px;
+    color: rgba(0,0,0,0.55);
+  }
+
+  .gc_thread_preview{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: 14px 16px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+
+  .gc_msg{ display:flex; }
+  .gc_left{ justify-content:flex-start; }
+  .gc_right{ justify-content:flex-end; }
+
+  .gc_bubble{
+    max-width: 78%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+
+  .gc_right .gc_bubble{
+    background: rgba(255,255,255,0.28);
+  }
+
+  .gc_name{
+    font-weight: 900;
+    font-size: 12px;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 4px;
+  }
+  .gc_text{
+    font-weight: 650;
+    font-size: 14px;
+    color: rgba(0,0,0,0.80);
+  }
+  .gc_time{
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+    text-align: right;
+  }
+
+  .gc_inputbar_preview{
+    position: static;        
+    padding: 12px 14px;
+    display:flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: transparent;
+  }
+  .chat_right .gc_inputbar{
+    position: sticky;     /* or static */
+    bottom: 0;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;     /* keep it flush */
+  }
+
+  .gc_empty{
+    margin: auto;
+    font-weight: 800;
+    color: rgba(0,0,0,0.55);
+  }
+}
+
 
 .ui_section.tab_panel {
   padding-bottom: 100px; 
@@ -2200,11 +2415,12 @@ body{
 
 .gc_inputbar{
   position: fixed;
-  left: 0; right: 0;
-  bottom: 0; 
-  padding: 14px 20px;
-  background: var(--nav-bg);
-  border-top: 1px solid rgba(0,0,0,0.08);
+  bottom: 72px;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: var(--card-bg, #fff);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   gap: 12px;
   z-index: 10;
@@ -2367,11 +2583,9 @@ body{
 }
 
 
-/* =========================
-   Reusable DESKTOP Top Bar (use on any page)
-   ========================= */
+
 .app_top{
-  display: none; /* shown on desktop via media query */
+  display: none; 
 }
 
 @media (min-width: 1014px){
@@ -2506,10 +2720,6 @@ body{
     margin-bottom: 10px;
   }
 }
-
-
-
-
 
 
 

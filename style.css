@@ -751,7 +751,7 @@ body.auth-bg{
       font-size: inherit;
     }
 
-      .dreamhome { font-size: calc(16px + 3px); } /* base bump */
+      .dreamhome { font-size: calc(16px + 3px); }
   
   .dreamhome .dreamhome_title{ font-size: 37px; }      
   .dreamhome .dreamhome_timer{ font-size: 47px; }      
@@ -767,10 +767,17 @@ body.auth-bg{
     padding: 0 !important;
     text-align: center;
 
-    transform: translateY(50px); /* moves text down without pushing cards */
+    transform: translateY(50px); 
   }
   .dreamhome .dreamhome_quest_item{font-size: 23px;}
-  
+
+  .dreamhome.orange .dreamhome_screen::before{
+    background-image: url("assets/home/orange.png");
+  }
+  .dreamhome.blue .dreamhome_screen::before{
+    background-image: url("assets/home/blue.jpg");
+  }
+
   .dreamhome .dreamhome_screen{
     width: 100%;
     min-height: 100vh;
@@ -2358,6 +2365,151 @@ body{
   font-weight: 950;
   font-size: 12px;
 }
+
+
+/* =========================
+   Reusable DESKTOP Top Bar (use on any page)
+   ========================= */
+.app_top{
+  display: none; /* shown on desktop via media query */
+}
+
+@media (min-width: 1014px){
+  .app_top{
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 18px;
+
+    background: var(--dreamhome_panel);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 16px rgba(0,0,0,0.10);
+    padding: 10px 14px;
+  }
+
+  .app_top_left{
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .app_title{
+    font-size: 34px;
+    font-weight: 950;
+    color: rgba(255,255,255,0.92);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app_nav{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    justify-content: flex-end;
+    padding-right: 6px;
+  }
+
+  .app_nav_link{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 650;
+    color: rgba(0,0,0,0.55);
+  }
+
+  .app_nav_link[aria-current="page"]{
+    color: rgba(0,0,0,0.90);
+  }
+
+  .app_gem_pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(0,0,0,0.12);
+    cursor: pointer;
+  }
+
+  .app_gem_icon{ width: 16px; height: 16px; display:block; }
+  .app_gem_count{ font-weight: 900; color: rgba(0,0,0,0.80); }
+}
+
+
+@media (min-width: 1014px){
+  .ui_top{ display: none; }
+  .ui_nav{ display: none; }
+
+  .ui_screen{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-areas:
+      "top top"
+      "cal quests";
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  .app_top{ grid-area: top; }
+
+  .cal_card{
+    grid-area: cal;
+    margin-top: 0;
+    height: calc(100vh - 18px - 22px - 100px - 14px); 
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cal_month{
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .cal_grid{
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .cal_cell{
+    height: 180px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  .cal_cell_head{
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .today_card{
+    grid-area: quests;
+    margin-top: 0;
+    height: calc(100vh - 18px - 22px - 100px - 14px);
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .today_title{
+    font-size: 24px;
+    font-weight: 950;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+
 
 
 

@@ -188,10 +188,9 @@
         sessionStorage.removeItem("dreamTotalFocusTime"); 
       }
       if (dreamhome_img) {
-        dreamhome_img.src = (dream_buddy === "orange")
-          ? "assets/home/orange.png"
-          : "assets/home/blue.jpg";
-      }
+    dreamhome_img.src = (dream_buddy === "orange")
+      ? "assets/home/orange.png"
+      : "assets/home/blue.jpg";}
 
       const tiles = document.querySelectorAll(".dreamhome_weekly_day");
       const hours = Array.from(tiles).map(t => Number(t.dataset.hours || 0));

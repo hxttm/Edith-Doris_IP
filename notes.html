@@ -81,12 +81,17 @@
 
     document.querySelectorAll(".ui_back").forEach(btn => {
       btn.addEventListener("click", (e) => {
-        if (history.length > 1) {
+        if (btn.id === "backToFocus") {
+          window.location.href = "./focus.html";
+        } else if (history.length > 1) {
           e.preventDefault();
           history.back();
         }
       });
     });
+
+    sessionStorage.removeItem("fromFocus");
+
   </script>
 </body>
 </html>

@@ -1,29 +1,33 @@
 
 :root{
-    --bg: #F7F4EF;
-    --text: #6b6b6b;
-    --muted: #9aa0a6;
+  --bg: #F7F4EF;
+  --text: #6b6b6b;
+  --muted: #9aa0a6;
 
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 
-    --danger:#d04a4a;
-    --radius-xl:16px;
-    --shadow-top: 0 10px 18px rgba(0,0,0,.16);
+  --danger:#d04a4a;
+  --radius-xl:16px;
+  --shadow-top: 0 10px 18px rgba(0,0,0,.16);
 
-    --topbar-bg: #79b2c9;
-    --topbar-fg: rgba(255,255,255,.92);
+  --topbar-bg: #79b2c9;
+  --topbar-fg: rgba(255,255,255,.92);
 
-    --nav-bg: #79b2c9;
-    --nav-item-bg: rgba(255,255,255,.24);
-    --nav-item-bg-active: rgba(255,255,255,.40);
+  --nav-bg: #79b2c9;
+  --nav-item-bg: rgba(255,255,255,.24);
+  --nav-item-bg-active: rgba(255,255,255,.40);
 
-    --overlay-z: 9999;
-    --overlay-blur: 6px;
-    --overlay-card-shadow: 0 18px 60px rgba(0,0,0,0.25);
-    --overlay-close-bg: rgba(0,0,0,0.06);
+  --overlay-z: 9999;
+  --overlay-blur: 6px;
+  --overlay-card-shadow: 0 18px 60px rgba(0,0,0,0.25);
+  --overlay-close-bg: rgba(0,0,0,0.06);
 
-    --btntext:#153741; 
+  --btntext:#153741; 
+
+  --shadow-soft: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-hover: 0 16px 48px rgba(0,0,0,0.20);
+  --gradient-glow: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);    
 }
 
 .blue{
@@ -734,8 +738,9 @@ body.auth-bg{
 
 .ui_nav_desktop{ display:none; }
 
-@media (min-width: 1014px){
 
+
+@media (min-width: 1014px){
   .dreamhome .dreamhome_screen{
     width: 100%;
     min-height: none;
@@ -743,13 +748,14 @@ body.auth-bg{
     padding: 18px 22px 22px;
 
     display: grid;
-    grid-template-columns: 1.55fr 1fr;
+    grid-template-columns: 60% 40%;
     grid-template-areas:
       "top top"
       "weekly actions"
       "hero quests";
     gap: 14px;
     align-items: start;
+
   }
 
   .dreamhome .dreamhome_top{
@@ -804,6 +810,9 @@ body.auth-bg{
     margin-top: 0;
     min-height: 300px;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
   }
 
   .dreamhome .dreamhome_weekly_row{
@@ -818,6 +827,7 @@ body.auth-bg{
 
   .dreamhome .dreamhome_weekly_dow{ font-size: 30px; }
   .dreamhome .dreamhome_weekly_hours{ font-size: 30px; }
+
   .dreamhome .dreamhome_hero{
     grid-area: actions;
     margin-top: 0;
@@ -827,6 +837,9 @@ body.auth-bg{
     gap: 16px;
     align-items: start;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);    
   }
 
   .dreamhome .dreamhome_hero_img_wrap{
@@ -835,11 +848,15 @@ body.auth-bg{
 
   .dreamhome .dreamhome_hero_actions{
     margin-top: 0;
-    align-items: stretch;
+    align-items: center !important;
+    justify-content: center !important;
     gap: 10px;
   }
 
-  .dreamhome .dreamhome_timer{ font-size: 44px; }
+  .dreamhome .dreamhome_timer{ 
+    font-size: 44px;
+    text-align: center;
+  }
 
   .dreamhome .dreamhome_cta,
   .dreamhome .dreamhome_cta_secondary{
@@ -852,6 +869,7 @@ body.auth-bg{
     max-width: none;
     padding: 0;
     gap: 12px;
+    justify-content: center;
   }
 
   .dreamhome .dreamhome_pill{
@@ -868,8 +886,16 @@ body.auth-bg{
     margin-top: 0;
     backdrop-filter: blur(0);
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
   }
 
+  .dreamhome_weekly:hover, .dreamhome_hero:hover, .dreamhome_:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
   .dreamhome .dreamhome_sheet_grab{ cursor: default; }
   .dreamhome .dreamhome_grab_handle{ display:none; }
   .dreamhome .dreamhome_sheet_body{ padding: 14px; }
@@ -888,6 +914,16 @@ body.auth-bg{
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2885,4 +2921,5 @@ body{
     max-height: 60vh;
   }
 }
+
 

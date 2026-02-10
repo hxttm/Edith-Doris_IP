@@ -738,49 +738,85 @@ body.auth-bg{
 
 .ui_nav_desktop{ display:none; }
 
+@media (min-width: 1014px) {
+  :root{
+    --topH: 100px;            
+    --padY: 40px;              
+    --gap: 14px;
 
+    --contentH: calc(100vh - var(--topH) - var(--padY) - (var(--gap) * 2));
+  }
 
-@media (min-width: 1014px){
+  .dreamhome *{
+      font-size: inherit;
+    }
+
+      .dreamhome { font-size: calc(16px + 3px); } /* base bump */
+  
+  .dreamhome .dreamhome_title{ font-size: 37px; }      
+  .dreamhome .dreamhome_timer{ font-size: 47px; }      
+  .dreamhome .ui_nav_desktop_link{ font-size: 19px; }
+  .dreamhome .dreamhome_weekly_title{ font-size: 37px;}  
+  .dreamhome .dreamhome_weekly_dow{ font-size: 33px; } 
+  .dreamhome .dreamhome_weekly_hours{ font-size: 33px; }
+  .dreamhome .dreamhome_quest_gems{font-size:27px;}
+  .dreamhome .dreamhome_dot{margin-top:10px;}
+  .dreamhome .dreamhome_sheet_title{
+    font-size: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center;
+
+    transform: translateY(50px); /* moves text down without pushing cards */
+  }
+  .dreamhome .dreamhome_quest_item{font-size: 23px;}
+  
   .dreamhome .dreamhome_screen{
     width: 100%;
-    min-height: none;
+    min-height: 100vh;
     margin: 0;
     padding: 18px 22px 22px;
 
     display: grid;
-    grid-template-columns: 60% 40%;
-    grid-template-areas:
-      "top top"
-      "weekly actions"
-      "hero quests";
-    gap: 14px;
-    align-items: start;
+    grid-template-rows: var(--topH) 1fr 2fr;  
 
+
+    grid-template-areas:
+      "top   top"
+      "left  actions"
+      "left  quests";
+
+    gap: var(--gap);
+    align-items: stretch;
   }
+
+  .dreamhome .dreamhome_weekly{ grid-area: left; }
+  .dreamhome .dreamhome_hero{ grid-area: right; }
 
   .dreamhome .dreamhome_top{
     grid-area: top;
-
+    height: var(--topH);
     display: grid;
     grid-template-columns: 1fr auto auto;
     align-items: center;
     gap: 18px;
 
-    background: var(--dreamhome_panel);
+    background: var(--dreamhome_panel)!important;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 16px rgba(0,0,0,0.10);
     padding: 10px 14px;
   }
 
-  .dreamhome .dreamhome_title{ font-size: 34px; }
-
   .dreamhome .dreamhome_top_left,
-  .dreamhome .dreamhome_top_right{
-    background: transparent;
+  .dreamhome .dreamhome_top_right,
+  .dreamhome .dreamhome_title,
+  .dreamhome .dreamhome_top *{
+    background: transparent !important;
     box-shadow: none;
-    padding: 0;
   }
+  
+  .dreamhome .dreamhome_title{ font-size: 34px; }
 
   .ui_nav_desktop{
     display: flex;
@@ -805,57 +841,53 @@ body.auth-bg{
 
   .ui_nav{ display:none; }
 
+ 
   .dreamhome .dreamhome_weekly{
-    grid-area: weekly;
+    grid-area: left;
+    align-self: start;                
+    height: calc(var(--contentH) * 0.32);
     margin-top: 0;
-    min-height: 300px;
+
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
-  }
-
-  .dreamhome .dreamhome_weekly_row{
-    grid-template-columns: repeat(7, minmax(48px, 1fr));
+    border-radius: 16px;
   }
 
   .dreamhome .dreamhome_weekly_day{
-    height: 200px;
-    gap: 14px;
+    height: 200px; 
   }
 
+  .dreamhome .dreamhome_weekly_row{
+    grid-template-columns: repeat(7, minmax(70px, 1fr));
+  }
+  
 
-  .dreamhome .dreamhome_weekly_dow{ font-size: 30px; }
-  .dreamhome .dreamhome_weekly_hours{ font-size: 30px; }
-
-  .dreamhome .dreamhome_hero{
-    grid-area: actions;
-    margin-top: 0;
-    padding: 12px;
-    display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 16px;
-    align-items: start;
+  .dreamhome .dreamhome_screen::before{
+    content: "";
+    grid-area: left;                   
+    align-self: end;                   
+    height: calc(var(--contentH) * 0.68);
+    width: 100%;
+    border-radius: 16px;
+    background: url("assets/home/blue.jpg") center / cover no-repeat;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);    
   }
 
-  .dreamhome .dreamhome_hero_img_wrap{
-    height: 320px;
+
+  .dreamhome .dreamhome_hero_img_wrap{ display: none; }
+
+  .dreamhome .dreamhome_timer{
+    font-size: 44px;
+    text-align: center;
   }
 
   .dreamhome .dreamhome_hero_actions{
-    margin-top: 0;
-    align-items: center !important;
-    justify-content: center !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
-  }
-
-  .dreamhome .dreamhome_timer{ 
-    font-size: 44px;
-    text-align: center;
   }
 
   .dreamhome .dreamhome_cta,
@@ -865,55 +897,115 @@ body.auth-bg{
     min-width: 0;
   }
 
-  .dreamhome .dreamhome_quick_row{
+  .dreamhome_pill{
+    width: 100%;
     max-width: none;
-    padding: 0;
-    gap: 12px;
-    justify-content: center;
+    min-width: 0;
   }
 
-  .dreamhome .dreamhome_pill{
-    min-width: 0;
-    max-width: none;
+  .dreamhome .dreamhome_quick_row{
+    width: 100%;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 6px;  
+  }
+
+   .dreamhome .dreamhome_quick_row .dreamhome_pill:first-child{
+    width: 210px;         
+  }
+
+  .dreamhome .dreamhome_quick_row .dreamhome_pill:last-child{
+    width: 210px;       
+  }
+
+  .dreamhome .dreamhome_hero{
+    grid-area: actions;
+    height: 100%;                     
+    margin-top: 0;
+    padding: 24px;
+    padding-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 16px;
   }
 
   .dreamhome .dreamhome_sheet{
     grid-area: quests;
-
     position: static;
-    height: auto;
-    border-radius: 16px;
     margin-top: 0;
-    backdrop-filter: blur(0);
-    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    height: 100% !important;    
+    align-self: stretch;         
+    min-height: 0;  
 
+    border-radius: 16px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+    border: 1px solid srgba(255,255,255,0.3);
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
-  .dreamhome_weekly:hover, .dreamhome_hero:hover, .dreamhome_:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
+  .dreamhome .dreamhome_sheet_grab{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 0;         
+  }
+
+  .dreamhome .dreamhome_sheet_body{
+    flex: 1 1 auto;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    text-align: left;           
+    gap: 16px;
+
+    overflow: auto;             
+  }
+  
+
+
   .dreamhome .dreamhome_sheet_grab{ cursor: default; }
   .dreamhome .dreamhome_grab_handle{ display:none; }
-  .dreamhome .dreamhome_sheet_body{ padding: 14px; }
-
+  .dreamhome .dreamhome_sheet_body{ 
+    padding: 14px;
+    flex: 1 1 auto;
+    overflow: auto; }
   .dreamhome .dreamhome_sheet_title{ font-size: 20px; }
-
- 
-  .dreamhome .dreamhome_hero_img_wrap{ display:none; }
-
-  .dreamhome .dreamhome_screen::before{
-    content: "";
-    grid-area: hero;
-    border-radius: 16px;
-    background: url("assets/home/blue.jpg") center / cover no-repeat;
-    min-height: 420px;
-    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  
+  .cal_month { font-size: 23px !important; }
+  .cal_cell { font-size: 18px !important; }
+  .cal_cell_head { font-size: 16px !important; }
+  .active_title{
+    font-size: 20px !important;
+    padding-top: 0;          
+    margin: 0;
+    text-align: center;
   }
+  .quest_item { font-size: 18px !important; }
+  .today_title { font-size: 18px !important; }
+  .today_date { font-size: 29px !important; }
+  .today_chip { font-size: 18px !important; }
+  .today_subject_name { font-size: 19px !important; }
+  .today_subject_time { font-size: 18px !important; }
+  .ui_title { font-size: 31px !important; }
+  .ui_nav_icon { width: 31px !important; height: 31px !important; }
+
 }
+
 
 
 
@@ -2266,6 +2358,8 @@ body{
   font-weight: 950;
   font-size: 12px;
 }
+
+
 
 .spin_area{
   flex:1;

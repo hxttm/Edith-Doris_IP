@@ -1741,7 +1741,7 @@ body.auth-bg{
   .today_chip { font-size: 18px !important; }
   .today_subject_name { font-size: 19px !important; }
   .today_subject_time { font-size: 18px !important; }
-  .ui_title { font-size: 31px !important; }
+  .ui_title { font-size: 31px !important;  text-transform: capitalize !important;}
   .ui_nav_icon { width: 31px !important; height: 31px !important; }
 
 }
@@ -2251,7 +2251,7 @@ body{
 }
 
 .ui_screen{
-  width:100vw;
+  width: 1000px;
   min-height:100vh;
   background: var(--bg);
   padding-bottom: var(--nav_h, 84px);
@@ -2260,6 +2260,19 @@ body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.ui_s{
+  width: none;
+  min-height:100vh;
+  background: var(--bg);
+  padding-bottom: var(--nav_h, 84px);
+  color: var(--dark, var(--text));
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 14px;
 }
 
 .ui_form{
@@ -2372,28 +2385,20 @@ body{
 
 
 
-/* small improvement: show desktop top bar only on desktop */
-@media (max-width: 1013px){
-  .app_top{ display:none; }
-}
+.app_top{ display:none; }
 
 @media (min-width: 1014px){
+  .app_top{ display:none; }
 
   .ui_top{ display:none; }
   .ui_nav{ display:none; }
 
-  .ui_screen{
-    width: 100%;
-    max-width: none;
-    margin: 0;
+  .ui_s{
     padding: 18px 22px 22px;
     min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr;
     gap: 14px;
   }
 
-  /* ✅ THIS is the missing part: make the BIG blue section fill the row */
   .notes_section,
   .ui_section{
     width: 100%;
@@ -2402,20 +2407,99 @@ body{
     align-self: stretch;
   }
 
-  /* ✅ make the grid itself stretch */
   .notes_grid{
     width: 100%;
     max-width: none !important;
     justify-self: stretch;
     align-self: start;
   }
-}
 
-@media (min-width: 1400px){
   .notes_grid{
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .note_card{
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  /* make the image bigger */
+  .note_thumb{
+    width: 100%;
+    height: 220px;          /* increase this (e.g. 260px) */
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* bigger text */
+  .note_title{
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .note_meta{
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  /* optionally: fewer columns = bigger items */
+  .notes_grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* try 2 for even bigger */
+    gap: 28px;
   }
 }
+@media (min-width: 1014px){
+
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_s{
+    padding: 18px 22px 22px;
+    min-height: 100vh;
+    gap: 14px;
+  }
+
+  .notes_section,
+  .ui_section{
+    width: 100%;
+    max-width: none !important;
+  }
+
+  .notes_grid{
+    width: 100%;
+    max-width: none !important;
+
+    display: grid; /* make sure grid is active */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ bigger listings */
+    gap: 32px;
+    align-items: start;
+  }
+
+  .note_card{
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .note_thumb{
+    width: 100%;
+    height: 320px;  /* ✅ bigger preview */
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .note_title{
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .note_meta{
+    margin-top: 6px;
+    font-size: 13px;
+  }
+}
+
 
 
 
@@ -2500,58 +2584,51 @@ body{
   margin-top:6px;
 }
 
-@media (min-width: 1014px){
-  .ui_nav{
-    display: none;
-  }
 
+@media (min-width: 900px){
 
-  .ui_screen{
-    width: 100%;
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 28px 18px 28px;
+  .ui_top { display: none; }
+  .ui_nav { display: none; }
+
+  /* Parent takes full screen */
+  .ui_s{
     min-height: 100vh;
-    padding-bottom: 28px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .dreampage_has_nav .ui_screen{
-    padding-bottom: 28px;
-  }
-
+  /* Center the form under the top bar */
   .ui_form{
-    margin: 18px auto 0;
-    padding: 20px;
-    border-radius: 18px;
-    max-width: 820px;
+    width: min(520px, calc(100% - 48px));
+    margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 14px;
-    align-content: start;
+    flex: 1;                 /* takes remaining height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* ✅ vertical centering */
+    gap: 10px;               /* ✅ shorter */
   }
 
-  .ui_form .ui_field:nth-child(1),
-  .ui_form .ui_field:nth-child(2){
-    grid-column: span 1;
-  }
-
-  .ui_form .ui_field:nth-child(3),
-  .ui_form .ui_field:nth-child(4),
-  .ui_form .center_btn{
-    grid-column: 1 / -1;
-  }
-
+  /* Make the textarea shorter */
   .ui_textarea{
-    min-height: 140px;
+    height: 90px;            /* ✅ shorter (change to 70px/110px as you like) */
+    min-height: 90px;
+    resize: vertical;
   }
 
-  .ui_cta{
-    width: auto;
-    min-width: 260px;
-    max-width: none;
+  /* Optional: tighten inputs a bit (only if your inputs are tall) */
+  .ui_input, .ui_textarea{
+    padding: 10px 12px;
+  }
+
+  /* Center the button */
+  .center_btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
   }
 }
+
 
 
 .ui_btn{
@@ -2696,24 +2773,6 @@ body{
   font-size: 12px;
 }
 
-@media (min-width: 1014px){
-
-  .ui_top{ display:none; }
-  .ui_nav{ display:none; }
-
-  .ui_screen{
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 18px 22px 22px;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 14px;
-  }
-
-
-}
 
 @media (min-width: 1400px){
   .notes_grid{
@@ -5078,6 +5137,81 @@ body{
   color: rgba(20,45,55,0.60);
 }
 
+@media (min-width: 1014px){
+
+  .ui_top,
+  .ui_nav{ display:none !important; }
+
+  .ui_section:first-of-type{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 14px 0 10px !important;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sell_link{
+    width: 180px;
+    height: 28px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .sell_btn{
+    background:var(--medium)
+  }
+
+  .notes_grid{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr))!important;
+    gap: 26px 22px;
+    padding: 8px 0 24px;
+  }
+
+  .note_card{
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .note_thumb{
+    width: 100%;
+    height: 150px;              
+    object-fit: cover;
+    background: #fbf2df;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 2px;
+    display: block;
+  }
+
+  .note_title{
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 750;
+    color: rgba(0,0,0,.55);
+    text-transform: none; 
+  }
+
+  .note_meta{
+    margin-top: 2px;
+    font-size: 12px;
+    color: rgba(0,0,0,.35);
+  }
+}
+
+
+
 .note_price_rating {
   display: flex; 
   justify-content: space-between; 
@@ -5155,241 +5289,161 @@ body{
   box-shadow: 0 12px 32px rgba(0,0,0,0.2);
 }
 
-/* ===== PURCHASE PAGE — DESKTOP (matches screenshot) ===== */
-@media (min-width: 1014px){
 
-  /* show desktop top bar, hide mobile bars */
-  .ui_top{ display:none !important; }
-  .ui_nav{ display:none !important; }
+@media (min-width: 900px) {
+  .ui_top { display: none; }
+  .ui_nav { display: none; }
 
-  /* allow full width like screenshot */
-  .dreampage,
-  .ui_screen{
-    width: 100% !important;
-    max-width: none !important;
-  }
-
-  .ui_screen{
-    min-height: 100vh;
-    margin: 0 !important;
-    padding: 18px 22px 22px !important;
-
-    display: grid;
-    grid-template-rows: auto 1fr; /* topbar + content */
-    gap: 18px;
-  }
-
-  /* main purchase layout: 2 columns */
   .ui_section{
-    margin: 0 !important;
-    padding: 34px 34px !important;
-
+    width: min(1100px, calc(100% - 80px));
+    margin: 28px auto;
     display: grid;
-    grid-template-columns: minmax(420px, 520px) minmax(520px, 1fr);
-    grid-template-rows: auto auto auto auto 1fr auto;
-    column-gap: 70px;
-    row-gap: 10px;
-
+    grid-template-columns: 560px 1fr;
+    gap: 56px;
     align-items: start;
-    background: transparent; /* screenshot looks like plain bg */
   }
 
-  /* left big preview square */
+  .ui_section > .note_preview_img { grid-column: 1; grid-row: 1; }
+  .ui_section > :not(.note_preview_img) { grid-column: 2; }
+
   .note_preview_img{
-    grid-column: 1;
-    grid-row: 1 / span 6;
-
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    height: 460px;
     object-fit: cover;
-    border-radius: 0;                /* screenshot is square */
-    box-shadow: none;
-    margin: 0 !important;
-    border: 0;
+    margin: 0;          
+    display: block;
   }
 
-  /* title + favourite star */
   .notes_title{
-    grid-column: 2;
-    grid-row: 1;
-
-    margin: 0 !important;
-    font-size: 44px;
-    font-weight: 950;
-    color: rgba(0,0,0,0.55);
+    margin: 6px 0 8px;
+    font-size: 34px;  
     line-height: 1.05;
-
-    position: relative;
-    padding-right: 80px; /* space for star on right */
   }
 
-  .notes_title::after{
-    content: "★";
-    position: absolute;
-    right: 6px;
-    top: 8px;
-    font-size: 34px;
-    color: #F5D000;
-    text-shadow: 0 2px 0 rgba(0,0,0,0.18);
-  }
-
-  /* price + sold inline under title */
   .note_price_rating{
-    grid-column: 2;
-    grid-row: 2;
-
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-start;
-    gap: 18px;
-    margin: 0 !important;
+    margin-bottom: 14px;
   }
 
   .note_price{
-    font-size: 20px;
-    font-weight: 900;
-    color: rgba(0,0,0,0.50);
+    font-size: 18px;
   }
 
-  /* use the note_sales as the "sold" text next to price */
-  .note_sales{
-    grid-column: 2;
-    grid-row: 2;
-
-    margin: 0 !important;
-    text-align: left;
-    font-size: 20px;
-    font-weight: 850;
-    color: rgba(0,0,0,0.38);
+  .note_stars{
+    font-size: 14px;
   }
 
-  /* hide old star row (screenshot uses the right-side star + 4/5 badge) */
-  .note_stars{ display:none !important; }
-
-  /* review card (seller + description inside) */
   .note_seller{
-    grid-column: 2;
-    grid-row: 3 / span 2;
-
-    margin-top: 14px !important;
-
-    border-radius: 4px;
-    background: rgba(111,173,196,0.18);
-    border: 2px solid rgba(0,0,0,0.12);
-
-    display: grid;
-    grid-template-columns: 62px 1fr auto;
-    gap: 14px;
-
-    min-height: 140px;          /* increase height (change as you want) */
-    padding: 24px 26px;         /* more breathing space */
-    align-items: center;    
-  }
-
-  .note_seller > div{
-    align-self: center;
+    margin-bottom: 14px;
   }
 
   .seller_avatar{
-    width: 62px;
-    height: 62px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: rgba(0,0,0,0.18);
-    align-self: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
   }
 
-  .seller_name{
-    font-weight: 900;
-    font-size: 16px;
-    color: rgba(0,0,0,0.45);
-  }
-
-  .seller_rating{
-    font-size: 12px;
-    font-weight: 800;
-    color: rgba(0,0,0,0.38);
-    margin-top: 2px;
-  }
-
-  /* add the "4/5 ⭐" badge on the right of the seller card */
-  .note_seller::after{
-    content: "4/5 ⭐";
-    align-self: center;
-    justify-self: center;
-
-    padding: 10px 18px;
-    padding-bottom: 15px;;
-    border-radius: 4px;
-    background: rgba(0,0,0,0.10);
-    color: rgba(255,255,255,0.88);
-    font-weight: 900;
-    font-size: 14px;
-  }
-
-  /* description sits inside card, below the name */
   .note_description{
-    grid-column: 2;
-    grid-row: 4;
-
-    margin: -6px 0 0 0 !important;
-    padding: 0 22px 18px 98px; 
-    color: rgba(0,0,0,0.42);
-    font-size: 16px;
-    font-weight: 750;
-    line-height: 1.35;
-    min-height: 75px; 
+    margin-bottom: 18px;
+    max-width: 520px;
   }
 
-  /* buy bar + arrow */
   .buy_button{
-    grid-column: 2;
-    grid-row: 5;
-
-    width: 100%;
-    height: 52px;
-    margin-top: 14px;
-
-    border-radius: 3px;
-    border: 2px solid rgba(0,0,0,0.14);
-    background: rgba(111,173,196,0.40) !important;
-    box-shadow: none;
-
-    color: rgba(255,255,255,0.92);
-    font-weight: 950;
-    font-size: 14px;
-
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    width: 260px;     
+    max-width: 100%;
+    padding: 10px 14px;
+    display: inline-block;
   }
 
-  .buy_button::after{
-    content: "→";
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 26px;
-    color: rgba(255,255,255,0.92);
-  }
-
-  /* make sure "sold" stays near price, not bottom center */
   .note_sales{
-    justify-self: start;
-    margin-left: 78px !important; /* positions it next to price like screenshot */
+    margin-top: 14px;
+    text-align: center;
+    width: 260px;      /* match button width */
+    max-width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .note_preview_img { height: 280px; }
+
+@media (min-width: 900px) {
+
+  /* hide mobile-only bars on desktop */
+  .ui_top { display: none; }
+  .ui_nav { display: none; }
+
+  /* 2-column layout */
+  .ui_section{
+    width: min(1100px, calc(100% - 80px));
+    margin: 28px auto;
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+
+  /* Force image left, everything else right */
+  .ui_section > .note_preview_img { grid-column: 1; grid-row: 1; }
+  .ui_section > :not(.note_preview_img) { grid-column: 2; }
+
+  /* LEFT image sizing */
+  .note_preview_img{
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    margin: 0;          /* override phone margin */
+    display: block;
+  }
+
+  /* RIGHT details card sizing (keep your existing look) */
+  .notes_title{
+    margin: 6px 0 8px;
+    font-size: 34px;    /* sizing only */
+    line-height: 1.05;
+  }
+
+  .note_price_rating{
+    margin-bottom: 14px;
+  }
+
+  .note_price{
+    font-size: 18px;
+  }
+
+  .note_stars{
+    font-size: 14px;
+  }
+
+  .note_seller{
+    margin-bottom: 14px;
+  }
+
+  .seller_avatar{
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+  }
+
+  .note_description{
+    margin-bottom: 18px;
+    max-width: 520px;  /* stops it becoming too wide */
+  }
+
+  .buy_button{
+    width: 260px;      /* like your card screenshot button */
+    max-width: 100%;
+    padding: 10px 14px;
+    display: inline-block;
+  }
+
+  /* keep "13 sold" centered under the button like your card screenshot */
+  .note_sales{
+    margin-top: 14px;
+    text-align: center;
+    width: 260px;      /* match button width */
+    max-width: 100%;
+  }
 }
-@media (max-width: 360px) {
-  .note_preview_img { height: 240px; }
-}
+
+
+
 
 .focus-back-btn {
   width: 130px;              

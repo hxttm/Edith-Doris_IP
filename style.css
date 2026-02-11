@@ -4281,12 +4281,37 @@ body{
   .dreamhome_sheet {
     max-height: 60vh;
   }
+
+.dreamhome_hero_img_wrap {
+    position: relative;
+    z-index: 3;
+  }
+
+  .dreamhome_hero_img_link {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 4;
+  }
+
+  .dreamhome_hero_img_link img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .dreamhome_hero_actions {
+    position: relative;
+    z-index: 2;
+  }
+
+  
 }
 
 
-
-
-
+@media (min-width: 980px) {
+  .dreamhome_hero_img_link { pointer-events: auto; }
+}
 
 
 
@@ -5536,80 +5561,10 @@ body{
 .cal_card{ grid-area: cal; margin-top: 0; }
 .today_card{ grid-area: quests; margin-top: 0; }
 
-@media (min-width: 1014px){
-  .ui_top{ display:none; }
-  .ui_nav{ display:none; }
 
-  .ui_screen{
-    width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 18px 22px 22px;
 
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 14px;
-  }
 
-  .chat_layout{
-    display:grid;
-    grid-template-columns: 44% 56%;
-    gap: 14px;
-    min-height: 0; 
-  }
 
-  .chat_left,
-  .chat_right{
-    min-height: 0;
-  }
-
-  .chat_left{
-    display:flex;
-    flex-direction:column;
-    min-height:0;
-  }
-
-  .ui_tabs{
-    margin-top: 0 !important;
-  }
-
-  .tab_panel{
-    margin-top: 0 !important;
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: auto;
-  }
-
-  .chat_preview_panel{
-    height: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.10);
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding: 20px;
-  }
-
-  .chat_preview_title{
-    font-size: 26px;
-    font-weight: 950;
-    color: rgba(255,255,255,0.92);
-    margin-bottom: 8px;
-  }
-
-  .chat_preview_hint{
-    font-size: 16px;
-    font-weight: 650;
-    color: rgba(0,0,0,0.55);
-    max-width: 320px;
-  }
-}
 
 
 .chat_study {
@@ -6137,7 +6092,7 @@ body{
   .app_top .ui_back:active{
     transform: translateY(1px);
   }
-}
+
 
   .app_title{
     font-size: 34px;
@@ -6154,6 +6109,7 @@ body{
     gap: 18px;
     justify-content: flex-end;
     padding-right: 6px;
+    background: var(--topbar-bg)!important;
   }
 
   .app_nav_link{
@@ -6188,18 +6144,20 @@ body{
   .ui_nav{ display: none; }
 
   .ui_screen{
-    width: 100%;
+    width: min(1200px, 100%);
+    margin: 0 auto;
     min-height: 100vh;
-    margin: 0;
     padding: 18px 22px 22px;
 
     display: grid;
     grid-template-columns: 60% 40%;
+    grid-template-rows: auto 1fr;       
     grid-template-areas:
       "top top"
       "cal quests";
     gap: 14px;
-    align-items: stretch;
+
+    align-items: start; 
   }
 
   .app_top{ grid-area: top; }
@@ -6207,9 +6165,9 @@ body{
   .cal_card{
     grid-area: cal;
     margin-top: 0;
-    height: calc(100vh - 18px - 22px - 100px - 14px); 
     min-height: 0;
-
+    height: 100%;
+    width:100%;
     display: flex;
     flex-direction: column;
   }
@@ -6224,34 +6182,56 @@ body{
     min-height: 0;
     padding: 14px;
     gap: 10px;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+
   }
 
   .cal_cell{
-    height: 180px;
+    height: 120px;
     font-size: 12px;
     border-radius: 8px;
+    width: 120px;
+    place-items: center;
   }
   .cal_cell_head{
     height: 30px;
     font-size: 12px;
   }
 
+  /* RIGHT: Compact card, no scroll */
   .today_card{
     grid-area: quests;
     margin-top: 0;
-    height: calc(100vh - 18px - 22px - 100px - 14px);
-    min-height: 0;
-    overflow: auto;
+
+    height: auto;        /* IMPORTANT */
+    min-height: unset;   /* IMPORTANT */
+    overflow: visible;   /* IMPORTANT */
+
+    align-self: start;   /* keep it compact at top */
   }
+
+  /* Move Today/Selected Day BELOW the row (no HTML change) */
+  .today_card{
+    display: flex;
+    flex-direction: column;
+  }
+  .today_row{ order: 1; }
+  .today_title{ order: 2; }
+  .today_list{ order: 3; }
 
   .today_title{
-    font-size: 24px;
-    font-weight: 950;
+    font-size: 12px;       /* keep the small label look like screenshot */
+    font-weight: 650;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 8px 0 10px;
+  }
+
+  /* make sure list never scrolls */
+  .today_list{
+    overflow: visible;
+    max-height: none;
   }
 }
-
 
 
 .spin_area{

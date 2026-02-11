@@ -3770,6 +3770,18 @@ body{
 }
 
 
+/* ===========================
+   BUDDY: DESKTOP ONLY
+   (phone styles remain as-is)
+=========================== */
+
+/* defaults (phone) */
+.app_top { display: none; }
+.buddy_desktop_layout { display: none; }
+.buddy_mobile_stack { display: block; }
+
+/* desktop */
+
 @media (min-width: 980px) {
   .app_top { display: flex; }
   .ui_top { display: none; }
@@ -3916,6 +3928,37 @@ body{
     border-radius: inherit !important;
   }
 }
+@media (min-width: 980px) {
+  /* stop any "phone frame" max-width on the page wrapper */
+  .dreampage,
+  .ui_screen[aria-label="Study Buddy"]{
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* make the desktop layout use the full available width */
+  .buddy_desktop_layout{
+    max-width: none !important;     /* remove cap */
+    width: 100% !important;
+    padding: 0 24px;               /* nice gutter */
+    margin: 14px 0 0 0 !important; /* no centering gap */
+    grid-template-columns: 420px minmax(0, 1fr);
+  }
+
+  /* make the right column actually stretch */
+  .buddy_desktop_right{
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* viewer fills the right column */
+  .buddy_viewer_wide{
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
 
 
 .buddy_desktop_layout { display: none; }
@@ -3998,6 +4041,8 @@ body{
     border-radius: inherit;
   }
 }
+
+
 
 
 .ui_focus{
@@ -6144,7 +6189,7 @@ body{
   .ui_nav{ display: none; }
 
   .ui_screen{
-    width: min(1200px, 100%);
+    width: 100%;
     margin: 0 auto;
     min-height: 100vh;
     padding: 18px 22px 22px;
@@ -6198,19 +6243,17 @@ body{
     font-size: 12px;
   }
 
-  /* RIGHT: Compact card, no scroll */
   .today_card{
     grid-area: quests;
     margin-top: 0;
 
-    height: auto;        /* IMPORTANT */
-    min-height: unset;   /* IMPORTANT */
-    overflow: visible;   /* IMPORTANT */
+    height: auto;        
+    min-height: unset;  
+    overflow: visible;   
 
-    align-self: start;   /* keep it compact at top */
+    align-self: start;  
   }
 
-  /* Move Today/Selected Day BELOW the row (no HTML change) */
   .today_card{
     display: flex;
     flex-direction: column;
@@ -6220,13 +6263,12 @@ body{
   .today_list{ order: 3; }
 
   .today_title{
-    font-size: 12px;       /* keep the small label look like screenshot */
+    font-size: 12px;   
     font-weight: 650;
     text-align: center;
     margin: 8px 0 10px;
   }
 
-  /* make sure list never scrolls */
   .today_list{
     overflow: visible;
     max-height: none;
@@ -6982,3 +7024,65 @@ body{
     overflow: visible !important;  }
 
 
+
+@media (min-width: 980px) {
+  .ui_screen,
+  .dreamhome_screen {
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .dreampage {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 980px) {
+  html, body {
+    width: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: block !important; 
+  }
+
+  #pageRoot,
+  .dreampage,
+  .dreampage_has_nav {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  main.ui_screen[aria-label="Study Buddy"] {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 24px 24px !important; 
+    display: block !important;
+  }
+
+  .buddy_desktop_layout {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 18px 0 0 !important;  
+    padding: 0 !important;
+    grid-template-columns: 420px minmax(0, 1fr) !important;
+    justify-content: stretch !important;
+  }
+
+  .buddy_desktop_right {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .buddy_viewer_wide {
+    width: 100% !important;
+    max-width: none !important;
+    height: calc(100vh - 140px) !important; 
+    min-height: 740px !important; 
+  }
+}

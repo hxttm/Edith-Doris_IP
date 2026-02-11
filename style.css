@@ -2295,22 +2295,17 @@ body{
   font-weight:600;
 }
 
-/* =========================
-   SELL PAGE — DESKTOP
-   ========================= */
+
 @media (min-width: 1014px){
 
-  /* hide mobile bars on desktop */
   .ui_top{ display:none; }
   .ui_nav{ display:none; }
 
-  /* remove any width cap */
   .dreampage{
     width: 100%;
     max-width: none !important;
   }
 
-  /* full desktop layout: top bar + content */
   .ui_screen{
     width: 100%;
     max-width: none !important;
@@ -2323,11 +2318,10 @@ body{
     gap: 14px;
   }
 
-  /* make the form panel feel like your other desktop pages */
   .ui_form{
     width: 100%;
-    max-width: 860px;          /* nice centered form width */
-    margin: 0 auto;            /* center */
+    max-width: 860px;          
+    margin: 0 auto;            
     padding: 22px 24px;
     border-radius: 16px;
   }
@@ -5721,7 +5715,7 @@ body{
 
   .chat_layout{
     display:grid;
-    grid-template-columns: 44% 56%;
+    grid-template-columns: 420px minmax(0, 1fr); 
     gap: 14px;
     min-height: 0;
   }
@@ -5730,8 +5724,10 @@ body{
   .tab_panel{ min-height:0; overflow:auto; }
 
   .chat_right{
-    display:block;
-    min-height:0;
+    min-height: 0;
+    height: 100%;
+    display: flex;            /* instead of block */
+    flex-direction: column;
   }
 
   .chat_item_active{
@@ -5751,6 +5747,8 @@ body{
     display:flex;
     flex-direction:column;
     min-height:0;
+
+    flex: 1 1 auto;
   }
 
   .gc_topbar{
@@ -6401,6 +6399,149 @@ body{
 
 .spinPopup button{
   margin-top: 12px;
+}
+
+@media (min-width: 1014px) {
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  /* stop any global ui_screen centering/compressing */
+  main.ui_screen[aria-label="Daily Spin"]{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    min-height: 100vh;
+    padding: 14px 18px 22px !important;
+    display: block !important;
+  }
+
+  /* center the whole spin area on the page */
+  .spin_area{
+    min-height: calc(100vh - 110px); /* subtract topbar */
+    padding: 18px 0 0 !important;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  /* card panel behind wheel */
+  .spin_area::before{
+    content:"";
+    width: 420px;
+    height: 620px!important;
+    background: rgba(0,0,0,0.14);
+    border-radius: 12px;
+    box-shadow: 0 18px 36px rgba(0,0,0,0.10);
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 0;
+    top: 5%;
+  }
+
+  /* remove mobile lift */
+  .wheelWrap{
+    transform: none !important;
+    width: 420px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .wheelStack{
+    width: 330px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  /* pointer sits above wheel (top center) */
+  .pointer{
+    position: absolute !important;
+    left: 50%;
+    top: calc(50% - 190px);
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+
+  /* wheel size + shadow like mock */
+  .wheel{
+    border-width: 10px;
+    box-shadow: 0 10px 0 var(--accent_border);
+  }
+
+  .center{
+    width: 76px;
+    height: 76px;
+    font-size: 14px;
+  }
+
+  /* base under wheel (inside same panel) */
+  .base{
+    width: 260px;
+    height: 92px;
+    bottom: -62px;
+    box-shadow: 0 10px 0 var(--accent_border);
+  }
+
+  /* "1 Spin Left" under wheel */
+  .baseText{
+    position: absolute;
+    left: 50%;
+    top: 3% !important;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    font-size: 50px!important;
+    font-weight: 800;
+    color: rgba(0,0,0,0.55); /* looks like screenshot */
+    opacity: 1;
+  }
+}
+@media (min-width: 1014px) {
+  /* make the panel taller (rectangle behind) */
+  .spin_area::before{
+    width: 500px;     /* wider */
+    height: 560px;    /* TALLER */
+    border-radius: 14px;
+  }
+
+  /* keep wrapper matching panel width */
+  .wheelWrap{
+    width: 500px;
+  }
+
+  /* make wheel bigger */
+  .wheelStack{
+    width: 420px;     /* BIGGER wheel */
+  }
+
+  /* pointer stays above the bigger wheel */
+  .pointer{
+    top: calc(50% - 255px);
+  }
+
+  /* base scales up a bit */
+  .base{
+    width: 320px;
+    height: 110px;
+    bottom: -72px;
+  }
+
+  /* text sits lower because panel is taller + wheel bigger */
+  .baseText{
+    top: calc(50% + 285px);
+    font-size: 15px;
+  }
+
+  /* optional: make the center button scale with wheel */
+  .center{
+    width: 92px;
+    height: 92px;
+    font-size: 15px;
+  }
 }
 
 
@@ -7084,5 +7225,199 @@ body{
     max-width: none !important;
     height: calc(100vh - 140px) !important; 
     min-height: 740px !important; 
+  }
+}
+/*
+@media (min-width: 980px) {
+  main.ui_screen[aria-label="Chat"]{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 24px 24px !important;
+  }
+
+  .chat_layout,
+  .chat_shell,
+  .chat_wrap,
+  .chat_desktop_layout{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 14px 0 0 !important;
+    justify-content: stretch !important;
+  }
+
+  .chat_right,
+  .chat_main,
+  .chat_panel,
+  .chat_viewer,
+  .chat_view{
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+
+  .chat_layout,
+  .chat_desktop_layout{
+    display: grid;
+    grid-template-columns: 420px minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .dreampage,
+  #pageRoot{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+/* =========================================
+   CHAT: REMOVE APP-FRAME CONSTRAINTS (DESKTOP)
+========================================= */
+@media (min-width: 1014px) {
+  /* 1) kill global centering that compresses all pages */
+  html, body {
+    width: 100%;
+    margin: 0;
+  }
+  body {
+    display: block !important; /* overrides body flex centering */
+  }
+
+  /* 2) remove max-width/margin:auto from outer wrappers */
+  #pageRoot,
+  .dreampage,
+  .dreampage_has_nav {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* 3) chat page main should fill */
+  main.ui_screen[aria-label="Chat"] {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 18px 22px 22px !important;
+    align-items: stretch !important;
+  }
+
+  /* 4) ensure grid can stretch full width */
+  .chat_layout {
+    width: 1620px !important;
+    max-width: none !important;
+    justify-content: stretch !important;
+  }
+}
+
+@media (min-width: 1014px) {
+  /* make the whole page use the full window */
+  #pageRoot,
+  .dreampage,
+  .ui_screen {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* widen the chat area itself */
+  .chat_layout {
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important; 
+  }
+}
+
+
+@media (min-width: 1014px) {
+  .ui_top { display: none !important; }
+  .ui_nav { display: none !important; }
+
+  html, body { width: 100%; margin: 0; }
+  body { display: block !important; }
+
+  #pageRoot,
+  .dreampage,
+  .dreampage_has_nav,
+  main.ui_screen[aria-label="Chat"]{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  main.ui_screen[aria-label="Chat"]{
+    min-height: 100vh;
+    padding: 18px 24px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+  }
+
+  .chat_layout{
+    flex: 1 1 auto;
+    min-height: 0; 
+    display: grid !important;
+    grid-template-columns: 380px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+
+    width: 100% !important;
+    max-width: 1600px;   
+    margin: 0 auto !important;
+  }
+
+  .chat_left{
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab_panel{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    border-radius: 16px;
+  }
+
+  .chat_right{
+    min-height: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden;
+  }
+
+  .gc_shell{
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border-radius: 16px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    border: 1px solid rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .gc_thread_preview{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .chat_right .gc_inputbar{
+    position: sticky !important;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .chat_preview,
+  .chat_study{
+    max-width: none !important;
   }
 }

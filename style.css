@@ -2295,6 +2295,136 @@ body{
   font-weight:600;
 }
 
+/* =========================
+   SELL PAGE — DESKTOP
+   ========================= */
+@media (min-width: 1014px){
+
+  /* hide mobile bars on desktop */
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  /* remove any width cap */
+  .dreampage{
+    width: 100%;
+    max-width: none !important;
+  }
+
+  /* full desktop layout: top bar + content */
+  .ui_screen{
+    width: 100%;
+    max-width: none !important;
+    margin: 0;
+    padding: 18px 22px 22px;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  /* make the form panel feel like your other desktop pages */
+  .ui_form{
+    width: 100%;
+    max-width: 860px;          /* nice centered form width */
+    margin: 0 auto;            /* center */
+    padding: 22px 24px;
+    border-radius: 16px;
+  }
+
+  /* 2-column form fields on desktop */
+  .ui_form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    align-content: start;
+  }
+
+  /* keep textarea + button full width */
+  .ui_field:has(.ui_textarea){
+    grid-column: 1 / -1;
+  }
+
+  .center_btn{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;   /* button on right */
+    margin-top: 6px;
+  }
+
+  /* make inputs a bit taller/cleaner on desktop */
+  .ui_input,
+  .ui_textarea{
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .ui_textarea{
+    min-height: 140px;
+  }
+
+  /* button sizing on desktop (optional) */
+  .ui_btn{
+    width: auto;
+    min-width: 160px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+}
+
+
+
+
+
+
+/* small improvement: show desktop top bar only on desktop */
+@media (max-width: 1013px){
+  .app_top{ display:none; }
+}
+
+@media (min-width: 1014px){
+
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18px 22px 22px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  /* ✅ THIS is the missing part: make the BIG blue section fill the row */
+  .notes_section,
+  .ui_section{
+    width: 100%;
+    max-width: none !important;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  /* ✅ make the grid itself stretch */
+  .notes_grid{
+    width: 100%;
+    max-width: none !important;
+    justify-self: stretch;
+    align-self: start;
+  }
+}
+
+@media (min-width: 1400px){
+  .notes_grid{
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+}
+
+
+
 .ui_cta {
   width: 100%;
   max-width: 320px;
@@ -3638,6 +3768,237 @@ body{
 .buddy_questcard {
   margin: 0 auto;
 }
+
+
+@media (min-width: 980px) {
+  .app_top { display: flex; }
+  .ui_top { display: none; }
+  .ui_nav { display: none; }
+
+  .buddy_mobile_stack { display: none; }
+
+  .buddy_desktop_layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 28px;
+    align-items: start;
+    max-width: 1800px;
+    margin: 14px auto 0;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .buddy_desktop_left {
+    position: sticky;
+    top: 92px; 
+    align-self: start;
+  }
+
+  .buddy_left_box {
+    background: rgba(255,255,255,.20);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+    backdrop-filter: blur(14px);
+  }
+
+  .buddy_left_box .buddy_links {
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0 0 16px 0;
+    gap: 18px;
+  }
+
+  .buddy_left_box .buddy_link {
+    box-shadow: 0 10px 24px rgba(0,0,0,.10);
+    padding: 10px 18px;
+  }
+
+  .buddy_left_box .buddy_questcard {
+    width: 100%;
+    margin: 0;
+  }
+
+  .buddy_desktop_right {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .buddy_hpbar_above {
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    margin: 0 0 16px 0;
+  }
+
+  .buddy_viewer_wide {
+    width: 100%;
+    height: calc(100vh - 185px);
+    min-height: 660px;
+    border-radius: 18px;
+  }
+
+  .buddy_viewer_wide iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: inherit;
+  }
+}
+
+@media (min-width: 980px) {
+  /* give the right side more space */
+  .buddy_desktop_layout{
+    max-width: 95vw;                  /* fill most of screen */
+    grid-template-columns: 440px 1fr; /* keep left usable, right grows */
+    gap: 36px;
+  }
+
+  /* center the whole two-column block nicely */
+  .buddy_desktop_layout{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* FORCE viewer to be wide (override old min()/max-width rules) */
+  .buddy_desktop_right .buddy_viewer_wide,
+  .buddy_desktop_right .buddy_viewer{
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  /* make the viewer a wide landscape card instead of tall phone shape */
+  .buddy_desktop_right .buddy_viewer_wide{
+    aspect-ratio: 16 / 9;             /* widescreen */
+    height: auto !important;          /* ignore old calc heights */
+    min-height: 520px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* iframe fills the wide viewer */
+  .buddy_desktop_right .buddy_viewer_wide iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: inherit;
+    width: 100% !important;
+    max-width: none !important;
+    height: calc(100vh - 210px) !important; /* big desktop viewer */
+    min-height: 560px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HP bar aligns to viewer width */
+  .buddy_desktop_right .buddy_hpbar_above{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 16px 0;
+  }
+
+  .buddy_desktop_right .buddy_viewer_wide iframe,
+  .buddy_desktop_right .buddy_viewer iframe{
+    position: absolute !important;
+    inset: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+  }
+}
+
+
+.buddy_desktop_layout { display: none; }
+
+
+.app_top { display: none; }            
+.buddy_desktop_layout { display: none; }  
+.buddy_mobile_stack { display: block; }  
+
+@media (min-width: 980px) {
+  .app_top { display: flex; }
+  .ui_top { display: none; }
+  .ui_nav { display: none; }
+
+  .buddy_mobile_stack { display: none; }
+  .buddy_desktop_layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 34px;
+    align-items: start;
+    max-width: 1500px;
+    margin: 14px auto 0;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .buddy_desktop_left {
+    position: sticky;
+    top: 92px;
+    align-self: start;
+  }
+
+  .buddy_left_box {
+    background: rgba(255,255,255,.20);
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+    backdrop-filter: blur(14px);
+  }
+
+  .buddy_left_box .buddy_links {
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0 0 16px 0;
+    gap: 18px;
+  }
+
+  .buddy_left_box .buddy_questcard {
+    width: 100%;
+    margin: 0;
+  }
+
+  .buddy_desktop_right { min-width: 0; width: 100%; }
+
+  .buddy_hpbar_above {
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    margin: 0 0 16px 0;
+  }
+
+  .buddy_viewer_wide {
+    width: 100%;
+    height: calc(100vh - 185px);
+    min-height: 660px;
+    max-width: none;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .buddy_viewer_wide iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    border: 0;
+    border-radius: inherit;
+  }
+}
+
 
 .ui_focus{
   width:100vw;

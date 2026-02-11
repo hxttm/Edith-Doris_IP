@@ -2721,11 +2721,44 @@ body{
     padding: 10px 14px;
   }
 
+
   .app_top_left{
     display: flex;
     align-items: center;
     min-width: 0;
   }
+
+   .app_top .ui_back{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+
+    border-radius: 9999px;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.22);
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.10);
+
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(0,0,0,0.70);
+    transform: translateX(-1px) translateY(-1px);
+  }
+
+  .app_top .ui_back:hover{
+    background: rgba(255,255,255,0.30);
+  }
+
+  .app_top .ui_back:active{
+    transform: translateY(1px);
+  }
+}
 
   .app_title{
     font-size: 34px;

@@ -1643,6 +1643,60 @@ body{
   margin-top:6px;
 }
 
+@media (min-width: 1014px){
+  .ui_nav{
+    display: none;
+  }
+
+
+  .ui_screen{
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 18px 28px;
+    min-height: 100vh;
+    padding-bottom: 28px;
+  }
+
+  .dreampage_has_nav .ui_screen{
+    padding-bottom: 28px;
+  }
+
+  .ui_form{
+    margin: 18px auto 0;
+    padding: 20px;
+    border-radius: 18px;
+    max-width: 820px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 14px;
+    align-content: start;
+  }
+
+  .ui_form .ui_field:nth-child(1),
+  .ui_form .ui_field:nth-child(2){
+    grid-column: span 1;
+  }
+
+  .ui_form .ui_field:nth-child(3),
+  .ui_form .ui_field:nth-child(4),
+  .ui_form .center_btn{
+    grid-column: 1 / -1;
+  }
+
+  .ui_textarea{
+    min-height: 140px;
+  }
+
+  .ui_cta{
+    width: auto;
+    min-width: 260px;
+    max-width: none;
+  }
+}
+
+
 .ui_btn{
   width:min(240px, 80%);
   padding:10px 14px;
@@ -1741,6 +1795,73 @@ body{
   font-weight: 600;
   font-size: 15px;
   color: rgba(20,45,55,0.60);
+}
+
+
+.notes_section{
+  margin-top: 10px;
+}
+
+.notes_grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.note_card{
+  display: block;
+  text-decoration: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+}
+
+.note_thumb{
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  background: rgba(255,255,255,0.08);
+}
+
+.note_title{
+  padding: 10px 12px 4px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.75);
+}
+
+.note_meta{
+  padding: 0 12px 12px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.50);
+  font-size: 12px;
+}
+
+@media (min-width: 1014px){
+
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 18px 22px 22px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+
+}
+
+@media (min-width: 1400px){
+  .notes_grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .note_price_rating {
@@ -2043,7 +2164,7 @@ body{
   .ui_screen{
     width: 100%;
     min-height: 100vh;
-    margin: 0;
+    margin: 0 auto;
     padding: 18px 22px 22px;
 
     display: grid;
@@ -2323,13 +2444,13 @@ body{
     background: transparent;
   }
   .chat_right .gc_inputbar{
-    position: sticky;     /* or static */
+    position: sticky;    
     bottom: 0;
     left: auto;
     right: auto;
     width: 100%;
     margin: 0;
-    border-radius: 0;     /* keep it flush */
+    border-radius: 0;     
   }
 
   .gc_empty{
@@ -2582,8 +2703,6 @@ body{
   font-size: 12px;
 }
 
-
-
 .app_top{
   display: none; 
 }
@@ -2595,7 +2714,7 @@ body{
     align-items: center;
     gap: 18px;
 
-    background: var(--dreamhome_panel);
+    background: var(--topbar-bg);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 10px 16px rgba(0,0,0,0.10);
@@ -2752,7 +2871,7 @@ body{
   align-items:center;
   gap: 16px;
 
-  transform: translateY(-150px); /* 👈 move up */
+  transform: translateY(-150px);  
 }
 
 .wheelStack{

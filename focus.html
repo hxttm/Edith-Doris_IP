@@ -93,13 +93,11 @@
       const theme = normTheme(localStorage.getItem(THEME_KEY));
       const isOrange = theme === "orange";
 
-      // apply classes (body controls .app_top too)
       document.body.classList.toggle("orange", isOrange);
       document.body.classList.toggle("blue", !isOrange);
       root?.classList.toggle("orange", isOrange);
       root?.classList.toggle("blue", !isOrange);
 
-      // swap focus pet image
       const pet = document.getElementById("petImage");
       if (pet) {
         const blueSrc = pet.getAttribute("data-src-blue") || "./assets/focus/blue.jpg";
@@ -108,14 +106,12 @@
 
         pet.onerror = () => console.warn("[theme] pet image failed:", base);
 
-        // cache-bust so switching always forces a new URL
         pet.src = base + (base.includes("?") ? "&" : "?") + "theme=" + encodeURIComponent(theme);
       }
 
       console.log("[theme]", { theme, petSrc: document.getElementById("petImage")?.src });
     }
 
-    // run now + when page is restored via back button (bfcache)
     applyTheme();
     window.addEventListener("pageshow", applyTheme);
     window.addEventListener("focus", applyTheme);

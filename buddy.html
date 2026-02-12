@@ -194,12 +194,11 @@
       window.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("a.ui_back").forEach((btn) => {
           btn.addEventListener("click", (e) => {
-            e.preventDefault(); // stop href navigation
+            e.preventDefault(); 
 
             if (window.history.length > 1) {
               window.history.back();
             } else {
-              // fallback if opened directly
               window.location.href = btn.getAttribute("href") || "./index.html";
             }
           });

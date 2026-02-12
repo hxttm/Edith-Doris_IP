@@ -160,7 +160,7 @@
     </div>
 
     <script>
-      const THEME_KEY = "dream_buddy"; // must match whatever you set in other pages
+      const THEME_KEY = "dream_buddy";
       const root = document.getElementById("pageRoot");
       const heroImg = document.getElementById("dreamhome_hero_img");
 
@@ -177,15 +177,14 @@
         if (!root) return;
 
         const t = themeFromStorage();
-        if (!t) return; // if nothing stored, keep whatever HTML already has
+        if (!t) return;
 
         root.classList.toggle("orange", t === "orange");
         root.classList.toggle("blue", t !== "orange");
       }
 
-      // Try multiple extensions if the file path is wrong / missing
       function setImgWithFallback(imgEl, primarySrc) {
-        const base = primarySrc.replace(/\.(png|jpg|jpeg)$/i, ""); // strip ext if any
+        const base = primarySrc.replace(/\.(png|jpg|jpeg)$/i, ""); 
         const candidates = [
           primarySrc,
           base + ".png",
@@ -213,7 +212,7 @@
 
         const target = isOrange ? orangeSrc : blueSrc;
 
-        // avoid reloading same src
+        
         const absTarget = new URL(target, location.href).href;
         if (heroImg.src === absTarget) return;
 
@@ -225,22 +224,18 @@
         syncHeroToRootClass();
       }
 
-      // initial
       applyAll();
 
-      // keep it synced
       window.addEventListener("pageshow", applyAll);
       window.addEventListener("focus", applyAll);
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden) applyAll();
       });
 
-      // theme changed in another tab/page
       window.addEventListener("storage", (e) => {
         if (e.key === THEME_KEY) applyAll();
       });
 
-      // if some code toggles classes directly
       if (root) {
         new MutationObserver(syncHeroToRootClass).observe(root, {
           attributes: true,
@@ -248,15 +243,12 @@
         });
       }
 
-      // ============ (keep your other logic below if you want) ============
 
-      // RESET FOCUS TIMER ON HARD RELOAD
       const nav = performance.getEntriesByType?.("navigation")?.[0];
       if (nav && nav.type === "reload") {
         sessionStorage.removeItem("dreamTotalFocusTime");
       }
 
-      // WEEKLY TILE INTENSITY
       const tiles = document.querySelectorAll(".dreamhome_weekly_day");
       const hours = Array.from(tiles).map((t) => Number(t.dataset.hours || 0));
       const max = Math.max(1, ...hours);
@@ -268,7 +260,6 @@
         tile.style.setProperty("--dreamhome_intensity", intensity.toFixed(3));
       });
 
-      // QUEST SHEET DRAG + TOGGLE
       const sheet = document.getElementById("dreamhome_quest_sheet");
       const grab = sheet?.querySelector(".dreamhome_sheet_grab");
       const body = sheet?.querySelector(".dreamhome_sheet_body");
@@ -342,7 +333,6 @@
 
       setHeight(collapsed);
 
-      // HOME TIMER DISPLAY
       const timerEl = document.getElementById("homeTimer");
       if (timerEl) {
         function updateHomeTimer() {
@@ -356,6 +346,8 @@
         updateHomeTimer();
         setInterval(updateHomeTimer, 1000);
       }
+
+      
     </script>
 
   </body>

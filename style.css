@@ -2713,6 +2713,7 @@ body{
   opacity: 0.85;
 }
 
+
 .notes_grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -5182,7 +5183,9 @@ body{
   }
 
   .sell_btn{
-    background:var(--medium)
+    background:var(--medium);
+    border-left: 0 !important;
+    box-shadow: none;
   }
 
   .notes_grid{
@@ -6944,6 +6947,7 @@ media
 
 .wheelWrap{
   width:100%;
+  height: auto;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -7154,7 +7158,7 @@ media
   }
 
   .pointer{
-    top: calc(50% - 255px);
+    top: calc(58% - 255px);
   }
 
   .base{
@@ -7164,7 +7168,7 @@ media
   }
 
   .baseText{
-    top: calc(50% + 285px);
+    top: calc(8% ) !important;
     font-size: 15px;
   }
 
@@ -8295,7 +8299,6 @@ media
   color: rgba(0,0,0,0.75);
 }
 
-/* Reviews on listing/purchase page */
 .reviews_block{
   margin-top: 16px;
   padding-top: 14px;
@@ -8369,7 +8372,6 @@ media
   font-size: 12px;
 }
 
-/* Optional review form */
 .review_form{
   margin-top: 14px;
   padding: 12px;

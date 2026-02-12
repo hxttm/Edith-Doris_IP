@@ -9,7 +9,7 @@
 
 <body>
   <div class="dreampage dreampage_has_nav" id="pageRoot">
-    <main class="ui_screen" aria-label="Purchase Note">
+    <main class="ui_sc" aria-label="Purchase Note">
 
       <header class="app_top" aria-label="Top bar">
         <div class="app_top_left">
@@ -87,6 +87,7 @@
   </div>
 
   <script>
+    
     const NOTE_ID = "enzyme-kinetics";
     const NOTE_TITLE = "Enzyme Kinetics";
     const NOTE_PRICE = 3;
@@ -152,13 +153,11 @@
       updateBuyButton();
     }
 
-    // Theme
     const buddy = localStorage.getItem("dream_buddy") || "blue";
     const root = document.getElementById("pageRoot");
     root?.classList.toggle("orange", buddy === "orange");
     root?.classList.toggle("blue", buddy !== "orange");
 
-    // Back button (single listener)
     document.querySelector(".ui_back")?.addEventListener("click", (e) => {
       if (history.length > 1) {
         e.preventDefault();
@@ -166,7 +165,6 @@
       }
     });
 
-    // Initialize
     updateBuyButton();
   </script>
 </body>

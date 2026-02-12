@@ -2443,9 +2443,8 @@ body{
     font-size: 12px;
   }
 
-  /* optionally: fewer columns = bigger items */
   .notes_grid{
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important; /* try 2 for even bigger */
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important; 
     gap: 28px;
   }
 }
@@ -2470,8 +2469,8 @@ body{
     width: 100%;
     max-width: none !important;
 
-    display: grid; /* make sure grid is active */
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* ✅ bigger listings */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
     align-items: start;
   }
@@ -2483,7 +2482,7 @@ body{
 
   .note_thumb{
     width: 100%;
-    height: 320px;  /* ✅ bigger preview */
+    height: 320px; 
     object-fit: cover;
     border-radius: 12px;
   }
@@ -4764,7 +4763,7 @@ body{
 .dreamaccount_screen{
   min-height: 100vh;
   background: var(--bg);
-  padding: 12px;
+  padding: 18px 24px 24px;
   color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
@@ -5137,6 +5136,17 @@ body{
   color: rgba(20,45,55,0.60);
 }
 
+.ui_sc {
+  min-height:100vh;
+  background: var(--bg);
+  padding-bottom: var(--nav_h, 84px);
+  color: var(--dark, var(--text));
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 @media (min-width: 1014px){
 
   .ui_top,
@@ -5290,159 +5300,164 @@ body{
 }
 
 
-@media (min-width: 900px) {
-  .ui_top { display: none; }
-  .ui_nav { display: none; }
 
-  .ui_section{
-    width: min(1100px, calc(100% - 80px));
-    margin: 28px auto;
-    display: grid;
-    grid-template-columns: 560px 1fr;
-    gap: 56px;
-    align-items: start;
+@media (min-width: 900px){
+  .ui_sc{
+    max-width: auto;
+    padding: 18px 24px 24px;
   }
 
-  .ui_section > .note_preview_img { grid-column: 1; grid-row: 1; }
-  .ui_section > :not(.note_preview_img) { grid-column: 2; }
+  .ui_section{
+    width: min(1200px, calc(100% - 64px));
+    margin: 0 auto;
+
+    display: grid !important;
+    grid-template-columns: 1.55fr 420px !important;
+
+    grid-template-rows: auto auto auto 1fr auto auto !important;
+    column-gap: 32px !important;
+    row-gap: 14px !important;
+
+    align-items: start !important;
+    padding: 18px 0 24px !important;
+  }
 
   .note_preview_img{
-    width: 100%;
-    height: 460px;
-    object-fit: cover;
-    margin: 0;          
-    display: block;
+    grid-column: 1 !important;
+    grid-row: 1 / -1 !important;
+    width: 100% !important;
+    height: min(720px, 72vh) !important;
+    margin: 0 !important;
+    border-radius: 26px !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .ui_section::after{ content: none !important; }
+  .ui_section::before{
+    content: "" !important;
+    grid-column: 2 !important;
+    grid-row: 1 / -1 !important; 
+    border-radius: 22px !important;
+    background: rgba(255,255,255,0.14) !important;
+    border: 1px solid rgba(255,255,255,0.22) !important;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.14) !important;
+    backdrop-filter: blur(6px) !important;
+    z-index: 0 !important;
+  }
+
+  .ui_section::before{
+    content: "" !important;
+    grid-column: 2 !important;
+    grid-row: 1 / -1 !important;
+    align-self: stretch !important;
+
+    border-radius: 22px !important;
+    background: rgba(255,255,255,0.14) !important;   
+    border: 1px solid rgba(255,255,255,0.22) !important;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.14) !important;
+    backdrop-filter: blur(6px) !important;
+    z-index: 0 !important;
   }
 
   .notes_title{
-    margin: 6px 0 8px;
-    font-size: 34px;  
-    line-height: 1.05;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 22px 24px 0 !important;
   }
 
   .note_price_rating{
-    margin-bottom: 14px;
-  }
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 0 24px !important;
 
-  .note_price{
-    font-size: 18px;
-  }
-
-  .note_stars{
-    font-size: 14px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
   }
 
   .note_seller{
-    margin-bottom: 14px;
-  }
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 0 24px !important;
 
-  .seller_avatar{
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
   }
 
   .note_description{
-    margin-bottom: 18px;
-    max-width: 520px;
+    grid-column: 2 !important;
+    grid-row: 4 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin: 0 24px !important;
+    line-height: 1.6 !important;
   }
 
   .buy_button{
-    width: 260px;     
-    max-width: 100%;
-    padding: 10px 14px;
-    display: inline-block;
+    grid-column: 2 !important;
+    grid-row: 5 !important;
+    position: relative !important;
+    z-index: 1 !important;
+
+    margin: 8px 24px 0 !important;
+    width: calc(100% - 48px) !important;
+    max-width: none !important;
   }
 
   .note_sales{
-    margin-top: 14px;
-    text-align: center;
-    width: 260px;      /* match button width */
-    max-width: 100%;
+    grid-column: 2 !important;
+    grid-row: 6 !important;
+    position: relative !important;
+    z-index: 1 !important;
+
+    margin: 10px 24px 22px !important;
+    text-align: left !important;
   }
-}
 
-
-@media (min-width: 900px) {
-
-  /* hide mobile-only bars on desktop */
-  .ui_top { display: none; }
-  .ui_nav { display: none; }
-
-  /* 2-column layout */
   .ui_section{
-    width: min(1100px, calc(100% - 80px));
-    margin: 28px auto;
-    display: grid;
-    grid-template-columns: 560px 1fr;
-    gap: 56px;
-    align-items: start;
+    width: min(1400px, calc(100% - 80px)) !important;
+    margin: 32px auto 0 !important;
+
+    display: grid !important;
+    grid-template-columns: 1.7fr 520px !important; 
+    column-gap: 36px !important;
+    row-gap: 16px !important;
+
+    align-items: stretch !important;
+
+    padding: 0 !important;
   }
 
-  /* Force image left, everything else right */
-  .ui_section > .note_preview_img { grid-column: 1; grid-row: 1; }
-  .ui_section > :not(.note_preview_img) { grid-column: 2; }
-
-  /* LEFT image sizing */
   .note_preview_img{
-    width: 100%;
-    height: 460px;
-    object-fit: cover;
-    margin: 0;          /* override phone margin */
-    display: block;
+    height: min(760px, 78vh) !important;
   }
 
-  /* RIGHT details card sizing (keep your existing look) */
-  .notes_title{
-    margin: 6px 0 8px;
-    font-size: 34px;    /* sizing only */
-    line-height: 1.05;
-  }
-
-  .note_price_rating{
-    margin-bottom: 14px;
-  }
-
-  .note_price{
-    font-size: 18px;
-  }
-
-  .note_stars{
-    font-size: 14px;
-  }
-
-  .note_seller{
-    margin-bottom: 14px;
-  }
-
-  .seller_avatar{
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
+  .ui_section::before{
+    grid-row: 1 / -1 !important;
+    align-self: stretch !important;
   }
 
   .note_description{
-    margin-bottom: 18px;
-    max-width: 520px;  /* stops it becoming too wide */
+    min-height: 260px; 
   }
 
   .buy_button{
-    width: 260px;      /* like your card screenshot button */
-    max-width: 100%;
-    padding: 10px 14px;
-    display: inline-block;
+    margin-top: auto !important;
   }
 
-  /* keep "13 sold" centered under the button like your card screenshot */
   .note_sales{
-    margin-top: 14px;
-    text-align: center;
-    width: 260px;      /* match button width */
-    max-width: 100%;
+    margin-top: 10px !important;
   }
 }
-
-
 
 
 .focus-back-btn {
@@ -7464,7 +7479,7 @@ body{
     width: 100% !important;
     max-width: none !important;
     margin: 0 !important;
-    padding: 0 24px 24px !important; 
+    padding: 18px 24px 24px !important; 
     display: block !important;
   }
 
@@ -7489,54 +7504,7 @@ body{
     min-height: 740px !important; 
   }
 }
-/*
-@media (min-width: 980px) {
-  main.ui_screen[aria-label="Chat"]{
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 24px 24px !important;
-  }
 
-  .chat_layout,
-  .chat_shell,
-  .chat_wrap,
-  .chat_desktop_layout{
-    width: 100% !important;
-    max-width: none !important;
-    margin: 14px 0 0 !important;
-    justify-content: stretch !important;
-  }
-
-  .chat_right,
-  .chat_main,
-  .chat_panel,
-  .chat_viewer,
-  .chat_view{
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-  }
-
-
-  .chat_layout,
-  .chat_desktop_layout{
-    display: grid;
-    grid-template-columns: 420px minmax(0, 1fr) !important;
-    gap: 24px !important;
-  }
-
-  .dreampage,
-  #pageRoot{
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-}
-
-/* =========================================
-   CHAT: REMOVE APP-FRAME CONSTRAINTS (DESKTOP)
-========================================= */
 @media (min-width: 1014px) {
   /* 1) kill global centering that compresses all pages */
   html, body {
@@ -7565,7 +7533,6 @@ body{
     align-items: stretch !important;
   }
 
-  /* 4) ensure grid can stretch full width */
   .chat_layout {
     width: 1620px !important;
     max-width: none !important;
@@ -7574,7 +7541,6 @@ body{
 }
 
 @media (min-width: 1014px) {
-  /* make the whole page use the full window */
   #pageRoot,
   .dreampage,
   .ui_screen {
@@ -7583,7 +7549,6 @@ body{
     margin: 0 !important;
   }
 
-  /* widen the chat area itself */
   .chat_layout {
     width: 100% !important;
     max-width: none !important;

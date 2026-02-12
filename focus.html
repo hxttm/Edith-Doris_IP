@@ -63,7 +63,14 @@
       <div class="timer-display" id="timerDisplay">00:00:00</div>
 
       <div class="pet-container">
-        <img src="./assets/focus/blue.jpg" alt="Focus Pet" class="pet-image active" id="petImage" />
+        <img
+          src="./assets/focus/blue.jpg"
+          data-src-blue="./assets/focus/blue.jpg"
+          data-src-orange="./assets/focus/orange.png"
+          alt="Focus Pet"
+          class="pet-image active"
+          id="petImage"
+        />
       </div>
 
       <div class="action-buttons">
@@ -74,12 +81,49 @@
   </div>
 
   <script>
-    const buddy = localStorage.getItem("dream_buddy") || "blue";
-    const root = document.getElementById("pageRoot");
-    root?.classList.toggle("orange", buddy === "orange");
-    root?.classList.toggle("blue", buddy !== "orange");
 
-    /* ========= Music ========= */
+    const THEME_KEY = "dream_buddy";
+    const root = document.getElementById("pageRoot");
+
+    function normTheme(v) {
+      return (v || "blue").toLowerCase().trim();
+    }
+
+    function applyTheme() {
+      const theme = normTheme(localStorage.getItem(THEME_KEY));
+      const isOrange = theme === "orange";
+
+      // apply classes (body controls .app_top too)
+      document.body.classList.toggle("orange", isOrange);
+      document.body.classList.toggle("blue", !isOrange);
+      root?.classList.toggle("orange", isOrange);
+      root?.classList.toggle("blue", !isOrange);
+
+      // swap focus pet image
+      const pet = document.getElementById("petImage");
+      if (pet) {
+        const blueSrc = pet.getAttribute("data-src-blue") || "./assets/focus/blue.jpg";
+        const orangeSrc = pet.getAttribute("data-src-orange") || "./assets/focus/orange.png";
+        const base = isOrange ? orangeSrc : blueSrc;
+
+        pet.onerror = () => console.warn("[theme] pet image failed:", base);
+
+        // cache-bust so switching always forces a new URL
+        pet.src = base + (base.includes("?") ? "&" : "?") + "theme=" + encodeURIComponent(theme);
+      }
+
+      console.log("[theme]", { theme, petSrc: document.getElementById("petImage")?.src });
+    }
+
+    // run now + when page is restored via back button (bfcache)
+    applyTheme();
+    window.addEventListener("pageshow", applyTheme);
+    window.addEventListener("focus", applyTheme);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) applyTheme(); });
+    window.addEventListener("storage", (e) => { if (e.key === THEME_KEY) applyTheme(); });
+
+
+
     const tracks = {
       white: { name: "White Noise", src: "./assets/audio/white-noise.mp3" },
       lofi:  { name: "Lofi",        src: "./assets/audio/lofi.mp3" },
@@ -133,9 +177,8 @@
       }
 
       try {
-        await audio.play(); // user click required by browser policies
+        await audio.play();
       } catch (e) {
-        // If blocked, keep UI consistent (user can hit Play again)
       }
       updateNow();
     }
@@ -143,7 +186,6 @@
     function pauseResume() {
       if (!audio) return;
       if (!currentTrackKey) {
-        // default to first option if none chosen
         playTrack("white");
         return;
       }
@@ -173,7 +215,6 @@
         const key = btn.dataset.track;
         if (!key) return;
 
-        // If clicking the same track, toggle play/pause
         if (currentTrackKey === key) pauseResume();
         else playTrack(key);
       });
@@ -182,7 +223,6 @@
     musicToggle?.addEventListener("click", pauseResume);
     musicStop?.addEventListener("click", stopAudio);
 
-    // Close panel on outside click / Esc
     document.addEventListener("click", (e) => {
       if (!musicPanel || musicPanel.hidden) return;
       const target = e.target;
@@ -197,7 +237,6 @@
 
     updateNow();
 
-    /* ========= Focus Timer (your existing code continues below) ========= */
     class FocusTimer {
       constructor() {
         const savedStart = sessionStorage.getItem("focusStartTime");

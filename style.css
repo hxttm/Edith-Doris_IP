@@ -1383,7 +1383,7 @@ body.auth-bg{
       font-size: inherit;
     }
 
-      .dreamhome { font-size: calc(16px + 3px); } /* base bump */
+      .dreamhome { font-size: calc(16px + 3px); } 
   
   .dreamhome .dreamhome_title{ font-size: 37px; }      
   .dreamhome .dreamhome_timer{ font-size: 47px; }      
@@ -1399,7 +1399,7 @@ body.auth-bg{
     padding: 0 !important;
     text-align: center;
 
-    transform: translateY(50px); /* moves text down without pushing cards */
+    transform: translateY(50px); 
   }
   .dreamhome .dreamhome_quest_item{font-size: 23px;}
   
@@ -2283,7 +2283,6 @@ body{
   font-weight: 600;
 }
 
-/* make the "Choose file" button match your style */
 .ui_file::file-selector-button{
   margin-right: 12px;
   border: 0;
@@ -2342,15 +2341,13 @@ body{
     border-radius: 14px;
   }
 
-  /* make the image bigger */
   .note_thumb{
     width: 100%;
-    height: 220px;          /* increase this (e.g. 260px) */
+    height: 220px;       
     object-fit: cover;
     border-radius: 10px;
   }
 
-  /* bigger text */
   .note_title{
     margin-top: 10px;
     font-size: 14px;
@@ -2620,38 +2617,33 @@ body{
   .ui_top { display: none; }
   .ui_nav { display: none; }
 
-  /* Parent takes full screen */
   .ui_s{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  /* Center the form under the top bar */
   .ui_form{
     width: min(520px, calc(100% - 48px));
     margin: 0 auto;
 
-    flex: 1;                 /* takes remaining height */
+    flex: 1;              
     display: flex;
     flex-direction: column;
-    justify-content: center; /* ✅ vertical centering */
-    gap: 10px;               /* ✅ shorter */
+    justify-content: center; 
+    gap: 10px;               
   }
 
-  /* Make the textarea shorter */
   .ui_textarea{
-    height: 90px;            /* ✅ shorter (change to 70px/110px as you like) */
+    height: 90px;          
     min-height: 90px;
     resize: vertical;
   }
 
-  /* Optional: tighten inputs a bit (only if your inputs are tall) */
   .ui_input, .ui_textarea{
     padding: 10px 12px;
   }
 
-  /* Center the button */
   .center_btn{
     display: flex;
     justify-content: center;
@@ -2826,7 +2818,6 @@ body{
     gap: 14px;
   }
 
-  /* ✅ THIS is the missing part: make the BIG blue section fill the row */
   .notes_section,
   .ui_section{
     width: 100%;
@@ -2835,7 +2826,6 @@ body{
     align-self: stretch;
   }
 
-  /* ✅ make the grid itself stretch */
   .notes_grid{
     width: 100%;
     max-width: none !important;
@@ -5234,19 +5224,17 @@ body{
     color: rgba(0,0,0,.35);
   }
 
-    /* Marketplace listing card wrapper */
   .notes_grid{
     display: grid;
     gap: 18px;
   }
 
-  /* each listing */
   .note_card{
     display: block;
     padding: 14px;
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.60);        /* translucent white */
+    background: rgba(255,255,255,0.60);        
     border: 20px solid rgba(255,255,255,0.55);
     box-shadow: 0 14px 26px rgba(0,0,0,0.10);
 
@@ -5263,14 +5251,12 @@ body{
     box-shadow: 0 18px 34px rgba(0,0,0,0.12);
   }
 
-  /* thumbnail inside the card */
   .note_thumb{
     width: 100%;
     display: block;
     border-radius: 14px;
   }
 
-  /* spacing + typography */
   .note_title{
     margin-top: 10px;
     font-weight: 800;
@@ -5466,7 +5452,7 @@ body{
     align-self: stretch !important;
 
     border-radius: 22px !important;
-    background: rgba(255,255,255,0.14) !important;   /* translucent */
+    background: rgba(255,255,255,0.14) !important; 
     border: 1px solid rgba(255,255,255,0.22) !important;
     box-shadow: 0 18px 60px rgba(0,0,0,0.14) !important;
     backdrop-filter: blur(6px) !important;
@@ -5539,28 +5525,24 @@ body{
 
 @media (min-width: 900px){
 
-  /* keep content centered and wider */
   .ui_sc .ui_section{
     width: min(1400px, calc(100% - 80px)) !important;
     margin: 32px auto 0 !important;
 
     display: grid !important;
-    grid-template-columns: 1.7fr 520px !important; /* bigger image + bigger card */
+    grid-template-columns: 1.7fr 520px !important; 
     column-gap: 36px !important;
     row-gap: 16px !important;
 
-    /* makes both columns feel centered vertically on the page */
     align-items: stretch !important;
 
     padding: 0 !important;
   }
 
-  /* image grows and stays tall */
   .note_preview_img{
     height: min(760px, 78vh) !important;
   }
 
-  /* info box spans full height (same as image column) */
   .ui_section::before{
     grid-row: 1 / -1 !important;
     align-self: stretch !important;
@@ -6137,7 +6119,7 @@ media
   .chat_right{
     min-height: 0;
     height: 100%;
-    display: flex;            /* instead of block */
+    display: flex;           
     flex-direction: column;
   }
 
@@ -7066,7 +7048,6 @@ media
   .ui_top{ display:none; }
   .ui_nav{ display:none; }
 
-  /* stop any global ui_screen centering/compressing */
   main.ui_screen[aria-label="Daily Spin"]{
     width: 100% !important;
     max-width: none !important;
@@ -7076,16 +7057,14 @@ media
     display: block !important;
   }
 
-  /* center the whole spin area on the page */
   .spin_area{
-    min-height: calc(100vh - 110px); /* subtract topbar */
+    min-height: calc(100vh - 110px); 
     padding: 18px 0 0 !important;
     display: grid;
     place-items: center;
     position: relative;
   }
 
-  /* card panel behind wheel */
   .spin_area::before{
     content:"";
     width: 420px;
@@ -7100,7 +7079,6 @@ media
     top: 5%;
   }
 
-  /* remove mobile lift */
   .wheelWrap{
     transform: none !important;
     width: 420px;
@@ -7118,7 +7096,6 @@ media
     place-items: center;
   }
 
-  /* pointer sits above wheel (top center) */
   .pointer{
     position: absolute !important;
     left: 50%;
@@ -7127,7 +7104,6 @@ media
     z-index: 5;
   }
 
-  /* wheel size + shadow like mock */
   .wheel{
     border-width: 10px;
     box-shadow: 0 10px 0 var(--accent_border);
@@ -7139,7 +7115,6 @@ media
     font-size: 14px;
   }
 
-  /* base under wheel (inside same panel) */
   .base{
     width: 260px;
     height: 92px;
@@ -7147,7 +7122,6 @@ media
     box-shadow: 0 10px 0 var(--accent_border);
   }
 
-  /* "1 Spin Left" under wheel */
   .baseText{
     position: absolute;
     left: 50%;
@@ -7157,47 +7131,40 @@ media
 
     font-size: 50px!important;
     font-weight: 800;
-    color: rgba(0,0,0,0.55); /* looks like screenshot */
+    color: rgba(0,0,0,0.55); 
     opacity: 1;
   }
 }
 @media (min-width: 1014px) {
-  /* make the panel taller (rectangle behind) */
   .spin_area::before{
-    width: 500px;     /* wider */
-    height: 560px;    /* TALLER */
+    width: 500px;    
+    height: 560px;  
     border-radius: 14px;
   }
 
-  /* keep wrapper matching panel width */
   .wheelWrap{
     width: 500px;
   }
 
-  /* make wheel bigger */
   .wheelStack{
-    width: 420px;     /* BIGGER wheel */
+    width: 420px;     
   }
 
-  /* pointer stays above the bigger wheel */
   .pointer{
     top: calc(50% - 255px);
   }
 
-  /* base scales up a bit */
   .base{
     width: 320px;
     height: 110px;
     bottom: -72px;
   }
 
-  /* text sits lower because panel is taller + wheel bigger */
   .baseText{
     top: calc(50% + 285px);
     font-size: 15px;
   }
 
-  /* optional: make the center button scale with wheel */
   .center{
     width: 92px;
     height: 92px;
@@ -7724,7 +7691,6 @@ media
   white-space: nowrap;
 }
 
-/* buttons */
 .action-buttons{
   width: min(320px, 92vw);
   display: flex;
@@ -8126,7 +8092,7 @@ media
   color: rgba(0,0,0,0.45);
   line-height: 1.35;
 }
-/* Remove the extra outer "card" for earnings when it's inside the left box */
+
 .buddy_left_box .buddy_earnings{
   background: transparent !important;
   border: 0 !important;
@@ -8141,13 +8107,11 @@ media
   padding: 0 2px;
 }
 
-/* Keep rows looking nice but not too boxed */
 .buddy_left_box .buddy_earnings .earn_row{
   background: rgba(255,255,255,0.35);
   border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* Remove the extra outer "card" for earnings when it's inside the left box */
 .buddy_left_box .buddy_earnings{
   background: transparent !important;
   border: 0 !important;
@@ -8162,14 +8126,10 @@ media
   padding: 0 2px;
 }
 
-/* Keep rows looking nice but not too boxed */
 .buddy_left_box .buddy_earnings .earn_row{
   background: rgba(255,255,255,0.35);
   border: 1px solid rgba(255,255,255,0.35);
 }
-
-/* Focus Mode: Music button + panel */
-
 
 .app_top_right{
   position: relative;
@@ -8274,15 +8234,12 @@ media
   color: rgba(0,0,0,0.55);
 }
 
-/* ===== Focus: make music dropdown visible فوق everything ===== */
 
 
-/* Push focus content down so it doesn't sit under the fixed top bar */
 .ui_focus{
-  padding-top: 84px; /* adjust if your top bar taller/shorter */
+  padding-top: 84px; 
 }
 
-/* Make sure particles are below UI */
 .particles{
   position: fixed;
   inset: 0;
@@ -8290,23 +8247,20 @@ media
   pointer-events: none;
 }
 
-/* Keep your focus UI above particles */
 .ui_focus > *{
   position: relative;
   z-index: 1;
 }
 
-/* Music button + panel always above everything */
 .app_top_right,
 .music_btn{
   position: relative;
   z-index: 20001;
 }
 
-/* Dropdown: fixed so it won't be clipped by any parent */
 .music_panel{
   position: fixed !important;
-  top: 64px;          /* below top bar */
+  top: 64px;        
   right: 14px;
   width: 260px;
   z-index: 20002;
@@ -8314,13 +8268,12 @@ media
   max-height: 70vh;
   overflow: auto;
 
-  color: rgba(0,0,0,0.75); /* ensure text visible */
+  color: rgba(0,0,0,0.75); 
   background: rgba(255,255,255,0.85);
   border: 1px solid rgba(255,255,255,0.70);
   box-shadow: 0 18px 34px rgba(0,0,0,0.18);
 }
 
-/* Ensure menu items show text */
 .music_item,
 .music_toggle,
 .music_stop,

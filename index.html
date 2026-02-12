@@ -8,6 +8,7 @@
   </head>
 
   <body>
+    <!-- keep a default theme class so styling is correct even before JS runs -->
     <div class="dreampage dreamhome has-nav blue" id="pageRoot">
       <main class="dreamhome_screen" aria-label="Home">
         <header class="dreamhome_top">
@@ -16,6 +17,7 @@
               Hello, <span class="dreamhome_name">Edith</span>!
             </div>
           </div>
+
           <nav class="ui_nav_desktop" aria-label="Top navigation">
             <a class="ui_nav_desktop_link ui_nav_desktop_active" href="./index.html" aria-current="page">home</a>
             <a class="ui_nav_desktop_link" href="./chat.html">chat</a>
@@ -26,12 +28,11 @@
 
           <div class="dreamhome_top_right">
             <button type="button" class="dreamhome_gem_pill" aria-label="Gems">
-              <img class="dreamhome_gem_icon" src="assets/diamond.png" alt="" />
+              <img class="dreamhome_gem_icon" src="./assets/diamond.png" alt="" />
               <span class="dreamhome_gem_count">10</span>
             </button>
           </div>
         </header>
-
 
         <section class="dreamhome_weekly" onclick="window.location.href='./calendar.html'" style="cursor:pointer;">
           <div class="dreamhome_weekly_title">Weekly Progress</div>
@@ -74,20 +75,24 @@
               <img
                 id="dreamhome_hero_img"
                 class="dreamhome_hero_img"
-                src="assets/home/blue.jpg"
+                src="./assets/home/blue.jpg"
+                data-src-blue="./assets/home/blue.jpg"
+                data-src-orange="./assets/home/orange.png"
                 alt="Study buddy"
               />
             </a>
-
           </div>
+
           <div class="focus_layout">
             <section class="focus_main"></section>
+
             <div class="dreamhome_hero_actions">
               <div id="homeTimer" class="dreamhome_timer" aria-label="Timer">00:00:00</div>
 
               <button type="button" id="homeTimerBtn" class="dreamhome_cta" onclick="window.location.href='./focus.html'">
                 Start Now
               </button>
+
               <button type="button" class="dreamhome_cta dreamhome_cta_secondary" onclick="window.location.href='./notes.html'">
                 Your Notes
               </button>
@@ -139,18 +144,9 @@
                 <div class="dreamhome_quest_gems">Fill Health Bar</div>
               </div>
               <ul class="dreamhome_quest_list">
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Complete 3 Pomodoro sessions
-                </li>
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Take quick notes
-                </li>
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Revise flashcards for 10 minutes
-                </li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Complete 3 Pomodoro sessions</li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Take quick notes</li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Revise flashcards for 10 minutes</li>
               </ul>
             </div>
 
@@ -159,18 +155,9 @@
                 <div class="dreamhome_quest_gems">10 Gems</div>
               </div>
               <ul class="dreamhome_quest_list">
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Review 1 topic summary
-                </li>
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Do 20 practice questions
-                </li>
-                <li class="dreamhome_quest_item">
-                  <span class="dreamhome_dot"></span>
-                  Teach a concept (write or record a short explanation)
-                </li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Review 1 topic summary</li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Do 20 practice questions</li>
+                <li class="dreamhome_quest_item"><span class="dreamhome_dot"></span>Teach a concept (write or record a short explanation)</li>
               </ul>
             </div>
           </div>
@@ -179,33 +166,71 @@
     </div>
 
     <script>
-      const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
+      // ---------- THEME (orange/blue) ----------
+      const THEME_KEY = "dream_buddy";
       const root = document.getElementById("pageRoot");
-      const dreamhome_img = document.getElementById("dreamhome_hero_img");
+      const heroImg = document.getElementById("dreamhome_hero_img");
 
-      root?.classList.toggle("orange", dream_buddy === "orange");
-      root?.classList.toggle("blue", dream_buddy !== "orange");
+      function getTheme() {
+        return (localStorage.getItem(THEME_KEY) || "blue").toLowerCase().trim();
+      }
 
+      function applyTheme() {
+        const theme = getTheme();
+        const isOrange = theme === "orange";
+
+        root?.classList.toggle("orange", isOrange);
+        root?.classList.toggle("blue", !isOrange);
+        if (root) root.dataset.theme = theme;
+
+        if (heroImg) {
+          const blueSrc = heroImg.getAttribute("data-src-blue") || "./assets/home/blue.jpg";
+          const orangeSrc = heroImg.getAttribute("data-src-orange") || "./assets/home/orange.png";
+          const base = isOrange ? orangeSrc : blueSrc;
+
+          // cache-bust tied to theme so switching always forces a new URL
+          const next = base + (base.includes("?") ? "&" : "?") + "theme=" + encodeURIComponent(theme);
+
+          heroImg.onerror = () => console.warn("Hero image failed to load:", next);
+          heroImg.src = next;
+        }
+      }
+
+      // Run on load
+      applyTheme();
+
+      // IMPORTANT: when returning via back button (bfcache), scripts don't re-run,
+      // but pageshow DOES fire. This makes the image update reliably.
+      window.addEventListener("pageshow", applyTheme);
+      window.addEventListener("focus", applyTheme);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) applyTheme();
+      });
+
+      // Only fires for changes from OTHER tabs/windows (still useful)
+      window.addEventListener("storage", (e) => {
+        if (e.key === THEME_KEY) applyTheme();
+      });
+
+      // ---------- RESET FOCUS TIME ON HARD RELOAD ----------
       const nav = performance.getEntriesByType?.("navigation")?.[0];
       if (nav && nav.type === "reload") {
-        sessionStorage.removeItem("dreamTotalFocusTime"); 
+        sessionStorage.removeItem("dreamTotalFocusTime");
       }
-      if (dreamhome_img) {
-    dreamhome_img.src = (dream_buddy === "orange")
-      ? "assets/home/orange.png"
-      : "assets/home/blue.jpg";}
 
+      // ---------- WEEKLY INTENSITY ----------
       const tiles = document.querySelectorAll(".dreamhome_weekly_day");
-      const hours = Array.from(tiles).map(t => Number(t.dataset.hours || 0));
+      const hours = Array.from(tiles).map((t) => Number(t.dataset.hours || 0));
       const max = Math.max(1, ...hours);
 
       tiles.forEach((tile) => {
         const h = Number(tile.dataset.hours || 0);
         const t = h / max;
-        const intensity = 0.18 + (t * 0.62);
+        const intensity = 0.18 + t * 0.62;
         tile.style.setProperty("--dreamhome_intensity", intensity.toFixed(3));
       });
 
+      // ---------- QUEST SHEET DRAG ----------
       const sheet = document.getElementById("dreamhome_quest_sheet");
       const grab = sheet?.querySelector(".dreamhome_sheet_grab");
       const body = sheet?.querySelector(".dreamhome_sheet_body");
@@ -226,8 +251,8 @@
         body?.setAttribute("aria-hidden", isExpanded ? "false" : "true");
       }
 
-      function openSheet(){ setHeight(expanded); }
-      function closeSheet(){ setHeight(collapsed); }
+      function openSheet() { setHeight(expanded); }
+      function closeSheet() { setHeight(collapsed); }
 
       function onDown(clientY) {
         if (!sheet) return;
@@ -252,7 +277,7 @@
 
         const cssH = getComputedStyle(sheet).getPropertyValue("--dreamhome_sheet_h");
         const h = parseFloat(cssH) || collapsed;
-        (h > (collapsed + expanded) / 2) ? openSheet() : closeSheet();
+        h > (collapsed + expanded) / 2 ? openSheet() : closeSheet();
       }
 
       grab?.addEventListener("mousedown", (e) => onDown(e.clientY));
@@ -278,19 +303,20 @@
 
       setHeight(collapsed);
 
-    const timerEl = document.getElementById("homeTimer");
-    if (timerEl) {
-      function updateHomeTimer() {
-        const totalSeconds = Number(localStorage.getItem("dreamTotalFocusTime") || 0);
-        const h = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
-        const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
-        const s = String(totalSeconds % 60).padStart(2, "0");
-        timerEl.textContent = `${h}:${m}:${s}`;
+      // ---------- HOME TIMER ----------
+      const timerEl = document.getElementById("homeTimer");
+      if (timerEl) {
+        function updateHomeTimer() {
+          const totalSeconds = Number(localStorage.getItem("dreamTotalFocusTime") || 0);
+          const h = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+          const m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+          const s = String(totalSeconds % 60).padStart(2, "0");
+          timerEl.textContent = `${h}:${m}:${s}`;
+        }
+
+        updateHomeTimer();
+        setInterval(updateHomeTimer, 1000);
       }
-      
-      updateHomeTimer();
-      setInterval(updateHomeTimer, 1000);
-    }
     </script>
   </body>
 </html>

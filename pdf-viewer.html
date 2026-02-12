@@ -5,14 +5,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dream — PDF Viewer</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .pdf_viewer { height: 100vh; padding: 20px; }
-    #pdfViewer { width: 100%; height: 90vh; border-radius: 16px; }
-  </style>
 </head>
 <body>
   <div class="dreampage dreampage_has_nav">
-    <main class="ui_screen pdf_viewer" aria-label="PDF Viewer">
+    <main class="ui_sc pdf_viewer" aria-label="PDF Viewer">
+      <header class="app_top" aria-label="Top bar">
+        <div class="app_top_left">
+          <div class="app_title" id="pdfTitle">Loading...</div>
+        </div>
+
+        <nav class="app_nav" aria-label="Top navigation">
+          <a class="app_nav_link" href="./index.html">home</a>
+          <a class="app_nav_link app_nav_active" href="./chat.html" aria-current="page">chat</a>
+          <a class="app_nav_link" href="./notes.html">notes</a>
+          <a class="app_nav_link" href="./buddy.html">buddy</a>
+          <a class="app_nav_link" href="./settings.html">settings</a>
+        </nav>
+
+        <div class="app_top_right">
+          <button type="button" class="app_gem_pill" aria-label="Gems">
+            <img class="app_gem_icon" src="assets/diamond.png" alt="" />
+            <span class="app_gem_count">10</span>
+          </button>
+        </div>
+      </header>
+
       <header class="ui_top">
         <a class="ui_back" href="./your-notes.html" aria-label="Back">‹</a>
         <div class="ui_title" id="pdfTitle">Loading...</div>

@@ -8295,3 +8295,92 @@ media
   color: rgba(0,0,0,0.75);
 }
 
+/* Reviews on listing/purchase page */
+.reviews_block{
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.10);
+}
+
+.reviews_head{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.reviews_title{
+  font-weight: 900;
+  font-size: 16px;
+  color: rgba(0,0,0,0.70);
+}
+
+.reviews_count{
+  font-weight: 800;
+  color: rgba(0,0,0,0.45);
+  font-size: 13px;
+}
+
+.reviews_list{
+  display: grid;
+  gap: 12px;
+}
+
+.review_card{
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.review_top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.review_name{
+  font-weight: 900;
+  color: rgba(0,0,0,0.70);
+}
+
+.review_stars{
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,0.55);
+}
+
+.review_text{
+  font-weight: 700;
+  color: rgba(0,0,0,0.62);
+  line-height: 1.45;
+}
+
+.review_meta{
+  margin-top: 8px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.42);
+  font-size: 12px;
+}
+
+/* Optional review form */
+.review_form{
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.45);
+  display: grid;
+  gap: 10px;
+}
+
+.review_form_title{
+  font-weight: 900;
+  color: rgba(0,0,0,0.70);
+}

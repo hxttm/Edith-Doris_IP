@@ -24,7 +24,6 @@
   --overlay-close-bg: rgba(0,0,0,0.06);
 
   --btntext:#153741; 
-
   --shadow-soft: 0 8px 32px rgba(0,0,0,0.12);
   --shadow-hover: 0 16px 48px rgba(0,0,0,0.20);
   --gradient-glow: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);    
@@ -737,113 +736,6 @@ body.auth-bg{
 }
 
 .ui_nav_desktop{ display:none; }
-
-
-:root{
-  --bg: #F7F4EF;
-  --text: #6b6b6b;
-  --muted: #9aa0a6;
-
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-
-  --danger:#d04a4a;
-  --radius-xl:16px;
-  --shadow-top: 0 10px 18px rgba(0,0,0,.16);
-
-  --topbar-bg: #79b2c9;
-  --topbar-fg: rgba(255,255,255,.92);
-
-  --nav-bg: #79b2c9;
-  --nav-item-bg: rgba(255,255,255,.24);
-  --nav-item-bg-active: rgba(255,255,255,.40);
-
-  --overlay-z: 9999;
-  --overlay-blur: 6px;
-  --overlay-card-shadow: 0 18px 60px rgba(0,0,0,0.25);
-  --overlay-close-bg: rgba(0,0,0,0.06);
-
-  --btntext:#153741; 
-
-  --shadow-soft: 0 8px 32px rgba(0,0,0,0.12);
-  --shadow-hover: 0 16px 48px rgba(0,0,0,0.20);
-  --gradient-glow: linear-gradient(135deg, rgba(255,255,255,0.4), transparent);    
-}
-
-.blue{
-  --bg:#AFDAEA;
-  --text:#12324a;
-  --muted:rgba(18,50,74,.65);
-
-  --topbar-bg:#6FADC4;
-  --topbar-fg:#ffffff;
-
-  --nav-bg: rgba(120,175,205,.92);
-  --nav-item-bg: rgba(255,255,255,.24);
-  --nav-item-bg-active: rgba(255,255,255,.40);
-
-  --nav_h: 84px;
-  --radius: 18px;
-  --sheet_h: 76px;
-
-  --panel: rgba(90, 150, 175, 0.75);
-  --panel-2: rgba(90, 150, 175, 0.55);
-
-  --accent: rgba(120, 190, 215, 0.45);
-  --accent_border: rgba(0,0,0,0.35);
-
-  --dark: #599db8;
-  --medium: #7ac3de;
-  --light: #FFF7E7;
-
-  --overlay-card-bg: rgba(38, 108, 102, 0.648);
-  --overlay-card-text: rgba(10, 39, 60, 0.797);
-  --translucent-bg: rgba(41, 72, 101, 0.6);
-}
-
-.orange{
-  --bg: #FFA967;
-  --text: #3a1a08;
-  --muted: rgba(58,26,8,.70);
-
-  --topbar-bg: rgba(240,127,42,.92);
-  --topbar-fg: #ffffff;
-
-  --nav-bg: rgba(240,127,42,.92);
-  --nav-item-bg: rgba(255,255,255,.22);
-  --nav-item-bg-active: rgba(255,255,255,.36);
-
-  --nav_h: 84px;
-  --radius: 18px;
-  --sheet_h: 76px;
-
-  --panel: rgba(210,120,55,.72);
-  --panel-2: rgba(210,120,55,.52);
-
-  --accent: rgba(255,210,165,.26);
-  --accent_border: rgba(95,40,12,.45);
-
-  --dark: #bc571c;
-  --medium: #e38126;
-  --light: #FFF7E7;
-
-  --overlay-card-bg: rgba(255,248,240,0.92);
-  --overlay-card-text: rgba(60,25,10,0.92);
-  --translucent-bg: rgba(160, 106, 65, 0.6);
-}
-
-*{ box-sizing:border-box; }
-html, body{ height:100%; }
-
-body{
-  margin:0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-}
-
-.is-hidden{ display:none; }
-
 
 .splash{
   position: fixed;
@@ -1711,7 +1603,7 @@ body.auth-bg{
     flex-direction: column;
     justify-content: center;    
     text-align: left;           
-    gap: 16px;
+    gap: 5px;
 
     overflow: auto;             
   }
@@ -1721,11 +1613,13 @@ body.auth-bg{
   .dreamhome .dreamhome_sheet_grab{ cursor: default; }
   .dreamhome .dreamhome_grab_handle{ display:none; }
   .dreamhome .dreamhome_sheet_body{ 
-    padding: 14px;
+    padding: 12px;;
     flex: 1 1 auto;
     overflow: auto; }
-  .dreamhome .dreamhome_sheet_title{ font-size: 20px; }
-  
+  .dreamhome .dreamhome_sheet_title{ font-size: 35px !important; }
+  .dreamhome .dreamhome_quest_gems{font-size: 20px !important};
+  .dreamhome_quest_item{font-size: 2px !important};
+
   .cal_month { font-size: 23px !important; }
   .cal_cell { font-size: 18px !important; }
   .cal_cell_head { font-size: 16px !important; }
@@ -1735,7 +1629,7 @@ body.auth-bg{
     margin: 0;
     text-align: center;
   }
-  .quest_item { font-size: 18px !important; }
+  .quest_item { font-size: 1px !important; }
   .today_title { font-size: 18px !important; }
   .today_date { font-size: 29px !important; }
   .today_chip { font-size: 18px !important; }
@@ -1744,6 +1638,10 @@ body.auth-bg{
   .ui_title { font-size: 31px !important;  text-transform: capitalize !important;}
   .ui_nav_icon { width: 31px !important; height: 31px !important; }
 
+
+  .dreamhome .dreamhome_quest_item{
+  font-size: 17px !important;
+}
 }
 
 
@@ -3478,7 +3376,7 @@ body{
   align-items:center;
   gap: 16px;
 
-  transform: translateY(-150px); /* 👈 move up */
+  transform: translateY(-150px);
 }
 
 .wheelStack{
@@ -3822,17 +3720,11 @@ body{
 }
 
 
-/* ===========================
-   BUDDY: DESKTOP ONLY
-   (phone styles remain as-is)
-=========================== */
 
-/* defaults (phone) */
 .app_top { display: none; }
 .buddy_desktop_layout { display: none; }
 .buddy_mobile_stack { display: block; }
 
-/* desktop */
 
 @media (min-width: 980px) {
   .app_top { display: flex; }
@@ -3914,20 +3806,17 @@ body{
 }
 
 @media (min-width: 980px) {
-  /* give the right side more space */
   .buddy_desktop_layout{
-    max-width: 95vw;                  /* fill most of screen */
-    grid-template-columns: 440px 1fr; /* keep left usable, right grows */
+    max-width: 95vw;                 
+    grid-template-columns: 440px 1fr; 
     gap: 36px;
   }
 
-  /* center the whole two-column block nicely */
   .buddy_desktop_layout{
     margin-left: auto;
     margin-right: auto;
   }
 
-  /* FORCE viewer to be wide (override old min()/max-width rules) */
   .buddy_desktop_right .buddy_viewer_wide,
   .buddy_desktop_right .buddy_viewer{
     width: 100% !important;
@@ -3935,17 +3824,15 @@ body{
     min-width: 0 !important;
   }
 
-  /* make the viewer a wide landscape card instead of tall phone shape */
   .buddy_desktop_right .buddy_viewer_wide{
-    aspect-ratio: 16 / 9;             /* widescreen */
-    height: auto !important;          /* ignore old calc heights */
+    aspect-ratio: 16 / 9;      
+    height: auto !important;
     min-height: 520px;
     border-radius: 18px;
     position: relative;
     overflow: hidden;
   }
 
-  /* iframe fills the wide viewer */
   .buddy_desktop_right .buddy_viewer_wide iframe{
     position: absolute;
     inset: 0;
@@ -3955,14 +3842,13 @@ body{
     border-radius: inherit;
     width: 100% !important;
     max-width: none !important;
-    height: calc(100vh - 210px) !important; /* big desktop viewer */
+    height: calc(100vh - 210px) !important;
     min-height: 560px;
     border-radius: 18px;
     position: relative;
     overflow: hidden;
   }
 
-  /* HP bar aligns to viewer width */
   .buddy_desktop_right .buddy_hpbar_above{
     width: 100% !important;
     max-width: none !important;
@@ -3981,7 +3867,6 @@ body{
   }
 }
 @media (min-width: 980px) {
-  /* stop any "phone frame" max-width on the page wrapper */
   .dreampage,
   .ui_screen[aria-label="Study Buddy"]{
     max-width: none !important;
@@ -3989,22 +3874,19 @@ body{
     margin: 0 !important;
   }
 
-  /* make the desktop layout use the full available width */
   .buddy_desktop_layout{
-    max-width: none !important;     /* remove cap */
+    max-width: none !important;
     width: 100% !important;
-    padding: 0 24px;               /* nice gutter */
-    margin: 14px 0 0 0 !important; /* no centering gap */
+    padding: 0 24px;
+    margin: 14px 0 0 0 !important; 
     grid-template-columns: 420px minmax(0, 1fr);
   }
 
-  /* make the right column actually stretch */
   .buddy_desktop_right{
     width: 100% !important;
     min-width: 0 !important;
   }
 
-  /* viewer fills the right column */
   .buddy_viewer_wide{
     width: 100% !important;
     max-width: none !important;
@@ -4202,11 +4084,11 @@ body{
 }
 
 .theme-btn.blue {
-    background-image: url('./assets/focus/blue.png');
+    background-image: url('./assets/focus/blue.png') !important;
 }
 
 .theme-btn.orange {
-    background-image: url('./assets/focus/orange.png');
+    background-image: url('./assets/focus/orange.png') !important;
 }
 
 .theme-btn.active {
@@ -5765,7 +5647,7 @@ body{
 
 
 
-
+media
 .chat_study {
   display: flex;
   align-items: center;
@@ -5858,6 +5740,169 @@ body{
 }
 .chat_right{ display:none; }
 
+@media (min-width: 1014px){
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  .chat_layout{
+    display:grid;
+    grid-template-columns: 44% 56%;
+    gap: 14px;
+    min-height: 0; 
+  }
+
+
+}
+
+@media (min-width: 1014px) {
+  .ui_top { display: none !important; }
+  .ui_nav { display: none !important; }
+
+  html, body { width: 100%; margin: 0; }
+  body { display: block !important; }
+
+  #pageRoot,
+  .dreampage,
+  .dreampage_has_nav,
+  main.ui_screen[aria-label="Chat"]{
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  main.ui_screen[aria-label="Chat"]{
+    min-height: 100vh;
+    padding: 18px 24px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    align-items: stretch !important;
+  }
+
+  .chat_layout{
+    flex: 1 1 auto;
+    min-height: 0; 
+    display: grid !important;
+    grid-template-columns: 380px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+
+    width: 100% !important;
+    max-width: 1600px;   
+    margin: 0 auto !important;
+  }
+
+  .chat_left{
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tab_panel{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    border-radius: 16px;
+  }
+
+  .chat_right{
+    min-height: 0;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden;
+  }
+
+  .gc_shell{
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    border-radius: 16px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    border: 1px solid rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.08);
+  }
+
+  .gc_thread_preview{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+  }
+
+  .chat_right .gc_inputbar{
+    position: sticky !important;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .chat_preview,
+  .chat_study{
+    max-width: none !important;
+  }
+}
+
+@media (min-width: 1014px) {
+  html, body {
+    width: 100%;
+    margin: 0;
+  }
+  body {
+    display: block !important; 
+
+  #pageRoot,
+  .dreampage,
+  .dreampage_has_nav {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  main.ui_screen[aria-label="Chat"] {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 18px 22px 22px !important;
+    align-items: stretch !important;
+  }
+
+  .chat_layout {
+    width: 1620px !important;
+    max-width: none !important;
+    justify-content: stretch !important;
+  }
+}
+
+@media (min-width: 1014px) {
+  #pageRoot,
+  .dreampage,
+  .ui_screen {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .chat_layout {
+    width: 100% !important;
+    max-width: none !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important; 
+  }
+}
 @media (min-width: 1014px){
   .ui_top{ display:none; }
   .ui_nav{ display:none; }
@@ -5995,8 +6040,233 @@ body{
     font-weight: 800;
     color: rgba(0,0,0,0.55);
   }
+}}
+.chat_study {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary, rgba(0,0,0,0.65));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
 }
 
+.status_icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0; 
+  border-radius: 3px;
+}
+
+
+.status_icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.chat_meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.chat_time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.chat_footer {
+  position: fixed;
+  bottom: 72px; 
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: var(--card-bg, #fff);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.message_input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 24px;
+  outline: none;
+  font-size: 1rem;
+  background: var(--light);
+}
+
+.message_input:focus {
+  border-color: var(--accent, #ff9800);
+  background: #fff;
+}
+
+.send_btn {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent, #ff9800);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+  display: grid;
+  place-items: center;
+}
+
+.send_btn:hover {
+  opacity: 0.9;
+}
+
+.send_btn:active {
+  transform: scale(0.95);
+}
+.chat_right{ display:none; }
+
+@media (min-width: 1014px){
+  .ui_top{ display:none; }
+  .ui_nav{ display:none; }
+
+  .ui_screen{
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 14px;
+  }
+
+  .chat_layout{
+    display:grid;
+    grid-template-columns: 44% 56%;
+    gap: 14px;
+    min-height: 0;
+  }
+
+  .chat_left{ min-height:0; display:flex; flex-direction:column; }
+  .tab_panel{ min-height:0; overflow:auto; }
+
+  .chat_right{
+    display:block;
+    min-height:0;
+  }
+
+  .chat_item_active{
+    background: rgba(255,255,255,0.10);
+    outline: 2px solid rgba(255,255,255,0.25);
+    outline-offset: -2px;
+  }
+
+  .gc_shell{
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    border: 1px solid rgba(255,255,255,0.30);
+    background: rgba(255,255,255,0.08);
+
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+
+  .gc_topbar{
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+  }
+  .gc_title{
+    font-weight: 950;
+    font-size: 20px;
+    color: rgba(255,255,255,0.92);
+  }
+  .gc_sub{
+    margin-top: 2px;
+    font-weight: 650;
+    font-size: 13px;
+    color: rgba(0,0,0,0.55);
+  }
+
+  .gc_thread_preview{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    padding: 14px 16px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+
+  .gc_msg{ display:flex; }
+  .gc_left{ justify-content:flex-start; }
+  .gc_right{ justify-content:flex-end; }
+
+  .gc_bubble{
+    max-width: 78%;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+
+  .gc_right .gc_bubble{
+    background: rgba(255,255,255,0.28);
+  }
+
+  .gc_name{
+    font-weight: 900;
+    font-size: 12px;
+    color: rgba(0,0,0,0.65);
+    margin-bottom: 4px;
+  }
+  .gc_text{
+    font-weight: 650;
+    font-size: 14px;
+    color: rgba(0,0,0,0.80);
+  }
+  .gc_time{
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.45);
+    text-align: right;
+  }
+
+  .gc_inputbar_preview{
+    position: static;        
+    padding: 12px 14px;
+    display:flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    background: transparent;
+  }
+  .chat_right .gc_inputbar{
+    position: sticky;    
+    bottom: 0;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;     
+  }
+
+  .gc_empty{
+    margin: auto;
+    font-weight: 800;
+    color: rgba(0,0,0,0.55);
+  }
+}
 
 .ui_section.tab_panel {
   padding-bottom: 100px; 
@@ -6087,6 +6357,7 @@ body{
 .gc_bottom_spacer{
   height: 110px;
 }
+
 
 .cal_card{
   margin-top: 14px;
@@ -6346,7 +6617,7 @@ body{
   .ui_top{ display: none; }
   .ui_nav{ display: none; }
 
-  .ui_screen{
+  .ui_scr:has(.cal_card){
     width: 100%;
     margin: 0 auto;
     min-height: 100vh;
@@ -6354,14 +6625,19 @@ body{
 
     display: grid;
     grid-template-columns: 60% 40%;
-    grid-template-rows: auto 1fr;       
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "top top"
       "cal quests";
     gap: 14px;
 
-    align-items: start; 
+    align-items: start;
   }
+
+  .ui_scr:has(.cal_card) .app_top{ grid-area: top; }
+  .ui_scr:has(.cal_card) .cal_card{ grid-area: cal; }
+  .ui_scr:has(.cal_card) .today_card{ grid-area: quests; }
+
 
   .app_top{ grid-area: top; }
 
@@ -6408,7 +6684,7 @@ body{
     height: auto;        
     min-height: unset;  
     overflow: visible;   
-
+    padding: px !important;
     align-self: start;  
   }
 
@@ -6430,6 +6706,25 @@ body{
   .today_list{
     overflow: visible;
     max-height: none;
+  }
+}
+
+@media (min-width: 1014px){
+  .cal_month::before,
+  .cal_month::after,
+  .today_date::before,
+  .today_date::after,
+  .today_title::before,
+  .today_title::after{
+    content: none !important;
+    display: none !important;
+  }
+
+  .cal_month,
+  .today_date,
+  .today_card,
+  .cal_card{
+    background-image: none !important;
   }
 }
 
@@ -7539,146 +7834,27 @@ body{
   }
 }
 
-@media (min-width: 1014px) {
-  /* 1) kill global centering that compresses all pages */
-  html, body {
+
+@media (min-width: 1014px){
+
+  .ui_screen.calendar_layout{
     width: 100%;
-    margin: 0;
-  }
-  body {
-    display: block !important; /* overrides body flex centering */
-  }
-
-  /* 2) remove max-width/margin:auto from outer wrappers */
-  #pageRoot,
-  .dreampage,
-  .dreampage_has_nav {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-
-  /* 3) chat page main should fill */
-  main.ui_screen[aria-label="Chat"] {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 18px 22px 22px !important;
-    align-items: stretch !important;
-  }
-
-  .chat_layout {
-    width: 1620px !important;
-    max-width: none !important;
-    justify-content: stretch !important;
-  }
-}
-
-@media (min-width: 1014px) {
-  #pageRoot,
-  .dreampage,
-  .ui_screen {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-
-  .chat_layout {
-    width: 100% !important;
-    max-width: none !important;
-    grid-template-columns: 360px minmax(0, 1fr) !important; 
-  }
-}
-
-
-@media (min-width: 1014px) {
-  .ui_top { display: none !important; }
-  .ui_nav { display: none !important; }
-
-  html, body { width: 100%; margin: 0; }
-  body { display: block !important; }
-
-  #pageRoot,
-  .dreampage,
-  .dreampage_has_nav,
-  main.ui_screen[aria-label="Chat"]{
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-  }
-
-  main.ui_screen[aria-label="Chat"]{
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 18px 24px 24px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-    align-items: stretch !important;
+    padding: 18px 22px 22px;
+
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "top top"
+      "cal quests";
+    gap: 14px;
+
+    align-items: start;
   }
 
-  .chat_layout{
-    flex: 1 1 auto;
-    min-height: 0; 
-    display: grid !important;
-    grid-template-columns: 380px minmax(0, 1fr) !important;
-    gap: 18px !important;
-    align-items: stretch !important;
-
-    width: 100% !important;
-    max-width: 1600px;   
-    margin: 0 auto !important;
-  }
-
-  .chat_left{
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .tab_panel{
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: auto;
-    border-radius: 16px;
-  }
-
-  .chat_right{
-    min-height: 0;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow: hidden;
-  }
-
-  .gc_shell{
-    flex: 1 1 auto;
-    min-height: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-
-    border-radius: 16px;
-    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
-    border: 1px solid rgba(255,255,255,0.30);
-    background: rgba(255,255,255,0.08);
-  }
-
-  .gc_thread_preview{
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: auto;
-  }
-
-  .chat_right .gc_inputbar{
-    position: sticky !important;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-
-  .chat_preview,
-  .chat_study{
-    max-width: none !important;
-  }
+  .ui_screen.calendar_layout .app_top{ grid-area: top; }
+  .ui_screen.calendar_layout .cal_card{ grid-area: cal; }
+  .ui_screen.calendar_layout .today_card{ grid-area: quests; }
 }

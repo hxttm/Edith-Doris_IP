@@ -1,20 +1,9 @@
-      <header class="app_top" aria-label="Top bar">
-        <div class="app_top_left">
-          <div class="app_title">Calendar</div>
-        </div>
 
-        <nav class="app_nav" aria-label="Top navigation">
-          <a class="app_nav_link" href="./index.html">home</a>
-          <a class="app_nav_link" href="./chat.html">chat</a>
-          <a class="app_nav_link" href="./notes.html">notes</a>
-          <a class="app_nav_link" href="./buddy.html">buddy</a>
-          <a class="app_nav_link" href="./settings.html">settings</a>
-        </nav>
+          <nav class="app_nav" aria-label="Top navigation">
+            <a class="app_nav_link" href="./index.html">home</a>
+            <a class="app_nav_link" href="./chat.html">chat</a>
+            <a class="app_nav_link" href="./market.html">notes</a>
+            <a class="app_nav_link" href="./buddy.html">buddy</a>
+            <a class="app_nav_link app_nav_active" href="./settings.html" aria-current="page">settings</a>
+          </nav>
 
-        <div class="app_top_right">
-          <button type="button" class="app_gem_pill" aria-label="Gems">
-            <img class="app_gem_icon" src="assets/diamond.png" alt="" />
-            <span class="app_gem_count">10</span>
-          </button>
-        </div>
-      </header>

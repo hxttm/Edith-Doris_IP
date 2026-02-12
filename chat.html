@@ -19,7 +19,7 @@
         <nav class="app_nav" aria-label="Top navigation">
           <a class="app_nav_link" href="./index.html">home</a>
           <a class="app_nav_link app_nav_active" href="./chat.html" aria-current="page">chat</a>
-          <a class="app_nav_link" href="./notes.html">notes</a>
+          <a class="app_nav_link" href="./market.html">notes</a>
           <a class="app_nav_link" href="./buddy.html">buddy</a>
           <a class="app_nav_link" href="./settings.html">settings</a>
         </nav>
@@ -42,7 +42,6 @@
         <div class="chat_left">
           <div class="ui_tabs" role="tablist" aria-label="Chat sections">
             <button class="ui_tab ui_tab_active" type="button" data-tab="chats" role="tab" aria-selected="true">Chats</button>
-            <button class="ui_tab" type="button" data-tab="buddies" role="tab" aria-selected="false">Study Buddies</button>
           </div>
 
           <section class="ui_section tab_panel active" data-tab-panel="chats">
@@ -107,67 +106,64 @@
             </a>
           </section>
 
-          <section class="ui_section tab_panel" data-tab-panel="buddies">
+          <section class="buddy_panel tab_panel" data-tab-panel="buddies">
             <a href="./gc.html"
-               class="chat_item buddy_item"
-               data-chat="buddy-jayden"
-               data-title="Jayden"
-               data-sub="Study Buddy"
-            >
-              <img class="chat_avatar" src="./assets/pfp/j.webp" alt="" />
-              <div class="chat_info">
-                <div class="chat_name">Jayden</div>
-                <div class="chat_user">Your UI UX is so cool!</div>
-                <div class="chat_study">Studied for 5h today</div>
+              class="buddy_row"
+              data-chat="buddy-jayden"
+              data-title="Jayden"
+              data-sub="Study Buddy">
+              <img class="buddy_avatar" src="./assets/pfp/j.webp" alt="" />
+              <div class="buddy_meta">
+                <div class="buddy_name">Jayden</div>
+                <div class="buddy_quote">Your UI UX is so cool!</div>
+                <div class="buddy_stat">Studied for 5h today</div>
               </div>
-              <div class="chat_time">5h</div>
+              <div class="buddy_time">5h</div>
             </a>
 
             <a href="./gc.html"
-               class="chat_item buddy_item"
-               data-chat="buddy-doris"
-               data-title="Doris"
-               data-sub="Study Buddy"
-            >
-              <img class="chat_avatar" src="./assets/pfp/d.jpg" alt="" />
-              <div class="chat_info">
-                <div class="chat_name">Doris</div>
-                <div class="chat_user">yippee</div>
-                <div class="chat_study">Studied for 7h today</div>
+              class="buddy_row"
+              data-chat="buddy-doris"
+              data-title="Doris"
+              data-sub="Study Buddy">
+              <img class="buddy_avatar" src="./assets/pfp/d.jpg" alt="" />
+              <div class="buddy_meta">
+                <div class="buddy_name">Doris</div>
+                <div class="buddy_quote">yippee</div>
+                <div class="buddy_stat">Studied for 7h today</div>
               </div>
-              <div class="chat_time">5h</div>
+              <div class="buddy_time">5h</div>
             </a>
 
             <a href="./gc.html"
-               class="chat_item buddy_item"
-               data-chat="buddy-edith"
-               data-title="Edith"
-               data-sub="Study Buddy"
-            >
-              <img class="chat_avatar" src="./assets/pfp/e.jpg" alt="" />
-              <div class="chat_info">
-                <div class="chat_name">Edith</div>
-                <div class="chat_user">Good Luck!</div>
-                <div class="chat_study">Studied for 7h today</div>
+              class="buddy_row"
+              data-chat="buddy-edith"
+              data-title="Edith"
+              data-sub="Study Buddy">
+              <img class="buddy_avatar" src="./assets/pfp/e.jpg" alt="" />
+              <div class="buddy_meta">
+                <div class="buddy_name">Edith</div>
+                <div class="buddy_quote">Good Luck!</div>
+                <div class="buddy_stat">Studied for 7h today</div>
               </div>
-              <div class="chat_time">1h</div>
+              <div class="buddy_time">1h</div>
             </a>
 
             <a href="./gc.html"
-               class="chat_item buddy_item"
-               data-chat="buddy-kwayjo"
-               data-title="Kway Jo"
-               data-sub="Study Buddy"
-            >
-              <img class="chat_avatar" src="./assets/pfp/kj.jpg" alt="" />
-              <div class="chat_info">
-                <div class="chat_name">Kway Jo</div>
-                <div class="chat_user">Your UI UX is so cool!</div>
-                <div class="chat_study">Studied for 5h today</div>
+              class="buddy_row"
+              data-chat="buddy-kwayjo"
+              data-title="Kway Jo"
+              data-sub="Study Buddy">
+              <img class="buddy_avatar" src="./assets/pfp/kj.jpg" alt="" />
+              <div class="buddy_meta">
+                <div class="buddy_name">Kway Jo</div>
+                <div class="buddy_quote">Your UI UX is so cool!</div>
+                <div class="buddy_stat">Studied for 5h today</div>
               </div>
-              <div class="chat_time">5h</div>
+              <div class="buddy_time">5h</div>
             </a>
           </section>
+
         </div>
 
         <aside class="chat_right" aria-label="Chat conversation">

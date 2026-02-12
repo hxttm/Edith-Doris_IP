@@ -12,7 +12,44 @@
       <div class="app_title">Focus Mode</div>
     </div>
 
-  </header>  
+    <div class="app_top_right">
+      <button
+        type="button"
+        class="music_btn"
+        id="musicBtn"
+        aria-label="Music"
+        aria-expanded="false"
+        aria-controls="musicPanel"
+      >
+        ♪
+      </button>
+
+      <div class="music_panel" id="musicPanel" hidden>
+        <div class="music_panel_head">
+          <div class="music_panel_title">Sound</div>
+          <button type="button" class="music_close" id="musicClose" aria-label="Close">✕</button>
+        </div>
+
+        <div class="music_list" role="menu" aria-label="Music options">
+          <button class="music_item" type="button" data-track="white" role="menuitem">White Noise</button>
+          <button class="music_item" type="button" data-track="lofi" role="menuitem">Lofi</button>
+          <button class="music_item" type="button" data-track="rain" role="menuitem">Rain</button>
+          <button class="music_item" type="button" data-track="brown" role="menuitem">Brown Noise</button>
+          <button class="music_item" type="button" data-track="cafe" role="menuitem">Cafe Ambience</button>
+        </div>
+
+        <div class="music_controls">
+          <button class="music_toggle" id="musicToggle" type="button">Play</button>
+          <button class="music_stop" id="musicStop" type="button">Stop</button>
+        </div>
+
+        <div class="music_now" id="musicNow">Not playing</div>
+      </div>
+
+      <audio id="focusAudio" preload="metadata"></audio>
+    </div>
+  </header>
+
   <div class="dreampage dreampage_has_nav" id="pageRoot">
     <main class="ui_focus" aria-label="FocusMode">
       <header class="ui_top">
@@ -42,10 +79,129 @@
     root?.classList.toggle("orange", buddy === "orange");
     root?.classList.toggle("blue", buddy !== "orange");
 
+    /* ========= Music ========= */
+    const tracks = {
+      white: { name: "White Noise", src: "./assets/audio/white-noise.mp3" },
+      lofi:  { name: "Lofi",        src: "./assets/audio/lofi.mp3" },
+      rain:  { name: "Rain",        src: "./assets/audio/rain.mp3" },
+      brown: { name: "Brown Noise", src: "./assets/audio/brown-noise.mp3" },
+      cafe:  { name: "Cafe Ambience", src: "./assets/audio/cafe.mp3" },
+    };
+
+    const audio = document.getElementById("focusAudio");
+    const musicBtn = document.getElementById("musicBtn");
+    const musicPanel = document.getElementById("musicPanel");
+    const musicClose = document.getElementById("musicClose");
+    const musicToggle = document.getElementById("musicToggle");
+    const musicStop = document.getElementById("musicStop");
+    const musicNow = document.getElementById("musicNow");
+    const trackBtns = Array.from(document.querySelectorAll(".music_item"));
+
+    let currentTrackKey = null;
+
+    function openPanel() {
+      if (!musicPanel) return;
+      musicPanel.hidden = false;
+      musicBtn?.setAttribute("aria-expanded", "true");
+    }
+    function closePanel() {
+      if (!musicPanel) return;
+      musicPanel.hidden = true;
+      musicBtn?.setAttribute("aria-expanded", "false");
+    }
+    function setActiveButton(key) {
+      trackBtns.forEach(b => b.classList.toggle("is_active", b.dataset.track === key));
+    }
+    function updateNow() {
+      if (!audio) return;
+      const playing = !audio.paused && currentTrackKey;
+      musicToggle.textContent = playing ? "Pause" : "Play";
+      musicNow.textContent = currentTrackKey
+        ? `${playing ? "Playing" : "Paused"}: ${tracks[currentTrackKey].name}`
+        : "Not playing";
+      musicBtn.textContent = playing ? "⏸" : "♪";
+    }
+
+    async function playTrack(key) {
+      if (!audio || !tracks[key]) return;
+      currentTrackKey = key;
+      setActiveButton(key);
+
+      if (audio.src !== new URL(tracks[key].src, location.href).href) {
+        audio.src = tracks[key].src;
+        audio.loop = true;
+      }
+
+      try {
+        await audio.play(); // user click required by browser policies
+      } catch (e) {
+        // If blocked, keep UI consistent (user can hit Play again)
+      }
+      updateNow();
+    }
+
+    function pauseResume() {
+      if (!audio) return;
+      if (!currentTrackKey) {
+        // default to first option if none chosen
+        playTrack("white");
+        return;
+      }
+      if (audio.paused) audio.play().catch(()=>{});
+      else audio.pause();
+      updateNow();
+    }
+
+    function stopAudio() {
+      if (!audio) return;
+      audio.pause();
+      audio.currentTime = 0;
+      currentTrackKey = null;
+      setActiveButton(null);
+      updateNow();
+    }
+
+    musicBtn?.addEventListener("click", () => {
+      if (!musicPanel) return;
+      musicPanel.hidden ? openPanel() : closePanel();
+    });
+
+    musicClose?.addEventListener("click", closePanel);
+
+    trackBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.track;
+        if (!key) return;
+
+        // If clicking the same track, toggle play/pause
+        if (currentTrackKey === key) pauseResume();
+        else playTrack(key);
+      });
+    });
+
+    musicToggle?.addEventListener("click", pauseResume);
+    musicStop?.addEventListener("click", stopAudio);
+
+    // Close panel on outside click / Esc
+    document.addEventListener("click", (e) => {
+      if (!musicPanel || musicPanel.hidden) return;
+      const target = e.target;
+      if (!(target instanceof Node)) return;
+      if (musicPanel.contains(target) || musicBtn?.contains(target)) return;
+      closePanel();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closePanel();
+    });
+
+    updateNow();
+
+    /* ========= Focus Timer (your existing code continues below) ========= */
     class FocusTimer {
       constructor() {
         const savedStart = sessionStorage.getItem("focusStartTime");
-        this.startTime = savedStart ? parseInt(savedStart) : Date.now();  // Resume or new
+        this.startTime = savedStart ? parseInt(savedStart) : Date.now();
         sessionStorage.setItem("focusStartTime", this.startTime.toString());
         this.interval = null;
         this.timerDisplay = document.getElementById("timerDisplay");
@@ -59,15 +215,13 @@
 
       bindEvents() {
         document.getElementById("endBtn")?.addEventListener("click", () => this.endSession());
-        document.getElementById('notesBtn')?.addEventListener('click', () => this.openNotes());
+        document.getElementById("notesBtn")?.addEventListener("click", () => this.openNotes());
       }
 
       start() {
         if (this.interval) return;
         document.body.classList.add("timer-running");
-        this.interval = setInterval(() => {
-          this.updateDisplay();
-        }, 1000);
+        this.interval = setInterval(() => this.updateDisplay(), 1000);
       }
 
       updateDisplay() {
@@ -80,20 +234,16 @@
 
       endSession() {
         if (!confirm(`End session after ${this.formatTime(Math.floor((Date.now() - this.startTime) / 1000))}?`)) return;
-        
+
         const sessionSeconds = Math.floor((Date.now() - this.startTime) / 1000);
         const prevTotal = Number(localStorage.getItem("dreamTotalFocusTime") || 0);
         const newTotal = prevTotal + sessionSeconds;
-        
-        while (localStorage.getItem("dreamTotalFocusTime") !== newTotal.toString()) {
-          localStorage.setItem("dreamTotalFocusTime", newTotal.toString());
-        }
-        
+
+        localStorage.setItem("dreamTotalFocusTime", String(newTotal));
         sessionStorage.removeItem("focusStartTime");
+
         setTimeout(() => window.location.href = "./index.html", 50);
       }
-
-
 
       formatTime(seconds) {
         const mins = Math.floor(seconds / 60);
@@ -110,21 +260,18 @@
         if (!this.particles) return;
         this.particles.innerHTML = "";
         for (let i = 0; i < 50; i++) {
-          const particle = document.createElement("div");
-          particle.className = "particle";
-          particle.style.left = Math.random() * 100 + "%";
-          particle.style.animationDelay = Math.random() * 6 + "s";
-          particle.style.animationDuration = (Math.random() * 3 + 4) + "s";
-          this.particles.appendChild(particle);
+          const p = document.createElement("div");
+          p.className = "particle";
+          p.style.left = Math.random() * 100 + "%";
+          p.style.animationDelay = Math.random() * 6 + "s";
+          p.style.animationDuration = (Math.random() * 3 + 4) + "s";
+          this.particles.appendChild(p);
         }
       }
     }
 
-    window.addEventListener('beforeunload', () => {
-      sessionStorage.setItem("focusTime", new FocusTimer().time.toString());
-    });
-
     new FocusTimer();
   </script>
+
 </body>
 </html>

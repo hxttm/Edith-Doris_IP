@@ -5233,7 +5233,80 @@ body{
     font-size: 12px;
     color: rgba(0,0,0,.35);
   }
+
+    /* Marketplace listing card wrapper */
+  .notes_grid{
+    display: grid;
+    gap: 18px;
+  }
+
+  /* each listing */
+  .note_card{
+    display: block;
+    padding: 14px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.60);        /* translucent white */
+    border: 20px solid rgba(255,255,255,0.55);
+    box-shadow: 0 14px 26px rgba(0,0,0,0.10);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+
+  .note_card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.12);
+  }
+
+  /* thumbnail inside the card */
+  .note_thumb{
+    width: 100%;
+    display: block;
+    border-radius: 14px;
+  }
+
+  /* spacing + typography */
+  .note_title{
+    margin-top: 10px;
+    font-weight: 800;
+    color: rgba(0,0,0,0.70);
+  }
+
+  .note_meta{
+    margin-top: 4px;
+    font-weight: 700;
+    color: rgba(0,0,0,0.45);
+  }
+
+  .notes_grid .note_card{
+    display: block !important;
+    padding: 14px !important;
+    border-radius: 18px !important;
+
+    background: rgba(255,255,255,0.75) !important;  
+    border: 1px solid rgba(255,255,255,0.70) !important;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.12) !important;
+
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .notes_grid .note_card .note_thumb{
+    width: 100% !important;
+    display: block !important;
+    border-radius: 14px !important;
+  }
 }
+
+
 
 
 
@@ -7292,7 +7365,9 @@ media
 
 .buddy_questcard{
   width: min(340px, 86vw);
-  margin: 8px auto 0;
+  margin: 8px;
+  margin-bottom: 16px !important;
+
   background: var(--panel);
   border-radius: 14px;
   padding: 10px 12px 12px;
@@ -7990,4 +8065,105 @@ media
   .ui_screen.calendar_layout .app_top{ grid-area: top; }
   .ui_screen.calendar_layout .cal_card{ grid-area: cal; }
   .ui_screen.calendar_layout .today_card{ grid-area: quests; }
+}
+
+.buddy_earnings{
+  margin: 10px !important;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.buddy_earnings .earn_title{
+  font-weight: 900;
+  color: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.buddy_earnings .earn_sub{
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+}
+
+.buddy_earnings .earn_rows{
+  display: grid;
+  gap: 5px !important;
+}
+
+.buddy_earnings .earn_row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.40);
+  margin: 14px;
+}
+
+.buddy_earnings .earn_range{
+  font-weight: 900;
+  color: rgba(0,0,0,0.55);
+}
+
+.buddy_earnings .earn_rate{
+  font-weight: 900;
+  color: rgba(0,0,0,0.70);
+}
+
+.buddy_earnings .earn_note{
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+  line-height: 1.35;
+}
+/* Remove the extra outer "card" for earnings when it's inside the left box */
+.buddy_left_box .buddy_earnings{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 6px 0 0 !important;
+  margin-top: 10px;
+}
+
+.buddy_left_box .buddy_earnings .earn_title{
+  padding: 0 2px;
+}
+
+/* Keep rows looking nice but not too boxed */
+.buddy_left_box .buddy_earnings .earn_row{
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* Remove the extra outer "card" for earnings when it's inside the left box */
+.buddy_left_box .buddy_earnings{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 6px 0 0 !important;
+  margin-top: 10px;
+}
+
+.buddy_left_box .buddy_earnings .earn_title{
+  padding: 0 2px;
+}
+
+/* Keep rows looking nice but not too boxed */
+.buddy_left_box .buddy_earnings .earn_row{
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
 }

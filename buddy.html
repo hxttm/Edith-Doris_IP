@@ -12,7 +12,7 @@
       <main class="ui_screen" aria-label="Study Buddy">
         <header class="app_top" aria-label="Top bar">
           <div class="app_top_left">
-            <a class="ui_back" href="./settings.html" aria-label="Back">‹</a>
+            <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
             <div class="app_title">Buddy</div>
           </div>
 
@@ -80,6 +80,17 @@
               </li>
             </ul>
           </section>
+
+          <section class="buddy_earnings" aria-label="Gem earnings rates">
+            <div class="earn_title">Earnings <span class="earn_sub">(gems/hour)</span></div>
+            <div class="earn_rows">
+              <div class="earn_row"><span class="earn_range">1–3h</span><span class="earn_rate">3💎/h</span></div>
+              <div class="earn_row"><span class="earn_range">3–4h</span><span class="earn_rate">4💎/h</span></div>
+              <div class="earn_row"><span class="earn_range">4h+</span><span class="earn_rate">5💎/h</span></div>
+            </div>
+            <div class="earn_note">Rate increases as your session gets longer.</div>
+          </section>
+
         </div>
 
         <div class="buddy_desktop_layout" aria-label="Desktop buddy layout">
@@ -104,6 +115,23 @@
                   </li>
                 </ul>
               </section>
+              <aside class="buddy_desktop_left">
+                <div class="buddy_left_box">
+
+              <section class="buddy_earnings" aria-label="Gem earnings rates">
+                    <div class="earn_title">Earnings <span class="earn_sub">(gems/hour)</span></div>
+                    <div class="earn_rows">
+                      <div class="earn_row"><span class="earn_range">1–3h</span><span class="earn_rate">3💎/h</span></div>
+                      <div class="earn_row"><span class="earn_range">3–4h</span><span class="earn_rate">4💎/h</span></div>
+                      <div class="earn_row"><span class="earn_range">4h+</span><span class="earn_rate">5💎/h</span></div>
+                      <div class="earn_row"><span class="earn_range">Full Health</span><span class="earn_rate">5💎/h</span></div>
+                    </div>
+                    <div class="earn_note">Rate increases as your session gets longer.</div>
+                  </section>
+
+                </div>
+              </aside>
+
             </div>
           </aside>
 
@@ -162,6 +190,21 @@
         hp.style.width = "0%";
         requestAnimationFrame(() => (hp.style.width = target));
       }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("a.ui_back").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault(); // stop href navigation
+
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              // fallback if opened directly
+              window.location.href = btn.getAttribute("href") || "./index.html";
+            }
+          });
+        });
+      });
     </script>
   </body>
 </html>

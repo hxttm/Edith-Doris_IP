@@ -1,9 +1,15 @@
+<a class="ui_back" href="./index.html" aria-label="Back">‹</a>
+            
+window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("a.ui_back").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
 
-          <nav class="app_nav" aria-label="Top navigation">
-            <a class="app_nav_link" href="./index.html">home</a>
-            <a class="app_nav_link" href="./chat.html">chat</a>
-            <a class="app_nav_link" href="./market.html">notes</a>
-            <a class="app_nav_link" href="./buddy.html">buddy</a>
-            <a class="app_nav_link app_nav_active" href="./settings.html" aria-current="page">settings</a>
-          </nav>
-
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              window.location.href = btn.getAttribute("href") || "./index.html";
+            }
+          });
+        });
+      });

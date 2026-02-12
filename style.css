@@ -1497,14 +1497,17 @@ body.auth-bg{
 
   .dreamhome .dreamhome_screen::before{
     content: "";
-    grid-area: left;                   
-    align-self: end;                   
+    grid-area: left;
+    align-self: end;
     height: calc(var(--contentH) * 0.68);
     width: 100%;
     border-radius: 16px;
-    background: url("assets/home/blue.jpg") center / cover no-repeat;
+    background: var(--homeHeroBg) center / cover no-repeat;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
   }
+
+  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.jpg"); }
+  #pageRoot.orange { --homeHeroBg: url("./assets/home/orange.png"); }
 
 
   .dreamhome .dreamhome_hero_img_wrap{ display: none; }
@@ -7879,14 +7882,17 @@ media
 
   .dreamhome .dreamhome_screen::before{
     content: "";
-    grid-area: image;
-    align-self: stretch;    
-    height: auto;          
+    grid-area: left;
+    align-self: end;
+    height: calc(var(--contentH) * 0.68);
     width: 100%;
     border-radius: 16px;
-    background: url("assets/home/blue.jpg") center top / cover no-repeat; 
+    background: var(--homeHeroBg) center / cover no-repeat;
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
   }
+
+  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.jpg"); }
+  #pageRoot.orange { --homeHeroBg: url("./assets/home/orange.png"); }
 
   .dreamhome .dreamhome_weekly{
     height: auto;           
@@ -7923,8 +7929,15 @@ media
     height: auto;           
     width: 100%;
     border-radius: 16px;
-    background: url("assets/home/blue.jpg") center top / cover no-repeat; 
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+
+    content: "";
+    display: block;                
+    border-radius: 16px;
+    box-shadow: 0 10px 18px rgba(0,0,0,0.10);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   .dreamhome .dreamhome_weekly{

@@ -8,7 +8,6 @@
   </head>
 
   <body>
-    <!-- keep a default theme class so styling is correct even before JS runs -->
     <div class="dreampage dreamhome has-nav blue" id="pageRoot">
       <main class="dreamhome_screen" aria-label="Home">
         <header class="dreamhome_top">
@@ -127,12 +126,7 @@
           </a>
         </nav>
 
-        <section
-          class="dreamhome_sheet"
-          id="dreamhome_quest_sheet"
-          aria-label="Active quests"
-          data-state="collapsed"
-        >
+        <section class="dreamhome_sheet" id="dreamhome_quest_sheet" aria-label="Active quests" data-state="collapsed">
           <div class="dreamhome_sheet_grab" role="button" tabindex="0" aria-label="Drag to expand quests">
             <div class="dreamhome_grab_handle" aria-hidden="true"></div>
             <div class="dreamhome_sheet_title">Active Quests</div>
@@ -166,59 +160,103 @@
     </div>
 
     <script>
-      // ---------- THEME (orange/blue) ----------
-      const THEME_KEY = "dream_buddy";
+      const THEME_KEY = "dream_buddy"; // must match whatever you set in other pages
       const root = document.getElementById("pageRoot");
       const heroImg = document.getElementById("dreamhome_hero_img");
 
-      function getTheme() {
-        return (localStorage.getItem(THEME_KEY) || "blue").toLowerCase().trim();
+      function norm(v) {
+        return (v || "").toLowerCase().trim();
       }
 
-      function applyTheme() {
-        const theme = getTheme();
-        const isOrange = theme === "orange";
+      function themeFromStorage() {
+        const t = norm(localStorage.getItem(THEME_KEY));
+        return t === "orange" ? "orange" : t === "blue" ? "blue" : "";
+      }
 
-        root?.classList.toggle("orange", isOrange);
-        root?.classList.toggle("blue", !isOrange);
-        if (root) root.dataset.theme = theme;
+      function applyThemeClass() {
+        if (!root) return;
 
-        if (heroImg) {
-          const blueSrc = heroImg.getAttribute("data-src-blue") || "./assets/home/blue.jpg";
-          const orangeSrc = heroImg.getAttribute("data-src-orange") || "./assets/home/orange.png";
-          const base = isOrange ? orangeSrc : blueSrc;
+        const t = themeFromStorage();
+        if (!t) return; // if nothing stored, keep whatever HTML already has
 
-          // cache-bust tied to theme so switching always forces a new URL
-          const next = base + (base.includes("?") ? "&" : "?") + "theme=" + encodeURIComponent(theme);
+        root.classList.toggle("orange", t === "orange");
+        root.classList.toggle("blue", t !== "orange");
+      }
 
-          heroImg.onerror = () => console.warn("Hero image failed to load:", next);
-          heroImg.src = next;
+      // Try multiple extensions if the file path is wrong / missing
+      function setImgWithFallback(imgEl, primarySrc) {
+        const base = primarySrc.replace(/\.(png|jpg|jpeg)$/i, ""); // strip ext if any
+        const candidates = [
+          primarySrc,
+          base + ".png",
+          base + ".jpg",
+          base + ".jpeg",
+        ];
+
+        let i = 0;
+        function tryNext() {
+          if (i >= candidates.length) return;
+          imgEl.src = candidates[i] + (candidates[i].includes("?") ? "&" : "?") + "v=" + Date.now();
+          i++;
         }
+
+        imgEl.onerror = tryNext;
+        tryNext();
       }
 
-      // Run on load
-      applyTheme();
+      function syncHeroToRootClass() {
+        if (!root || !heroImg) return;
 
-      // IMPORTANT: when returning via back button (bfcache), scripts don't re-run,
-      // but pageshow DOES fire. This makes the image update reliably.
-      window.addEventListener("pageshow", applyTheme);
-      window.addEventListener("focus", applyTheme);
+        const isOrange = root.classList.contains("orange");
+        const blueSrc = heroImg.getAttribute("data-blue") || "./assets/home/blue.jpg";
+        const orangeSrc = heroImg.getAttribute("data-orange") || "./assets/home/orange.png";
+
+        const target = isOrange ? orangeSrc : blueSrc;
+
+        // avoid reloading same src
+        const absTarget = new URL(target, location.href).href;
+        if (heroImg.src === absTarget) return;
+
+        setImgWithFallback(heroImg, target);
+      }
+
+      function applyAll() {
+        applyThemeClass();
+        syncHeroToRootClass();
+      }
+
+      // initial
+      applyAll();
+
+      // keep it synced
+      window.addEventListener("pageshow", applyAll);
+      window.addEventListener("focus", applyAll);
       document.addEventListener("visibilitychange", () => {
-        if (!document.hidden) applyTheme();
+        if (!document.hidden) applyAll();
       });
 
-      // Only fires for changes from OTHER tabs/windows (still useful)
+      // theme changed in another tab/page
       window.addEventListener("storage", (e) => {
-        if (e.key === THEME_KEY) applyTheme();
+        if (e.key === THEME_KEY) applyAll();
       });
 
-      // ---------- RESET FOCUS TIME ON HARD RELOAD ----------
+      // if some code toggles classes directly
+      if (root) {
+        new MutationObserver(syncHeroToRootClass).observe(root, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+
+      // ============ (keep your other logic below if you want) ============
+
+      // RESET FOCUS TIMER ON HARD RELOAD
       const nav = performance.getEntriesByType?.("navigation")?.[0];
       if (nav && nav.type === "reload") {
         sessionStorage.removeItem("dreamTotalFocusTime");
       }
 
-      // ---------- WEEKLY INTENSITY ----------
+      // WEEKLY TILE INTENSITY
       const tiles = document.querySelectorAll(".dreamhome_weekly_day");
       const hours = Array.from(tiles).map((t) => Number(t.dataset.hours || 0));
       const max = Math.max(1, ...hours);
@@ -230,7 +268,7 @@
         tile.style.setProperty("--dreamhome_intensity", intensity.toFixed(3));
       });
 
-      // ---------- QUEST SHEET DRAG ----------
+      // QUEST SHEET DRAG + TOGGLE
       const sheet = document.getElementById("dreamhome_quest_sheet");
       const grab = sheet?.querySelector(".dreamhome_sheet_grab");
       const body = sheet?.querySelector(".dreamhome_sheet_body");
@@ -243,11 +281,12 @@
       let dragging = false;
 
       function setHeight(h) {
+        if (!sheet) return;
         const clamped = Math.max(collapsed, Math.min(expanded, h));
-        sheet?.style.setProperty("--dreamhome_sheet_h", clamped + "px");
+        sheet.style.setProperty("--dreamhome_sheet_h", clamped + "px");
 
         const isExpanded = clamped > (collapsed + expanded) / 2;
-        if (sheet) sheet.dataset.state = isExpanded ? "expanded" : "collapsed";
+        sheet.dataset.state = isExpanded ? "expanded" : "collapsed";
         body?.setAttribute("aria-hidden", isExpanded ? "false" : "true");
       }
 
@@ -303,7 +342,7 @@
 
       setHeight(collapsed);
 
-      // ---------- HOME TIMER ----------
+      // HOME TIMER DISPLAY
       const timerEl = document.getElementById("homeTimer");
       if (timerEl) {
         function updateHomeTimer() {
@@ -318,5 +357,6 @@
         setInterval(updateHomeTimer, 1000);
       }
     </script>
+
   </body>
 </html>

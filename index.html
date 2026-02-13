@@ -126,8 +126,8 @@
           </a>
         </nav>
 
-        <section class="dreamhome_sheet" id="dreamhome_quest_sheet" aria-label="Active quests" data-state="collapsed">
-          <div class="dreamhome_sheet_grab" role="button" tabindex="0" aria-label="Drag to expand quests">
+        <section class="dreamhome_sheet" id="dreamhome_quest_sheet" aria-label="Active quests" data-state="collapsed" >
+          <div class="dreamhome_sheet_grab" role="button" tabindex="0" aria-label="Drag to expand quests" >
             <div class="dreamhome_grab_handle" aria-hidden="true"></div>
             <div class="dreamhome_sheet_title">Active Quests</div>
           </div>
@@ -347,7 +347,14 @@
         setInterval(updateHomeTimer, 1000);
       }
 
-      
+      sheet?.addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+
+      if (sheet.dataset.state === "expanded") {
+        window.location.href = "./buddy.html";
+      }
+    });
+
     </script>
 
   </body>

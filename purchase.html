@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Enzyme Kinetics — Notes Market</title>
   <link rel="stylesheet" href="style.css" />
+
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"
+  type="module"
+></script>
+
 </head>
 
 <body>
@@ -14,7 +20,7 @@
       <header class="app_top" aria-label="Top bar">
         <div class="app_top_left">
           <a class="ui_back" href="./index.html" aria-label="Back">‹</a>
-          <div class="app_title">Your Notes</div>
+          <div class="app_title"> Notes</div>
         </div>
 
         <nav class="app_nav" aria-label="Top navigation">
@@ -141,24 +147,42 @@
     </nav>
   </div>
 
+  <div id="purchaseAnimOverlay" class="purchase_anim_overlay" aria-hidden="true">
+    <div class="purchase_anim_card" role="dialog" aria-label="Purchase successful">
+      <dotlottie-wc
+
+        src="https://lottie.host/33477c11-84f9-4122-a045-6c27550de103/ZVQ52n1NHL.lottie"
+        style="width:450px;height:400px"
+        autoplay
+        loop
+        mode="forward"
+      ></dotlottie-wc>
+
+    </div>
+  </div>
+
   <script>
-    
     const NOTE_ID = "enzyme-kinetics";
     const NOTE_TITLE = "Enzyme Kinetics";
     const NOTE_PRICE = 3;
     const buyBtn = document.getElementById("buyBtn");
 
-    function getGems() { 
-      return Number(sessionStorage.getItem("gems") || "10"); 
-    }
-    function setGems(n) { 
-      sessionStorage.setItem("gems", String(n)); 
-    }
-    function getOwned() { 
-      return JSON.parse(sessionStorage.getItem("owned_notes") || "[]"); 
-    }
-    function setOwned(arr) { 
-      sessionStorage.setItem("owned_notes", JSON.stringify(arr)); 
+    function getGems() { return Number(sessionStorage.getItem("gems") || "10"); }
+    function setGems(n) { sessionStorage.setItem("gems", String(n)); }
+    function getOwned() { return JSON.parse(sessionStorage.getItem("owned_notes") || "[]"); }
+    function setOwned(arr) { sessionStorage.setItem("owned_notes", JSON.stringify(arr)); }
+
+    const animOverlay = document.getElementById("purchaseAnimOverlay");
+
+    function showPurchaseAnim(ms = 1500) {
+      if (!animOverlay) return;
+      animOverlay.classList.add("is-open");
+      animOverlay.setAttribute("aria-hidden", "false");
+
+      setTimeout(() => {
+        animOverlay.classList.remove("is-open");
+        animOverlay.setAttribute("aria-hidden", "true");
+      }, ms);
     }
 
     function updateBuyButton() {
@@ -196,15 +220,15 @@
         `Buy "${NOTE_TITLE}" for ${NOTE_PRICE}💎?\n\n` +
         `💎 Balance: ${gems} → ${gems - NOTE_PRICE}`
       );
-
       if (!confirmed) return;
+
+      showPurchaseAnim(1800);
 
       setGems(gems - NOTE_PRICE);
       const owned = getOwned();
       owned.push(NOTE_ID);
       setOwned(owned);
 
-      alert("🎉 Purchased successfully!\nAdded to Your Notes.");
       updateBuyButton();
     }
 
@@ -213,14 +237,14 @@
     root?.classList.toggle("orange", buddy === "orange");
     root?.classList.toggle("blue", buddy !== "orange");
 
-    document.querySelector(".ui_back")?.addEventListener("click", (e) => {
-      if (history.length > 1) {
-        e.preventDefault();
-        history.back();
-      }
+    document.querySelectorAll(".ui_back").forEach(b => {
+      b.addEventListener("click", (e) => {
+        if (history.length > 1) { e.preventDefault(); history.back(); }
+      });
     });
 
     updateBuyButton();
   </script>
+
 </body>
 </html>

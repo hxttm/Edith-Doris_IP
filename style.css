@@ -5668,7 +5668,7 @@ body{
 .lb_list{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:px;
 }
 
 .lb_row{
@@ -5700,7 +5700,7 @@ body{
 
 .lb_score{
   text-align:right;
-  font-weight: 950;
+  font-weight: 700;
   color: var(--text);
 }
 
@@ -8386,3 +8386,27 @@ media
   font-weight: 900;
   color: rgba(0,0,0,0.70);
 }
+
+.lb_row.me-highlight {
+  background: linear-gradient(90deg, #ffd700, #ffed4e) !important;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  animation: goldPulse 1s ease-in-out;
+}
+
+@keyframes goldPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.lb_row.error-row {
+  text-align: center;
+  color: #dc3545;
+  font-style: italic;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+

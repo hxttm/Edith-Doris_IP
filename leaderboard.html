@@ -38,14 +38,7 @@
       </header>
 
       <section class="ui_sec">
-        <div class="ui_section_title">Singapore (Central)</div>
-        <div class="lb_list">
-          <div class="lb_row"><div class="lb_rank">1</div><div class="lb_name">Jayden</div><div class="lb_score">999</div></div>
-          <div class="lb_row"><div class="lb_rank">2</div><div class="lb_name">Doris</div><div class="lb_score">870</div></div>
-          <div class="lb_row"><div class="lb_rank">3</div><div class="lb_name">Kway Jo</div><div class="lb_score">740</div></div>
-          <div class="lb_row"><div class="lb_rank">4</div><div class="lb_name">Edith</div><div class="lb_score">690</div></div>
-          <div class="lb_row"><div class="lb_rank">5</div><div class="lb_name">Priscilla</div><div class="lb_score">640</div></div>
-        </div>
+        <div class="lb_list" id="lbList"></div>
       </section>
     </main>
 
@@ -75,14 +68,69 @@
     const buddy = localStorage.getItem("dream_buddy") || "blue";
     document.body.classList.toggle("orange", buddy === "orange");
     document.body.classList.toggle("blue", buddy !== "orange");
-    
-    document.querySelector(".ui_back")?.addEventListener("click", (e) => {
-      if (history.length > 1) {
-        e.preventDefault();
-        history.back();
-      }
+
+    document.querySelectorAll(".ui_back").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        if (history.length > 1) { e.preventDefault(); history.back(); }
+      });
     });
+
+    const SHEET_ID = "1dzjZC25MIJSj1Dgj-dRDUs17s-Pj59Iq8Fh2wWeF2Ws";
+    const SHEET_TAB_NAME = "Sheet1"; 
+
+    const lbList = document.getElementById("lbList");
+
+    async function loadLeaderboard() {
+      try {
+        lbList.innerHTML = `<div class="lb_row">Loading...</div>`;
+
+        const query = `select A, B where A is not null order by B desc limit 50`;
+        const url =
+          `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?` +
+          `tqx=out:json&sheet=${encodeURIComponent(SHEET_TAB_NAME)}` +
+          `&tq=${encodeURIComponent(query)}`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const text = await res.text();
+        const json = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}") + 1));
+
+        const rows = json.table.rows || [];
+        const data = rows.map(r => ({
+          name: r.c?.[0]?.v ?? "Anonymous",
+          hours: Number(r.c?.[1]?.v ?? 0)
+        }));
+
+        if (!data.length) {
+          lbList.innerHTML = `<div class="lb_row">No hours yet</div>`;
+          return;
+        }
+
+        lbList.innerHTML = data.map((p, i) => `
+          <div class="lb_row">
+            <div class="lb_rank">${i + 1}</div>
+            <div class="lb_name">${escapeHtml(p.name)}</div>
+            <div class="lb_score">${p.hours.toLocaleString()} hrs</div>
+          </div>
+        `).join("");
+
+      } catch (err) {
+        console.error(err);
+        lbList.innerHTML = `<div class="lb_row error-row">Failed to load leaderboard</div>`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, s =>
+        ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[s])
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", loadLeaderboard);
+    setInterval(loadLeaderboard, 30000);
   </script>
 
-</body>
+
+  </body>
 </html>

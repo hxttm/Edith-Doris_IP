@@ -47,8 +47,8 @@
           <div class="buddy_viewer_wrap">
             <div class="buddy_viewer">
               <iframe
-                title="Baby White Rhino Static Pose Triangulated."
-                src="https://sketchfab.com/models/b7af77eceaf84d21936131da30a3b8b2/embed"
+                class="buddy_model"
+                title="Study Buddy"
                 frameborder="0"
                 allowfullscreen
                 mozallowfullscreen="true"
@@ -142,8 +142,8 @@
 
             <div class="buddy_viewer buddy_viewer_wide">
               <iframe
-                title="Baby White Rhino Static Pose Triangulated."
-                src="https://sketchfab.com/models/b7af77eceaf84d21936131da30a3b8b2/embed"
+                class="buddy_model"
+                title="Study Buddy"
                 frameborder="0"
                 allowfullscreen
                 mozallowfullscreen="true"
@@ -181,6 +181,9 @@
     <script>
       const dream_buddy = localStorage.getItem("dream_buddy") || "blue";
       const root = document.getElementById("pageRoot");
+      const BLUE_MODEL   = "https://sketchfab.com/models/6b4ab5f478e54aa591284d76179debae/embed";
+      const ORANGE_MODEL = "https://sketchfab.com/models/1ba9d46707934adbbe3883292ae5ffe7/embed"; 
+      
       root?.classList.toggle("orange", dream_buddy === "orange");
       root?.classList.toggle("blue", dream_buddy !== "orange");
 
@@ -190,6 +193,14 @@
         hp.style.width = "0%";
         requestAnimationFrame(() => (hp.style.width = target));
       }
+
+      const modelSrc = (dream_buddy === "orange") ? ORANGE_MODEL : BLUE_MODEL;
+
+      document.querySelectorAll("iframe.buddy_model").forEach((frame) => {
+        if (frame.getAttribute("src") !== modelSrc) frame.setAttribute("src", modelSrc);
+
+        frame.setAttribute("title", dream_buddy === "orange" ? "Orange Buddy" : "Blue Buddy");
+      });
 
       window.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("a.ui_back").forEach((btn) => {

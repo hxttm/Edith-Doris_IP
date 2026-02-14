@@ -74,8 +74,8 @@
               <img
                 id="dreamhome_hero_img"
                 class="dreamhome_hero_img"
-                src="./assets/home/blue.jpg"
-                data-src-blue="./assets/home/blue.jpg"
+                src="./assets/home/blue.png"
+                data-src-blue="./assets/home/blue.png"
                 data-src-orange="./assets/home/orange.png"
                 alt="Study buddy"
               />
@@ -207,7 +207,7 @@
         if (!root || !heroImg) return;
 
         const isOrange = root.classList.contains("orange");
-        const blueSrc = heroImg.getAttribute("data-blue") || "./assets/home/blue.jpg";
+        const blueSrc = heroImg.getAttribute("data-blue") || "./assets/home/blue.png";
         const orangeSrc = heroImg.getAttribute("data-orange") || "./assets/home/orange.png";
 
         const target = isOrange ? orangeSrc : blueSrc;

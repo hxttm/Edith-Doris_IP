@@ -64,8 +64,8 @@
 
       <div class="pet-container">
         <img
-          src="./assets/focus/blue.jpg"
-          data-src-blue="./assets/focus/blue.jpg"
+          src="./assets/focus/blue.png"
+          data-src-blue="./assets/focus/blue.png"
           data-src-orange="./assets/focus/orange.png"
           alt="Focus Pet"
           class="pet-image active"
@@ -100,7 +100,7 @@
 
       const pet = document.getElementById("petImage");
       if (pet) {
-        const blueSrc = pet.getAttribute("data-src-blue") || "./assets/focus/blue.jpg";
+        const blueSrc = pet.getAttribute("data-src-blue") || "./assets/focus/blue.png";
         const orangeSrc = pet.getAttribute("data-src-orange") || "./assets/focus/orange.png";
         const base = isOrange ? orangeSrc : blueSrc;
 

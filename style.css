@@ -1506,7 +1506,7 @@ body.auth-bg{
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
   }
 
-  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.jpg"); }
+  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.png"); }
   #pageRoot.orange { --homeHeroBg: url("./assets/home/orange.png"); }
 
 
@@ -7895,7 +7895,7 @@ media
     box-shadow: 0 10px 18px rgba(0,0,0,0.10);
   }
 
-  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.jpg"); }
+  #pageRoot.blue   { --homeHeroBg: url("./assets/home/blue.png"); }
   #pageRoot.orange { --homeHeroBg: url("./assets/home/orange.png"); }
 
   .dreamhome .dreamhome_weekly{
